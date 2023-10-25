@@ -1,0 +1,323 @@
+/* pages/takekuaidi/takekuaidi.wxss */
+.contain {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+}
+.kuaidisize {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+.kuaifont {
+  width: 100px;
+height: 20px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.size {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  top: 5%;
+}
+.small {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  left: 5%;
+}
+.middle {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  left: 37%;
+}
+.large {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  top: 0;
+  left: 70%;
+}
+.priceview {
+  position: absolute;
+  left: 4%;
+  width: 90px;
+height: 40px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #D9D9D9;
+}
+.boxnum {
+  display: flex;
+  left: 19%;
+  position: absolute;
+  bottom: 0%;
+  width: 60px;
+height: 25px;
+flex-shrink: 0;
+border-radius: 5px;
+background: #D9D9D9;
+}
+.pricefont {
+  position: absolute;
+  left: 14%;
+  width: 70px;
+height: 20px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.boxnum view {
+  display: flex;
+  justify-content: center;
+  width: 50rpx;
+  height: 50rpx;
+}
+.del{
+  font-size: 36rpx;
+  color: #616161;
+}
+.add{
+font-size: 36rpx;
+ color: #616161;
+}
+.num{
+  border-left:1rpx solid #cfcfcf;
+  border-right: 1rpx solid #cfcfcf;
+}
+.num input{
+  font-size: 36rpx;
+  color: #f22d2d;
+  text-align: center;
+}
+.info {
+  position: absolute;
+  width: 100%;
+  top: 20%;
+}
+.info text {
+  width: 100px;
+height: 20px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.codeview {
+  position: absolute;
+  width: 330px;
+  height: 150px;
+  left: 7.5%;
+  flex-shrink: 0;
+  top: 25%;
+  border-radius: 5px;
+  background: #D9D9D9;
+}
+.codeview textarea {
+  box-sizing: border-box;
+  resize: none;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  height: 100%;
+}
+.imgview {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+}
+.moreinfo {
+  position: absolute;
+  top: 52%;
+  height: 30%;
+  width: 100%;
+}
+.address {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 20%;
+}
+.divider1 {
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.phone {
+  position: absolute;
+  top: 20%;
+  width: 100%;
+  height: 20%;
+}
+.divider2 {
+  position: absolute;
+  top: 40%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.scor {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  height: 20%;
+}
+.elinfo {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  height: 20%;
+}
+.moreprice {
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  height: 20%;
+}
+.divider3 {
+  position: absolute;
+  top: 60%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.divider4 {
+  position: absolute;
+  top: 80%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.divider5 {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.morefont {
+    position: absolute;
+    top: 40%;
+  width: 150px;
+height: 20px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.moinput {
+  position: absolute;
+  right: 0%;
+  top: 40%;
+  color: #3AC1EB;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 170px;
+height: 20px;
+flex-shrink: 0;
+}
+.phcolor{
+	color:#C8C9CC;
+  font-size: 15px;
+  color: #3AC1EB;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+width: 170px;
+height: 20px;
+flex-shrink: 0;
+}
+.divider {
+  position: absolute;
+  top: 89%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.up {
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  top: 89%;
+}
+.needfont {
+  position: absolute;
+  top: 15%;
+  left: 4%;
+  width: 120px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.price {
+  position: absolute;
+  top: 15%;
+  left: 22%;
+  width: 120px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #EFA515;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.pay {
+  right: 5%;
+  top: 15%;
+  position:absolute;
+  width: 150px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: rgba(58, 193, 235, 0.69);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+}

@@ -1,0 +1,5 @@
+<!--pages/order/ordering/ordering.wxml-->
+<view class="container">
+  <tabBar selected="3"></tabBar>
+<view class="qqgroup"><text class="qqfont">加入官方QQ群</text></view>
+</view>

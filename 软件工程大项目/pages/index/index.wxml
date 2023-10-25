@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="title">福代互助平台</view>
+  <view class="header"><text class="headerfont">平台简介及所需遵守政策</text></view>
+  <view class="qqgroup"><text class="qqfont">加入官方QQ群:</text></view>
+  <view class="func">
+  <view class="func1" bind:tap="jumptotake">
+  <view class="func1img"></view>
+  <text class="func1font">快递代拿</text>
+  </view>
+  <view class="func2">
+  <view class="func2img"></view>
+  <text class="func1font">饮品代拿</text>
+  </view>
+  <view class="func3">
+  <view class="func3img"></view>
+  <text class="func1font">快递代寄</text>
+  </view>
+  <view class="func4">
+  <view class="func4img"></view>
+  <text class="func1font">暂未开放</text>
+  </view>
+  <view class="func5">
+  <view class="func5img"></view>
+  <text class="func1font">校园代跑</text>
+  </view>
+  <view class="func6">
+  <view class="func6img"></view>
+  <text class="func1font">暂未开放</text>
+  </view>
+  </view>
+</view>

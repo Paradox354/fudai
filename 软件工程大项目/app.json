@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/chatroom/chatroom",
+    "pages/takekuaidi/takekuaidi",
+    "pages/order/allorders/allorders",
+    "pages/order/myorders/myorders",
+    "pages/order/myhelp/myhelp",
+    "pages/order/ordering/ordering"
+  ],
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home.png"
+      },
+      {
+        "pagePath": "pages/order/allorders/allorders",
+        "text": "订单",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home.png"
+      },
+      {
+        "pagePath": "pages/chatroom/chatroom",
+        "text": "聊天室",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "img/my.png",
+        "selectedIconPath": "img/my.png"
+      }
+    ]
+  }
+}

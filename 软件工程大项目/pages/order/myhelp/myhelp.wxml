@@ -1,0 +1,5 @@
+<!--pages/order/myhelp/myhelp.wxml-->
+<view class="container">
+  <tabBar selected="2"></tabBar>
+<view class="qqgroup"><text class="qqfont">加入官方QQ群</text></view>
+</view>
