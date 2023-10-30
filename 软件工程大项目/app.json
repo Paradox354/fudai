@@ -8,7 +8,8 @@
     "pages/order/allorders/allorders",
     "pages/order/myorders/myorders",
     "pages/order/myhelp/myhelp",
-    "pages/order/ordering/ordering"
+    "pages/order/ordering/ordering",
+    "pages/chat/chat"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {

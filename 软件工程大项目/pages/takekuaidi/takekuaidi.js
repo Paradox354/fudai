@@ -1,3 +1,4 @@
+
 // pages/takekuaidi/takekuaidi.js
 Page({
 
@@ -8,9 +9,17 @@ Page({
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       selectedExpress: '请选择快递商家',
       codeValue: "",
+      flag:0,
       smallnum: 0,
       middlenum: 0,
       largenum: 0,
+      images:[],
+      adress:'',
+      phone:'',
+      size:'',
+      remark:'',
+      code:'',
+      from:'',
   },
 
   /**
@@ -192,60 +201,29 @@ Page({
     }
   },
   doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-        wx.showLoading({
-          title: '上传中',
-        })
-console.log(res);
-        // const filePath = res.tempFilePaths[0]
-        wx.uploadFile({
-          url: 'https://*******/Index/Api/insert', //仅为示例，非真实的接口地址
-          filePath: res.tempFilePaths[0],
-          name: 'img',
-          formData: {
-           
-          },
-          success (res){
-            const data = res.data
-           console.log(data);
-           //返回图片名称
-          if (res.data!='') {
-            wx.hideLoading({
-              success: (res) => {
-               setTimeout(() => {
-                 wx.showToast({
-                   title: '上传成功！',
-                 })
-               }, 2000);
-              },
-            })
-          } else {
-            wx.hideLoading({
-              success: (res) => {
-               setTimeout(() => {
-                 wx.showToast({
-                   title: '上传失败！',
-                   icon:'none'
-                 })
-               }, 2000);
-              },
-            })
-          }
-           
-            //do something
-          }
-        })
-      },
-      fail: e => {
-        console.error(e)
-      }
-    })
-  },
+  wx.chooseImage({
+     sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
+     sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+     success: res => {
+       if (this.data.images.length <= 1) {
+         const images = this.data.images.concat(res.tempFilePaths)
+         // 限制最多只能留下2张照片
+         this.setData({
+           images: images,
+           flag:1,
+         })
+       } else {
+         wx.showToast({
+           title: '最多只能选择两张照片',
+           icon: 'none',
+           duration: 2000,
+           mask: true
+         })
+       }
+     }
+  })
+},
+  
   bindPickerChange: function (e) {
     var index = e.detail && e.detail.value;
     if (index !== undefined) {
@@ -255,5 +233,32 @@ console.log(res);
       });
       console.log('选择的快递商家:', selectedExpress);
     }
-  }
+},
+//上传图片和信息
+upload_info: function() {
+  wx.request({
+    url: 'https://mock.apifox.cn/m1/3416501-0-default/pt/publish',
+    method: 'post', //http请求方法，默认为Get
+    data: {
+      from:this.data.from,
+      file:this.data.images
+    },
+    header: {
+      'content-type': 'application/json' // 默认值
+    },
+    success(res) {	//这里是官方给出的写法，也可以写成 success: function(res){ … }
+      console.log(res.data)
+    },
+    complete(res){
+    }
+  })
+},
+previewImage: function (e) {
+  let that=this
+  let current = e.currentTarget.dataset.src
+  wx.previewImage({
+    urls: that.data.images,
+    current:current
+  })
+}
 })

@@ -1,2 +1,47 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+<text class="pingtai">福代互助平台</text>
+<view class="diver"></view>
+<view class="selfinfo">
+<view class="head">
+<image class="headimg" src="../../img/home.png" />
+</view>
+<text class="name">微信名</text>
+<text class="number">微信号</text>
+</view>
+<view class="more">
+<view class="moreitem"><view class="info">
+<image src="../../img/signup.png"/>
+<text>申请接单</text>
+</view>
+<image class="jiantou" src="../../img/右箭头.png"/></view>
+<view class="moreitem">
+  <view class="info">
+<image src="../../img/客服.png"/>
+<text>联系客服</text>
+</view>
+<image class="jiantou" src="../../img/右箭头.png"/>
+</view>
+<view class="moreitem">
+  <view class="info">
+<image src="../../img/关于我们.png"/>
+<text>关于我们</text>
+</view>
+<image class="jiantou" src="../../img/右箭头.png"/>
+</view>
+<view class="moreitem">
+  <view class="info">
+<image src="../../img/投诉.png"/>
+<text>投诉</text>
+</view>
+<image class="jiantou" src="../../img/右箭头.png"/>
+</view>
+<view class="moreitem">
+  <view class="info">
+<image src="../../img/客服.png"/>
+<text>隐私政策</text>
+</view>
+<image class="jiantou" src="../../img/右箭头.png"/>
+</view>
+</view>
+</view>

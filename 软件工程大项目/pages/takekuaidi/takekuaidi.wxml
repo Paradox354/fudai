@@ -36,7 +36,16 @@
 <view class="info"><text>取件信息</text></view>
 <view class="codeview">
   <textarea value="{{codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）"/>
+  <view class="imgbox">
+    <block wx:for="{{images}}" wx:key="*this">
+  <view class="img">
+    <image src="{{item}}"></image>
+  </view>
+  </block>
+  </view>
+
 </view>
+
 <view class="imgview">
   <button type="primary" bindtap="doUpload" style="margin-top: 150rpx;">上传图片</button>
   </view>
@@ -73,8 +82,8 @@
 </view>
 <view class="divider"></view>
 <view class="up">
-<text class="needfont">需支付:</text><text class="price">￥2</text>
-<view class="pay">提交订单
+<text class="needfont">需支付:</text><text class="price">￥{{money}}</text>
+<view class="pay" bind:tap="upload_info">提交订单
 </view>
 </view>
 
