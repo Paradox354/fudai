@@ -1,0 +1,60 @@
+/* component/tabBar.wxss */
+
+/* 底部栏 */
+.fix-btm {
+  display: flex;
+  position: fixed;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 78.166rpx;
+  background-color: #fff;
+  box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, .1);
+}
+.fix-btm-list{
+  flex:1;
+  overflow: hidden;
+}
+.fix-btn-img{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: relative;
+}
+.fix-btm-img{
+  width: 33.333rpx;
+  height: 33.333rpx;
+  display: block;
+  padding-top: 19.444rpx;
+  margin: 0 auto;
+}
+.fix-btm-list .fix-btn-img .red-dot,
+.fix-btm-list .fix-btn-img .red-msg{
+  width: 16.666rpx;
+  height: 16.666rpx;
+  z-index: 1000;
+  position: absolute;
+  top: 14rpx;
+  transform: translateX(30rpx);
+  background-color: #FF2929;
+  border-radius: 20rpx;
+}
+.fix-btm-list .fix-btn-img .red-dot{
+  right: 50%;
+}
+.fix-btm-list .fix-btn-img .red-msg{
+  width: auto;
+  height: auto;
+  color: #fff;
+  font-size: 16.666rpx;
+  padding: 2rpx 8rpx;
+  left: 50%;
+  transform: translateX(50%);
+}
+.fix-btm-list text{
+  font-size: 25rpx;
+  color: #8A8A8A;
+}
+.fix-btm-list text.active{
+  color: #0072FF;
+}

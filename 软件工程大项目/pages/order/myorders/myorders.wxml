@@ -16,7 +16,8 @@
           <text class="price">￥ {{item.price}}</text>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" >取消</view>
+          <view class="getorder" >取消订单</view>
+          <view class="finishorder" >确认完成</view>
         </view>
       </block>
    </scroll-viewb>

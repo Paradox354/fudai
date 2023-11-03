@@ -1,0 +1,18 @@
+<!--component/tabBar.wxml-->
+<view class="fix-btm">
+	<view class="fix-btm-list" catchtap="switchTab"   data-url="/pages/order/allorders/allorders">
+		<view class="fix-btn-img">
+			<text  class="{{selected==0 ? 'active' : ''}}">悬赏订单</text>
+		</view>
+	</view>
+	<view class="fix-btm-list" catchtap="switchTab"  data-url="/pages/order/myorders/myorders">
+		<view class="fix-btn-img">
+			<text class="{{selected==1 ? 'active' : ''}}">我发布的</text>
+		</view>
+	</view>
+  <view class="fix-btm-list" catchtap="switchTab"  data-url="/pages/order/myhelp/myhelp">
+		<view class="fix-btn-img">
+			<text class="{{selected==2 ? 'active' : ''}}">我帮助的</text>
+		</view>
+	</view>
+</view>
