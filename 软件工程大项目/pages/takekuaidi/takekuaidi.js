@@ -1,4 +1,6 @@
 
+const FormData = require('../../utils/formData.js')
+
 // pages/takekuaidi/takekuaidi.js
 Page({
 
@@ -8,25 +10,53 @@ Page({
   data: {
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       selectedExpress: '请选择快递商家',
+      rooturl:'http://47.113.216.236:9737',
+      imgnum:0,
+      imgpaths:[],
+      num:0,
       codeValue: "",
+      token:'',
       flag:0,
+      elseTo:'',
       smallnum: 0,
       middlenum: 0,
       largenum: 0,
       images:[],
       adress:'',
       phone:'',
-      size:'',
-      remark:'',
+      type:'快递',
+      size:'small',
+      remark:'测试1',
       code:'',
       from:'',
+      money:0,
+      districtOptions: ['生活一区', '生活二区', '生活三区', '生活四区', '生活五区'],
+      selectedDistrict: '生活一区',
+      buildingOptions: generateBuildingOptions(),
+      selectedBuilding: '1号楼',
+      dormitoryOptions: generateDormitoryOptions(),
+      selectedDormitory: '101'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    var that=this;
+    wx.request({
+      url: that.data.rooturl+'/wx/login/temp',
+      method:'POST',
+      data:
+      {
+        'openid':'61'
+      },
+      success:(res)=>{
+        that.setData({
+          token:res.data.data.token
+        })
+        console.log(res.data.data.token)
+      }
+    })
   },
 
   /**
@@ -77,6 +107,12 @@ Page({
   onShareAppMessage() {
 
   },
+  getmoney(){
+    var m=this.data.smallnum*2+this.data.middlenum*3+this.data.largenum*5
+    this.setData({
+      money:m
+    })
+  },
   checksmallNum: function (res) {
     var that = this
     var smallnum = res.detail.value
@@ -117,6 +153,7 @@ Page({
         })
       }
     }
+    this.getmoney();
   },
   checkmiddleNum: function (res) {
     var that = this
@@ -158,6 +195,7 @@ Page({
         })
       }
     }
+    this.getmoney();
   },
   checklargeNum: function (res) {
     var that = this
@@ -199,6 +237,7 @@ Page({
         })
       }
     }
+    this.getmoney();
   },
   doUpload: function () {
   wx.chooseImage({
@@ -207,10 +246,12 @@ Page({
      success: res => {
        if (this.data.images.length <= 1) {
          const images = this.data.images.concat(res.tempFilePaths)
+         console.log(res)
          // 限制最多只能留下2张照片
          this.setData({
            images: images,
            flag:1,
+           imgnum:this.data.imgnum+1
          })
        } else {
          wx.showToast({
@@ -234,24 +275,114 @@ Page({
       console.log('选择的快递商家:', selectedExpress);
     }
 },
-//上传图片和信息
-upload_info: function() {
-  wx.request({
-    url: 'https://mock.apifox.cn/m1/3416501-0-default/pt/publish',
-    method: 'post', //http请求方法，默认为Get
-    data: {
-      from:this.data.from,
-      file:this.data.images
-    },
-    header: {
-      'content-type': 'application/json' // 默认值
-    },
-    success(res) {	//这里是官方给出的写法，也可以写成 success: function(res){ … }
-      console.log(res.data)
-    },
-    complete(res){
+formsubmit()
+{
+  var that=this;
+  var phoneNumber = this.data.phone;
+  var shanjia = this.data.selectedExpress;
+  if(!phoneNumber){
+    wx.showToast({
+      title: '请填写联系电话',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
+  if(shanjia === '请选择快递商家'){
+    wx.showToast({
+      title: '请填写快递商家',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
+  wx.showModal({
+    title: '确认提交',
+    success: function(res) {
+      if(res.confirm) {
+        that.setData({
+          date:new Date()
+        })
+        if (that.data.imgnum == 0) {
+          that.upload_info()
+        }
+        else{
+          let imgpath=[]
+            for (let i = 0; i < that.data.images.length; i++) {
+             imgpath.push(that.uploadfile(that.data.images[i]))
+            }
+            Promise.all(imgpath).then((res)=>{
+              that.upload_info()
+            })
+        }
+      }
     }
   })
+},
+//上传图片和信息
+upload_info: function() {
+  var that =this;
+  var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
+  let data = {
+  'type':this.data.type,
+  'from':this.data.selectedExpress,
+  'size':this.data.size,
+  'building':1,
+  'layer':1,
+  'file':this.data.imgpath,
+  'elseTo':this.data.elseTo,
+  'price':this.data.money,
+  'remark':this.data.remark,
+  'code':this.data.code,
+  'phone':this.data.phone,
+  'address':address
+}
+  let formData = new FormData();
+  for(var i in data){
+     formData.append(i, data[i]);
+  }
+  let url = that.data.rooturl+'/pt/publish';
+  let newData = formData.getData(); 
+  wx.request({
+    url: url,
+    method: 'POST',
+    header: {
+     //'content-type':'application/form-data',
+     //'content-type':'multipart/form-data',
+     'content-type':"application/x-www-form-urlencoded",
+     'token':that.data.token,
+   },
+   data: newData.buffer,
+   success(res) {
+   console.log(res)
+  }
+ });
+},
+uploadfile: function (filePath){
+  let that=this
+  return new Promise((resolve,reject)=>{
+      wx.uploadFile({
+        url: that.data.rooturl + "/file/upload",
+        filePath: filePath,
+        name: 'files',
+        formData: {
+        },
+        header: {
+          "Content-Type": "application/form-data",
+          'token':that.data.token
+        },
+        success: function (res) {
+          console.log(res.data)
+          that.data.imgpaths.push(res.data)
+          resolve()
+        },
+        fail: function (err) {
+          console.log(err)
+          reject()
+        }
+      })
+  })
+  
 },
 previewImage: function (e) {
   let that=this
@@ -260,5 +391,56 @@ previewImage: function (e) {
     urls: that.data.images,
     current:current
   })
-}
+},
+handleDistrictChange: function (e) {
+  const index = e.detail.value;
+  const selectedDistrict = this.data.districtOptions[index];
+  this.setData({
+    selectedDistrict: selectedDistrict
+  });
+},
+handlePriceChange: function (e) {
+  const index = e.detail.value;
+  var a= parseInt(index)
+  this.setData({
+    money: this.data.money+a
+  });
+},
+handleBuildingChange: function (e) {
+  const index = e.detail.value;
+  const selectedBuilding = this.data.buildingOptions[index];
+
+  this.setData({
+    selectedBuilding: selectedBuilding
+  });
+},
+handleDormitoryChange: function (e) {
+  const index = e.detail.value;
+  const selectedDormitory = this.data.dormitoryOptions[index];
+  this.setData({
+    selectedDormitory: selectedDormitory
+  });
+},
+handlePhoneNumberInput: function(event) {
+  let value = event.detail.value; // 获取输入框的值
+  this.setData({
+    phone: value, // 更新 phoneNumber 属性的值
+  });
+},
 })
+ function generateBuildingOptions() {
+  const buildingOptions = [];
+  for (let i = 1; i <= 61; i++) {
+    buildingOptions.push(i + '号楼');
+  }
+  return buildingOptions;
+}
+function generateDormitoryOptions() {
+  const dormitoryOptions = [];
+  for (let i = 1; i <= 6; i++) {
+    for (let j = 1; j <= 16; j++) {
+      dormitoryOptions.push(i * 100 + j);
+    }
+  }
+  return dormitoryOptions;
+}

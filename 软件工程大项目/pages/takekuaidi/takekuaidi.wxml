@@ -49,19 +49,28 @@
 <view class="imgview">
   <button type="primary" bindtap="doUpload" style="margin-top: 150rpx;">上传图片</button>
   </view>
+  <view class="introduce">(带<text class="sign">*</text>号的为必填项目)</view>
 <view class="moreinfo">
-<view class="address">
-<text class="morefont">收件地址</text>
-<input type="text" class="moinput" placeholder="生活区+楼号+宿舍号" placeholder-class="phcolor"/>
+<view class="address" >
+<text class="morefont">收件地址 <text class="sign">*</text></text>
+<picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
+    <view class="picker-item">{{ selectedDistrict }}</view>
+  </picker>
+  <picker class="moinput2" mode="selector" range="{{ buildingOptions }}" bindchange="handleBuildingChange">
+    <view class="picker-item">{{ selectedBuilding }}</view>
+  </picker>
+  <picker class="moinput3" mode="selector" range="{{ dormitoryOptions }}" bindchange="handleDormitoryChange">
+    <view class="picker-item">{{ selectedDormitory }}</view>
+  </picker>
 </view>
 <view class="divider1"></view>
 <view class="phone">
-  <text class="morefont">送件联系电话</text>
-  <input type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"/>
+  <text class="morefont">送件联系电话 <text class="sign">*</text></text>
+  <input type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
   </view>
 <view class="divider2"></view>
 <view class="scor">
-  <text class="morefont">快递商家</text>
+  <text class="morefont">快递商家 <text class="sign">*</text></text>
   <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput">
     <view class="picker">
       {{selectedExpress}}
@@ -71,19 +80,19 @@
 <view class="divider3"></view>
 <view class="elinfo">
   <text class="morefont">备注信息</text>
-  <input type="text" class="moinput" placeholder="所有人可见" placeholder-class="phcolor"/>
+  <input type="text" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" />
   </view>
 <view class="divider4"></view>
 <view class="moreprice">
   <text class="morefont">追加金额</text>
-  <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor"/>
+  <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor" bindinput="handlePriceChange"/>
   </view>
 <view class="divider5"></view>
 </view>
 <view class="divider"></view>
 <view class="up">
 <text class="needfont">需支付:</text><text class="price">￥{{money}}</text>
-<view class="pay" bind:tap="upload_info">提交订单
+<view class="pay" bind:tap="formsubmit" >提交订单
 </view>
 </view>
 
