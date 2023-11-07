@@ -25,11 +25,32 @@ Page({
    */
   cancel(event)
     {
-      var id=event.currentTarget.dataset.index;
+      var id=event.currentTarget.dataset.id;
       // var id=this.data.list[0].id;
       var that=this;
       wx.request({
         url: that.data.rooturl+'/pt/delete',
+        method:'POST',
+        data:
+        { 
+          'taskId':id
+        },
+        header:{
+          'token':that.data.token
+        },
+        success(res){
+        if(res.data.statusCode==200){console.log('ok')}
+          else{console.log('请刷新')}
+      }
+      })
+    },
+    confirm(event)
+    {
+      var id=event.currentTarget.dataset.id;
+      // var id=this.data.list[0].id;
+      var that=this;
+      wx.request({
+        url: that.data.rooturl+'/pt/confirm',
         method:'POST',
         data:
         { 

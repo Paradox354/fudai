@@ -1,1 +1,97 @@
 /* pages/chatroom/chatroom.wxss */
+.container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.pingtai {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 375px;
+height: 40px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 28px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.diver {
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+}
+.box {
+  position: absolute;
+  top: 9%;
+  height: 90%;
+  width: 100%;
+}
+.swipe {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+}
+.message {
+  position: relative;
+  height: 15%;
+  width: 90%;
+  left: 5%;
+  background: #D9D9D9;
+  margin-top: 1%;
+}
+.head {
+  position: absolute;
+  width: 20%;
+  height: 80%;
+  top: 7%;
+  left: 7%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ccc;
+}
+.headimg {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+.chatobject {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 100px;
+height: 23px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.chatmsg {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 164px;
+height: 18px;
+flex-shrink: 0;
+color: #000;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.new {
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  color: red;
+}

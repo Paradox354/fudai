@@ -1,2 +1,23 @@
 <!--pages/chatroom/chatroom.wxml-->
-<text>pages/chatroom/chatroom.wxml</text>
+<view class="container">
+<text class="pingtai">福代互助平台--消息</text>
+<view class="diver"></view>
+<view class="box">
+  <scroll-view class="swipe" scroll-y>
+  <view class="message" bind:tap="jump">
+  <view class="head"><image class="headimg" src="../../img/关于我们.png"/></view>
+  <text class="chatobject">联系人</text>
+  <text class="chatmsg">消息简介</text>
+  <view class="new">用于显示是否有新消息  *</view>
+  </view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+  <view class="message"></view>
+</scroll-view>
+</view>
+</view>

@@ -16,8 +16,8 @@
           <text class="price">￥ {{item.price}}</text>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" >取消订单</view>
-          <view class="finishorder" >确认完成</view>
+          <view class="getorder" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
+          <view class="finishorder" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
         </view>
       </block>
    </scroll-viewb>

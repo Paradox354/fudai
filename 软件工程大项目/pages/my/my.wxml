@@ -3,10 +3,10 @@
 <text class="pingtai">福代互助平台</text>
 <view class="diver"></view>
 <view class="selfinfo">
-<view class="head">
-<image class="headimg" src="../../img/home.png" />
+<view class="head" bind:tap="login">
+<image class="headimg" src="{{avatarUrl}}" />
 </view>
-<text class="name">微信名</text>
+<text class="name">{{name}}</text>
 <text class="number">微信号</text>
 </view>
 <view class="more">

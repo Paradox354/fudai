@@ -1,2 +1,49 @@
 <!--pages/chat/chat.wxml-->
-<text>pages/chat/chat.wxml</text>
+<view class="container">
+<view class="name">
+<text class="id">骑手名称</text>
+<view class="phone"><image src="../../img/phone.png"/></view>
+</view>
+<view class="chatmsg">
+<scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}">
+  <view class="message-item">
+    <view class="head1"><image src="../../img/关于我们.png"/></view>
+    <text class="message-content">这是一条测试信息1........23456789123
+    </text>
+  </view>
+  <view class="message-item">
+    <text class="message-contentmy">
+      这是一条测试信息2abcdefuwdjaoifiwafb
+    </text>
+    <view class="head2"><image src="../../img/home.png"/></view>
+  </view>
+  <view class="message-item">
+    <text class="message-contentmy">
+      这是一条测试信息3abcdefuwdjaoifiwafb
+    </text>
+    <view class="head2"><image src="../../img/home.png"/></view>
+  </view>
+  <view class="message-item">
+    <text class="message-contentmy">
+      这是一条测试信息4abcdefuwdjaoifiwafb
+    </text>
+    <view class="head2"><image src="../../img/home.png"/></view>
+  </view>
+  <view class="message-item">
+    <view class="head1"><image src="../../img/关于我们.png"/></view>
+    <text class="message-content">这是一条测试信息5
+    </text>
+  </view>
+  <view class="message-item">
+    <view class="head1"><image src="../../img/关于我们.png"/></view>
+    <text class="message-content">这是一条测试信息6
+    </text>
+  </view>
+</scroll-view>
+</view>
+<view class="inbox">
+<view class="upimg"><image src="../../img/signup.png"/></view>
+<input type="text"/>
+<view class="send">发送</view>
+</view>
+</view>

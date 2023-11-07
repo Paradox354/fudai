@@ -23,9 +23,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-    recieve(event)
+    recieve(e)
     {
-      //var id=event.currentTarget.dataset.index;
+      var id=e.currentTarget.dataset.id;
       var id=this.data.list[0].id;
       var that=this;
       wx.request({

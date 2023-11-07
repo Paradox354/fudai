@@ -37,7 +37,7 @@ Page({
           token:res.data.data.token
         })
         wx.request({
-          url: that.data.rooturl+'/pt/list/pub',
+          url: that.data.rooturl+'/pt/list/acp',
           method:'get',
           data:
           { 
@@ -56,10 +56,27 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  cancel(event)
+    {
+      var id=event.currentTarget.dataset.id;
+      var that=this;
+      wx.request({
+        url: that.data.rooturl+'/pt/acp/cancel',
+        method:'POST',
+        data:
+        { 
+          'taskId':id
+        },
+        header:{
+          'token':that.data.token
+        },
+        success(res){
+          console.log(res);
+        if(res.data.statusCode==200){console.log('ok')}
+          else{console.log('请刷新')}
+      }
+      })
+    },
   onReady() {
 
   },

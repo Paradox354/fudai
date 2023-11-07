@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage() {
 
+  },
+  jump :function() {
+    wx.navigateTo({
+      url: '/pages/chat/chat',  /*跳转到course页面*/
+    })
   }
 })
