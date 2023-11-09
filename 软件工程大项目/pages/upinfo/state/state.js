@@ -1,4 +1,4 @@
-// pages/chatroom/chatroom.js
+// pages/upinfo/state/state.js
 Page({
 
   /**
@@ -62,10 +62,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-  jump :function() {
-    wx.navigateTo({
-      url: '/pages/chat/chat',
-    })
   }
 })

@@ -1,6 +1,3 @@
-
-const FormData = require('../../utils/formData.js')
-
 // pages/takekuaidi/takekuaidi.js
 Page({
 
@@ -42,26 +39,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    var that=this;
-    wx.request({
-      url: that.data.rooturl+'/wx/login/temp',
-      method:'POST',
-      data:
-      {
-        'openid':'61'
-      },
-      success:(res)=>{
-        that.setData({
-          token:res.data.data.token
-        })
-        console.log(res.data.data.token)
-      }
+    const token = wx.getStorageSync('token') || ''
+    this.setData({
+      list:[],
+      token:token
     })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
-   */
+  */
   onReady() {
 
   },
@@ -323,38 +310,37 @@ formsubmit()
 upload_info: function() {
   var that =this;
   var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
+  var incidentalMsg={
+    code:this.data.code,
+    phone:this.data.phone,
+    address:address,
+}
   let data = {
   'type':this.data.type,
   'from':this.data.selectedExpress,
   'size':this.data.size,
   'building':1,
   'layer':1,
+  'incidentalMsg':incidentalMsg,
   'file':this.data.imgpath,
   'elseTo':this.data.elseTo,
   'price':this.data.money,
   'remark':this.data.remark,
-  'code':this.data.code,
-  'phone':this.data.phone,
-  'address':address
 }
-  let formData = new FormData();
-  for(var i in data){
-     formData.append(i, data[i]);
-  }
-  let url = that.data.rooturl+'/pt/publish';
-  let newData = formData.getData(); 
+console.log(data)
+  let url = that.data.rooturl+'/pt/publish/json';
   wx.request({
     url: url,
     method: 'POST',
     header: {
-     //'content-type':'application/form-data',
-     //'content-type':'multipart/form-data',
-     'content-type':"application/x-www-form-urlencoded",
      'token':that.data.token,
    },
-   data: newData.buffer,
+   data: data,
    success(res) {
    console.log(res)
+   wx.navigateBack({
+    delta: 2
+  })
   }
  });
 },

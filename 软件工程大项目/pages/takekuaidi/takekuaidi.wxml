@@ -39,7 +39,7 @@
   <view class="imgbox">
     <block wx:for="{{images}}" wx:key="*this">
   <view class="img">
-    <image src="{{item}}"></image>
+    <image src="{{item}}" bindtap="previewImage"></image>
   </view>
   </block>
   </view>

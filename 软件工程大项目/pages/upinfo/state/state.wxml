@@ -1,0 +1,19 @@
+<!--pages/upinfo/state/state.wxml-->
+<view class="container">
+  <tabBar selected="0"></tabBar>
+  <scroll-view class='out' scroll-y>
+  <view class="box">
+  <text class="time">时间</text>
+  <view class="state"><text>订单已完成</text></view>
+  </view>
+  <view class="box">
+  <text class="time">时间</text>
+  <view class="state"><text>快递已取到</text></view>
+  </view>
+  <view class="box">
+  <text class="time">时间</text>
+  <view class="state"><text>订单已接取</text></view>
+  </view>
+  </scroll-view>
+  <view class="map">地图</view>
+</view>

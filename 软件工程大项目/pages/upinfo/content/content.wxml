@@ -1,0 +1,42 @@
+<!--pages/upinfo/content/content.wxml-->
+<view class="container">
+  <tabBar selected="1"></tabBar>
+  <scroll-view class='out' scroll-y>
+    <view class="idinfo">
+  <view class="idhead"><image src="../../../img/head.png"/></view>
+  <text class="id">111</text>
+  <text class="time">时间</text>
+  <view class="price">金额:￥12</view>
+  </view>
+  <view class="su-table-box">
+  <view class="su-table">
+    <!-- 表格标题 -->
+    <view class="su-tr">
+      <view class="su-th" wx:for="{{list.th}}" wx:key="index">{{item}}</view>
+    </view>
+    <!-- 表格内容 -->
+    <view class="su-tr" wx:for="{{list.td}}" wx:for-item="tdinfo" wx:key="index">
+      <view class="su-td" wx:for="{{tdinfo}}" wx:key="index_">{{item}}</view>
+    </view>
+  </view>
+ </view>
+ <view class="company">快递公司:  京东</view>
+ <view class="more">备注：</view>
+ <view class="takeinfo">取件信息：</view>
+ <view class="code">
+  <textarea value="{{codeValue}}"/>
+ <view class="img"><view class="imgbox">
+ <image src="../../../img/home.png" bind:tap="previewImage"/></view>
+ <view class="imgbox"><image src="../../../img/home.png" bind:tap="previewImage"/></view>
+ <view class="imgbox"><image src="../../../img/home.png" bind:tap="previewImage"/></view>
+ </view>
+ </view>
+ <view class="address">收件地址:</view>
+ <view class="add">生活三区32#222</view>
+ <view class="emgency"></view>
+ <view class="receive">收货地点图片:
+ <image src="../../../img/99eda006223c0eb0074a44cf6ddd906d.png"/></view>
+ <view class="map"></view>
+  </scroll-view>
+
+</view>

@@ -24,18 +24,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
     onLoad(options) {
-    var that=this;
-    wx.request({
-      url: that.data.rooturl+'/wx/login/temp',
-      method:'POST',
-      data:
-      {
-        'openid':'61'
-      },
-      success:(res)=>{
-        that.setData({
-          token:res.data.data.token
-        })
+      var that=this
+      const token = wx.getStorageSync('token') || ''
+      this.setData({
+        list:[],
+        token:token
+      })
         wx.request({
           url: that.data.rooturl+'/pt/list/acp',
           method:'get',
@@ -53,8 +47,6 @@ Page({
             console.log(that.data.list)
           }
         })
-      }
-    })
   },
   cancel(event)
     {
@@ -71,9 +63,7 @@ Page({
           'token':that.data.token
         },
         success(res){
-          console.log(res);
-        if(res.data.statusCode==200){console.log('ok')}
-          else{console.log('请刷新')}
+          that.onLoad()
       }
       })
     },

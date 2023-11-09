@@ -1,0 +1,13 @@
+<!--component/tabBar.wxml-->
+<view class="fix-btm">
+	<view class="fix-btm-list" catchtap="switchTab"   data-url="/pages/upinfo/state/state">
+		<view class="fix-btn-img">
+			<text  class="{{selected==0 ? 'active' : ''}}">订单状态</text>
+		</view>
+	</view>
+	<view class="fix-btm-list" catchtap="switchTab"  data-url="/pages/upinfo/content/content">
+		<view class="fix-btn-img">
+			<text class="{{selected==1 ? 'active' : ''}}">订单详情</text>
+		</view>
+	</view>
+</view>

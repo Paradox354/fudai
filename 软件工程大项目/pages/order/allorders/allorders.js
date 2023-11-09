@@ -39,35 +39,25 @@ Page({
           'token':that.data.token
         },
         success(res){
-        if(res.data.statusCode==200){console.log('ok')}
-          else{console.log('请刷新')}
+          that.onLoad()
       }
       })
     },
-    onLoad(options) {
-      
+    onLoad() {
     var that=this;
+    const token = wx.getStorageSync('token') || ''
+    this.setData({
+      list:[],
+      token:token
+    })
     wx.request({
-      url: that.data.rooturl+'/wx/login/temp',
-      method:'POST',
-      data:
-      {
-        'openid':'61'
-      },
-      success:(res)=>{
-        that.setData({
-          token:res.data.data.token
-        })
-        wx.request({
-          url: that.data.rooturl+'/pt/list',
+      url: that.data.rooturl+'/pt/list',
           method:'post',
           data:
           { 
             "type": "快递",
             "page": 1,
             "pageSize": 5,
-            "building": 31,
-            "layer": 2
           },
           header:{
             'token':that.data.token
@@ -76,12 +66,8 @@ Page({
             that.setData({
               list:that.data.list.concat(res.data.data)
             })
-            console.log(res)
-            console.log(that.data.list)
           }
         })
-      }
-    })
   },
 
   /**

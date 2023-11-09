@@ -43,7 +43,7 @@
 </view>
 <view class="inbox">
 <view class="upimg"><image src="../../img/signup.png"/></view>
-<input type="text"/>
-<view class="send">发送</view>
+<input type="text" bind:tap="onInput"/>
+<view class="send" bind:tap="sendMessage">发送</view>
 </view>
 </view>

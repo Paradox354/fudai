@@ -1,18 +1,34 @@
-// pages/chatroom/chatroom.js
+// pages/upinfo/content/content.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    codeValue: '11111111111111111122222222222222222222222222222222222222222222222211',
+    images:['../../../img/home.png'],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const list = {
+      // 表格标题
+      th: ["快递大小", "小件","中件","大件"],
+      // 表格内容  这里只能使用 数组套数组格式
+      td: [
+        [
+          "快递数量",
+          "10",
+          "2",
+          "3"
+        ],
+      ],
+    }
+    this.setData({
+      list
+    })
   },
 
   /**
@@ -63,9 +79,12 @@ Page({
   onShareAppMessage() {
 
   },
-  jump :function() {
-    wx.navigateTo({
-      url: '/pages/chat/chat',
+  previewImage: function (e) {
+    let that=this
+    let current = e.currentTarget.dataset.src
+    wx.previewImage({
+      urls: that.data.images,
+      current:current
     })
-  }
+  },
 })
