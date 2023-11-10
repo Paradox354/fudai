@@ -2,18 +2,71 @@
 <view class="container">
   <tabBar selected="0"></tabBar>
   <scroll-view class='out' scroll-y>
+  <view class="map"></view>
+  <view class="state">
   <view class="box">
-  <text class="time">时间</text>
-  <view class="state"><text>订单已完成</text></view>
+  <view class="jiantou"></view>
+  <view class="sanjiaoxing"><image src="../../../img/Polygon1.png"/></view>
+  <view class="info">
+  <view><text class="orderstate">订单已提交</text>
+  <text class="time">11-10 11:10</text></view>
+  <view><text class="orderstate">订单已提交，请等待骑手接单</text>
+</view>
+  </view>
   </view>
   <view class="box">
-  <text class="time">时间</text>
-  <view class="state"><text>快递已取到</text></view>
+  <view class="shoot"><image src="../../../img/Arrow5.png"/></view>
   </view>
   <view class="box">
-  <text class="time">时间</text>
-  <view class="state"><text>订单已接取</text></view>
+  <view class="jiantou"></view>
+  <view class="sanjiaoxing"><image src="../../../img/Polygon1.png"/></view>
+  <view class="info">
+  <view><text class="orderstate">已有骑手接单</text>
+  <text class="time">11-10 11:10</text></view>
+  <view><text class="orderstate">请耐心等待</text>
+</view>
   </view>
+  </view>
+  <view class="box">
+  <view class="shoot"><image src="../../../img/Arrow5.png"/></view>
+  </view>
+  <view class="box">
+  <view class="jiantou"></view>
+  <view class="sanjiaoxing"><image src="../../../img/Polygon1.png"/></view>
+  <view class="info">
+  <view><text class="orderstate">骑手已取货，请确认</text>
+  <text class="time">11-10 11:10</text></view>
+  <view class="confirm">确认</view>
+  </view>
+  </view>
+  <view class="box">
+  <view class="shoot"><image src="../../../img/Arrow5.png"/></view>
+  <view class="huowu"><image src="../../../img/home.png" /></view>
+  </view>
+  <view class="box">
+  <view class="jiantou"></view>
+  <view class="sanjiaoxing"><image src="../../../img/Polygon1.png"/></view>
+  <view class="info">
+  <view><text class="orderstate">骑手正在送货请稍等</text>
+  <text class="time">11-10 11:10</text></view>
+  <view><text class="orderstate"></text>
+</view>
+  </view>
+  </view>
+  <view class="box">
+  <view class="shoot"><image src="../../../img/Arrow5.png"/></view>
+  </view>
+  <view class="box">
+  <view class="jiantou"></view>
+  <view class="sanjiaoxing"><image src="../../../img/Polygon1.png"/></view>
+  <view class="info">
+  <view><text class="orderstate">骑手已送达，请确认</text>
+  <text class="time">11-10 11:10</text></view>
+<view class="confirm">确认</view>
+  </view>
+  </view>
+<view class="finalimg"><image src="../../../img/head.png"/></view>
+</view>
+<view class="zhanwei"></view>
   </scroll-view>
-  <view class="map">地图</view>
 </view>
