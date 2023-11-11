@@ -1,56 +1,7 @@
 <!--pages/takekuaidi/takekuaidi.wxml-->
 <view class="contain">
-    <view class="kuaidisize"><text class="kuaifont">快递规模</text></view>
-    <view class="size">
-    <view class="small">
-    <view class="priceview"><text class="pricefont">小件￥2</text></view>
-    <view class="boxnum">
-      <view class='del' data-type='1' bindtap='countsmallNum'>-</view>
-        <view class='num'>
-          <input type='number' bindblur='checksmallNum' bindinput='getInputsmallNum' value="{{smallnum}}"></input>
-        </view>
-        <view class='add' data-type='2' bindtap='countsmallNum'>+</view>
-        </view>
-    </view>
-    <view class="middle">
-      <view class="priceview"><text class="pricefont">中件￥3</text></view>
-      <view class="boxnum">
-        <view class='del' data-type='1' bindtap='countmiddleNum'>-</view>
-        <view class='num'>
-          <input type='number' bindblur='checkmiddleNum' bindinput='getInputmiddleNum' value="{{middlenum}}"></input>
-        </view>
-        <view class='add' data-type='2' bindtap='countmiddleNum'>+</view>
-      </view>
-      </view>
-    <view class="large">
-      <view class="priceview"><text class="pricefont">大件￥5</text></view>
-      <view class="boxnum">
-        <view class='del' data-type='1' bindtap='countlargeNum'>-</view>
-        <view class='num'>
-          <input type='number' bindblur='checklargeNum' bindinput='getInputlargeNum' value="{{largenum}}"></input>
-        </view>
-        <view class='add' data-type='2' bindtap='countlargeNum'>+</view>
-      </view>
-      </view>
-    </view>
-<view class="info"><text>取件信息</text></view>
-<view class="codeview">
-  <textarea value="{{codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）"/>
-  <view class="imgbox">
-    <block wx:for="{{images}}" wx:key="*this">
-  <view class="img">
-    <image src="{{item}}" bindtap="previewImage"></image>
-  </view>
-  </block>
-  </view>
-
-</view>
-
-<view class="imgview">
-  <button type="primary" bindtap="doUpload" style="margin-top: 150rpx;">上传图片</button>
-  </view>
-  <view class="introduce">(带<text class="sign">*</text>号的为必填项目)</view>
-<view class="moreinfo">
+<scroll-view class='out' scroll-y>
+  <view class="moreinfo">
 <view class="address" >
 <text class="morefont">收件地址 <text class="sign">*</text></text>
 <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
@@ -69,7 +20,21 @@
   <input type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
   </view>
 <view class="divider2"></view>
-<view class="scor">
+<view class="elinfo">
+  <text class="morefont">备注信息</text>
+  <input type="text" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" />
+  </view>
+<view class="divider3"></view>
+<view class="moreprice">
+  <text class="morefont">追加金额</text>
+  <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor" bindinput="handlePriceChange"/>
+  </view>
+<view class="divider4"></view>
+<view class="introduce">(带<text class="sign">*</text>号的为必填项目)</view>
+</view>
+<block wx:for="{{controls}}" wx:key="index">
+  <view class="codeview">
+  <view class="scor">
   <text class="morefont">快递商家 <text class="sign">*</text></text>
   <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput">
     <view class="picker">
@@ -77,18 +42,34 @@
     </view>
   </picker>
 </view>
-<view class="divider3"></view>
-<view class="elinfo">
-  <text class="morefont">备注信息</text>
-  <input type="text" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" />
-  </view>
-<view class="divider4"></view>
-<view class="moreprice">
-  <text class="morefont">追加金额</text>
-  <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor" bindinput="handlePriceChange"/>
-  </view>
-<view class="divider5"></view>
+<view class="scor">
+  <text class="morefont">快递大小 <text class="sign">*</text></text>
+  <picker mode="selector" range="{{expressList2}}" bindchange="bindPickerChange2" class="moinput">
+    <view class="picker">
+      {{selectedExpress2}}
+    </view>
+  </picker>
 </view>
+<view class="te">
+  <textarea value="{{codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）"/>
+  </view>
+
+  <view class="imgbox">
+    <block wx:for="{{images}}" wx:key="*this">
+  <view class="img">
+    <image src="{{item}}" bindtap="previewImage"></image>
+  </view>
+  </block>
+  <view class="imgview">
+  <button type="primary" bindtap="doUpload">上传图片</button>
+  </view>
+  </view>
+</view>
+</block>
+<view class="signad"><view class="jian" bind:tap="removeControl">-</view>
+<view class="add" bind:tap="addControl">+</view></view>
+
+</scroll-view>
 <view class="divider"></view>
 <view class="up">
 <text class="needfont">需支付:</text><text class="price">￥{{money}}</text>

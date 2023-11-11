@@ -5,30 +5,34 @@ Page({
    * 页面的初始数据
    */
   data: {
-    codeValue: '11111111111111111122222222222222222222222222222222222222222222222211',
     images:['../../../img/home.png'],
+    list:[],
+    rooturl:'http://47.113.216.236:9737',
+    token:'',
+    name:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-    const list = {
-      // 表格标题
-      th: ["快递大小", "小件","中件","大件"],
-      // 表格内容  这里只能使用 数组套数组格式
-      td: [
-        [
-          "快递数量",
-          "10",
-          "2",
-          "3"
-        ],
-      ],
-    }
-    this.setData({
-      list
+  onLoad() {
+    var that=this;
+    wx.getStorage({
+      key:'name',
+      success(res)
+      {
+        that.setData({
+          name:res.data.nickName, 
+      })     
+      }
     })
+    const token = wx.getStorageSync('token') || '';
+    const list = wx.getStorageSync('list') || ''
+    this.setData({
+      token:token,
+      list:list,
+    })
+    console.log(list)
   },
 
   /**

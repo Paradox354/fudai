@@ -12,7 +12,7 @@
           <text class="from">{{item.from}}</text>
           <view class="jiantou">--------</view>
           <text class="to">{{item.building}}号楼</text>
-          <text class="price">￥ {{item.price}}</text>
+          <text class="price">￥{{item.price}}</text>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
           <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>

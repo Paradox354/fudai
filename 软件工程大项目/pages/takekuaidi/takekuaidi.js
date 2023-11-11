@@ -5,8 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    controls: [],
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       selectedExpress: '请选择快递商家',
+      expressList2: ['小件￥2','中件￥3','大件￥5'],
+      selectedExpress2: '请选择快递大小',
       rooturl:'http://47.113.216.236:9737',
       imgnum:0,
       imgpaths:[],
@@ -262,6 +265,16 @@ Page({
       console.log('选择的快递商家:', selectedExpress);
     }
 },
+bindPickerChange2: function (e) {
+  var index = e.detail && e.detail.value;
+  if (index !== undefined) {
+    var selectedExpress2 = this.data.expressList2[index];
+    this.setData({
+      selectedExpress2: selectedExpress2
+    });
+    console.log('选择的快递大小:', selectedExpress2);
+  }
+},
 formsubmit()
 {
   var that=this;
@@ -390,6 +403,26 @@ handlePriceChange: function (e) {
   var a= parseInt(index)
   this.setData({
     money: this.data.money+a
+  });
+},
+addControl: function () {
+  const controls = this.data.controls;
+  controls.push({
+    content: '这是我的控件' // 新控件的内容与初始控件相同
+  });
+
+  this.setData({
+    controls: controls
+  });
+},
+removeControl: function () {
+  const controls = this.data.controls;
+  if (controls.length > 0) {
+    controls.pop(); // 移除最后一个控件
+  }
+
+  this.setData({
+    controls: controls
   });
 },
 handleBuildingChange: function (e) {

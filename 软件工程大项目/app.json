@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/upinfo/content/content",
     "pages/index/index",
     "pages/logs/logs",
     "pages/my/my",
@@ -10,6 +9,7 @@
     "pages/order/myorders/myorders",
     "pages/order/myhelp/myhelp",
     "pages/chat/chat",
+    "pages/upinfo/content/content",
     "pages/upinfo/state/state"
   ],
   "lazyCodeLoading": "requiredComponents",

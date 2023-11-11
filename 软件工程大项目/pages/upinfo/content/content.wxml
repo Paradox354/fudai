@@ -31,9 +31,9 @@
   <view class="box2">
   <view class="idinfo">
   <view class="idhead"><image src="../../../img/home.png"/></view>
-  <view class="id">微信名</view>
-  <view class="time">时间</view>
-  <view class="price">￥ 8</view>
+  <view class="id">{{name}}</view>
+  <view class="time">{{list.createTime}}</view>
+  <view class="price">￥ {{list.price}}</view>
   </view>
   <view class="address">
   <view class="tu">
@@ -41,32 +41,28 @@
   <view class="jiantou"><image src="../../../img/Arrow9.jpg"/></view>
   </view>
   <view class="info">
-  <view class="from">from</view>
-  <view class="to">to</view>
+  <view class="from">{{list.from}}</view>
+  <view class="to">{{list.incidentalMsg.address}}</view>
   </view>
 
   </view>
-  <view class="packinfo">
-  <view class="company">菜鸟</view>
-  <view class="size">小件</view>
-  <view class="code">取件码</view>
+  <block>
+    <view class="packinfo">
+  <view class="company">{{list.from}}</view>
+  <view class="size">{{list.size}}</view>
+  <view class="code">{{list.incidentalMsg.code}}</view>
   <view class="diver"></view>
   </view>
-  <view class="packinfo">
-  <view class="company">菜鸟</view>
-  <view class="size">小件</view>
-  <view class="code">取件码</view>
-  <view class="diver"></view>
-  </view>
-  <view class="beizhu"><text>备注：2222222222333333333333</text></view>
+  </block>
+  <view class="beizhu"><text>备注: {{list.remark}}</text></view>
   </view>
   <view class="box3">
-  <view><text class="treat">服务类型：</text><text class="treatname">快递代取</text></view>
-  <view><text class="treat">服务地址：</text><text class="treatname">三区XX楼外卖架</text></view>
-  <view><text class="treatname">柯老板（11111111111)</text></view>
-  <view><text class="treat">配送骑手：</text><text class="treatname">柯先生</text></view>
+  <view><text class="treat">服务类型：</text><text class="treatname">{{list.type}}</text></view>
+  <view><text class="treat">服务地址：</text><text class="treatname">{{list.incidentalMsg.address}}</text></view>
+  <view><text class="treatname">{{list.incidentalMsg.name}}</text></view>
+  <view><text class="treat">配送骑手：</text><text class="treatname">缺</text></view>
   <view class="diver"></view>
-  <view><text class="treat">订单号：</text><text class="treatname">232222222</text></view>
+  <view><text class="treat">订单号：</text><text class="treatname">{{list.id}}</text></view>
   </view>
   <view class="zhanwei"></view>
 </scroll-view>
