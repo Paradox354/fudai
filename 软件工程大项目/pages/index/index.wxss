@@ -1,24 +1,35 @@
-.title {
-  top: 0%;
+.container {
   position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.60);
+}
+.title {
+  top: 2%;
+  position: absolute;
+  left: 30%;
   width: 375px;
   height: 40px;
   flex-shrink: 0;
   color: #000;
-  font-family: Inter;
-  font-size: 28px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  color: rgba(101, 101, 101, 0.80);
+font-family: STHupo;
+font-size: 28px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 .header {
   position: absolute;
   top: 50px;
   width: 360px;
   height: 160px;
+  border-radius: 40px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   flex-shrink: 0;
-  border: 1px solid #000;
-  background: #D9D9D9;
   display:flex;
   align-items:center;    /*垂直居中 */
   justify-content:center;    /* 水平居中 */
@@ -29,18 +40,25 @@
   width: 360px;
 height: 40px;
 flex-shrink: 0;
-background: #D9D9D9;
+border-radius: 20px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+display:flex;
+align-items:center;    /*垂直居中 */
+
 }
 .qqfont {
-  width: 211px;
+  position: absolute;
 height: 20px;
 flex-shrink: 0;
 color: #000;
-font-family: Inter;
+font-family: STHupo;
 font-size: 20px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+left: 18%;
 }
 .container {
   width: 100%;
@@ -61,10 +79,12 @@ line-height: normal;
 .func {
   position: absolute;
   top: 40%;
-  width: 360px;
+  width: 380px;
   height: 210px;
   flex-shrink: 0;
-  background: #D9D9D9;
+  border-radius: 20px;
+  background: rgba(240, 96, 234, 0.15);
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .func1{
   position: absolute;
@@ -73,7 +93,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func2{
   position: absolute;
@@ -82,7 +105,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func3{
   position: absolute;
@@ -91,7 +117,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func4{
   position: absolute;
@@ -100,7 +129,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func5{
   position: absolute;
@@ -109,7 +141,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func6{
   position: absolute;
@@ -118,7 +153,10 @@ line-height: normal;
   width: 100px;
   height: 100px;
   flex-shrink: 0;
-  background: #FFF;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func1img {
   width: 68px;
@@ -126,6 +164,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -135,6 +175,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -144,6 +186,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -153,6 +197,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -162,6 +208,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -171,6 +219,8 @@ line-height: normal;
   flex-shrink: 0;
   background: #000;
   position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
   top: 2%;
   left: 16%;
 }
@@ -187,4 +237,14 @@ line-height: normal;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.container image {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+}
+.func view image {
+  max-width: 100%;
+  max-height: 100%;
 }

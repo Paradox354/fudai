@@ -2,7 +2,7 @@
   <tabBar selected="0"></tabBar>
   <view class="qqgroup"><text class="qqfont">加入官方QQ群：</text></view>
   <view class="order">
-    <scroll-viewb class="out" scroll-y>
+    <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
         <view class="box">
           <view class="head"></view>
@@ -18,6 +18,6 @@
           <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>
         </view>
       </block>
-   </scroll-viewb>
+   </scroll-view>
   </view>
 </view>

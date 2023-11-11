@@ -22,6 +22,8 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+
+    "backgroundColor": "#FFFFFF00",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -47,6 +49,8 @@
         "iconPath": "img/my.png",
         "selectedIconPath": "img/my.png"
       }
-    ]
+    ],
+    "position": "bottom",  
+    "custom": true
   }
 }

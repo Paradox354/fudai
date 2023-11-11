@@ -4,6 +4,10 @@
   top: 0%;
   width: 100%;
   height: 100%;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png');
+}
+.diy-item {
+  font-family: STFangsong;
 }
 .kuaifont {
   width: 100px;
@@ -122,8 +126,10 @@ line-height: normal;
   margin-top: 12px;
   top: 12px;
   flex-shrink: 0;
-  border-radius: 6%;
-  background: #D9D9D9;
+  border-radius: 20px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .codeview textarea {
   box-sizing: border-box;
@@ -150,31 +156,39 @@ line-height: normal;
 }
 .address {
   position: absolute;
+  font-family: STFangsong;
   top: 0;
   width: 100%;
-  height: 20%;
+  height: 25%;
 }
 .divider1 {
   position: absolute;
-  top: 20%;
-  left: 0%;
-  width: 100%;
+  top: 25%;
+  left: 5%;
+  width: 90%;
   height: 1px;
-  background-color: #000;
+  transform: rotate(0.175deg);
+  background-color: rgb(255, 255, 255,0.5);
+  stroke-width: 1px;
+stroke: rgba(240, 169, 169, 0.2);
+filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.10));
 }
 .phone {
   position: absolute;
-  top: 20%;
+  top: 25%;
   width: 100%;
-  height: 20%;
+  height: 25%;
 }
 .divider2 {
   position: absolute;
-  top: 40%;
-  left: 0%;
-  width: 100%;
+  top: 50%;
+  left: 5%;
+  width: 90%;
   height: 1px;
-  background-color: #000;
+  background-color: rgb(255, 255, 255,0.5);
+  stroke-width: 1px;
+stroke: rgba(240, 169, 169, 0.2);
+filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.10));
 }
 .scor {
   position: relative;
@@ -189,31 +203,37 @@ line-height: normal;
 }
 .elinfo {
   position: absolute;
-  top: 40%;
+  top: 50%;
   width: 100%;
-  height: 20%;
+  height: 25%;
 }
 .moreprice {
   position: absolute;
-  top: 60%;
+  top: 75%;
   width: 100%;
-  height: 20%;
+  height: 25%;
 }
 .divider3 {
   position: absolute;
-  top: 60%;
-  left: 0%;
-  width: 100%;
+  top: 75%;
+  left: 5%;
+  width: 90%;
   height: 1px;
-  background-color: #000;
+  background-color: rgb(255, 255, 255,0.5);
+  stroke-width: 1px;
+stroke: rgba(240, 169, 169, 0.2);
+filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.10));
 }
 .divider4 {
   position: absolute;
-  top: 80%;
-  left: 0%;
-  width: 100%;
+  top: 100%;
+  left: 5%;
+  width: 90%;
   height: 1px;
-  background-color: #000;
+  background-color: rgb(255, 255, 255,0.5);
+  stroke-width: 1px;
+stroke: rgba(240, 169, 169, 0.2);
+filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.10));
 }
 .divider5 {
   position: absolute;
@@ -225,12 +245,13 @@ line-height: normal;
 }
 .morefont {
     position: absolute;
-    top: 40%;
+    top: 30%;
+    left: 5%;
   width: 150px;
 height: 20px;
 flex-shrink: 0;
 color: #000;
-font-family: Inter;
+font-family: STFangsong;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
@@ -239,9 +260,9 @@ line-height: normal;
 .moinput {
   position: absolute;
   right: 0%;
-  top: 28%;
+  top: 30%;
   color: #3AC1EB;
-font-family: Inter;
+  font-family: Kaiti;
 font-size: 16px;
 font-style: normal;
 font-weight: 400;
@@ -285,7 +306,7 @@ flex-shrink: 0;
   height: 24px;
   flex-shrink: 0;
   color: #000;
-  font-family: Inter;
+  font-family: STFangsong;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
@@ -309,18 +330,22 @@ flex-shrink: 0;
   right: 5%;
   top: 15%;
   position:absolute;
+  border-radius: 5px;
+border: 1px solid #FFF;
+background: rgba(58, 193, 235, 0.80);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   width: 150px;
   height: 40px;
   flex-shrink: 0;
-  border-radius: 5px;
-  background: rgba(58, 193, 235, 0.69);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Inter;
+  font-family: STFangsong;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
+  color: #FFF;
+line-height: normal;
 }
 .img {
   position: relative;
@@ -384,11 +409,11 @@ height: 20px;
 flex-shrink: 0;
 }
 .introduce {
-  position: absolute;
-  bottom: 4%;
-  color: #cfcfcf;
+  position: relative;
+  font-family: STFangsong;
+  color: black;
   font-size: 16px;
-  left: 2%;
+  left: 5%;
 }
 .sign {
   color: #f22d2d;
@@ -399,9 +424,9 @@ flex-shrink: 0;
   top: 14px;
   left: 5%;
   border-radius: 20px;
-border: 1px solid #FFF;
-background: rgba(255, 255, 255, 0.40);
-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  font-family: STFangsong;
 }
 .add {
   position: relative;

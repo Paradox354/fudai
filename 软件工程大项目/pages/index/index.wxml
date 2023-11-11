@@ -1,10 +1,11 @@
 <view class="container">
+  <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png"/>
   <view class="title">福代互助平台</view>
   <view class="header"><text class="headerfont">平台简介及所需遵守政策</text></view>
-  <view class="qqgroup"><text class="qqfont">加入官方QQ群:</text></view>
+  <view class="qqgroup"><text class="qqfont">加入官方QQ群: 83604387</text></view>
   <view class="func">
   <view class="func1" bind:tap="jumptotake">
-  <view class="func1img"></view>
+  <view class="func1img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/e1a1622441554299a4c9b730cd84be29.jpg"/></view>
   <text class="func1font">快递代拿</text>
   </view>
   <view class="func2">

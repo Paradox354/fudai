@@ -8,7 +8,6 @@
   left: 0;
   width: 100%;
   height: 78.166rpx;
-  background-color: #fff;
   box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, .1);
 }
 .fix-btm-list{
@@ -18,8 +17,14 @@
 .fix-btn-img{
   width: 100%;
   height: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+font-family: STFangsong;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 .fix-btm-img{
   width: 33.333rpx;
@@ -52,8 +57,7 @@
   transform: translateX(50%);
 }
 .fix-btm-list text{
-  font-size: 25rpx;
-  color: #8A8A8A;
+  font-size: 30rpx;
 }
 .fix-btm-list text.active{
   color: #0072FF;

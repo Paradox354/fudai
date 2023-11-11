@@ -5,13 +5,13 @@
 <view class="address" >
 <text class="morefont">收件地址 <text class="sign">*</text></text>
 <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
-    <view class="picker-item">{{ selectedDistrict }}</view>
+    <view class="diy-item">{{ selectedDistrict }}</view>
   </picker>
   <picker class="moinput2" mode="selector" range="{{ buildingOptions }}" bindchange="handleBuildingChange">
-    <view class="picker-item">{{ selectedBuilding }}</view>
+    <view class="diy-item">{{ selectedBuilding }}</view>
   </picker>
   <picker class="moinput3" mode="selector" range="{{ dormitoryOptions }}" bindchange="handleDormitoryChange">
-    <view class="picker-item">{{ selectedDormitory }}</view>
+    <view class="diy-item">{{ selectedDormitory }}</view>
   </picker>
 </view>
 <view class="divider1"></view>
@@ -30,23 +30,23 @@
   <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor" bindinput="handlePriceChange"/>
   </view>
 <view class="divider4"></view>
-<view class="introduce">(带<text class="sign">*</text>号的为必填项目)</view>
 </view>
+<view class="introduce">(带<text class="sign">*</text>号的为必填项目)</view>
 <block wx:for="{{controls}}" wx:key="index">
   <view class="codeview">
   <view class="scor">
   <text class="morefont">快递商家 <text class="sign">*</text></text>
-  <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput">
+  <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput" data-index="{{index}}">
     <view class="picker">
-      {{selectedExpress}}
+      {{controls[index].selectedExpress}}
     </view>
   </picker>
 </view>
 <view class="scor">
   <text class="morefont">快递大小 <text class="sign">*</text></text>
-  <picker mode="selector" range="{{expressList2}}" bindchange="bindPickerChange2" class="moinput">
+  <picker mode="selector" range="{{expressList2}}" bindchange="bindPickerChange2" class="moinput" data-index="{{index}}">
     <view class="picker">
-      {{selectedExpress2}}
+      {{controls[index].selectedExpress2}}
     </view>
   </picker>
 </view>
@@ -55,13 +55,11 @@
   </view>
 
   <view class="imgbox">
-    <block wx:for="{{images}}" wx:key="*this">
   <view class="img">
-    <image src="{{item}}" bindtap="previewImage"></image>
+    <image src="{{controls[index].imgpath}}" bindtap="previewImage"></image>
   </view>
-  </block>
   <view class="imgview">
-  <button type="primary" bindtap="doUpload">上传图片</button>
+  <button type="primary" bindtap="doUpload" data-index="{{index}}">上传图片</button>
   </view>
   </view>
 </view>
@@ -72,7 +70,7 @@
 </scroll-view>
 <view class="divider"></view>
 <view class="up">
-<text class="needfont">需支付:</text><text class="price">￥{{money}}</text>
+<text class="needfont">需支付:</text><text class="price">￥{{price+money}}</text>
 <view class="pay" bind:tap="formsubmit" >提交订单
 </view>
 </view>
