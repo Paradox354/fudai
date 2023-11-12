@@ -22,7 +22,7 @@
 <view class="divider2"></view>
 <view class="elinfo">
   <text class="morefont">备注信息</text>
-  <input type="text" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" />
+  <input value="{{remark}}" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" bindinput="handleremark"/>
   </view>
 <view class="divider3"></view>
 <view class="moreprice">
@@ -38,7 +38,7 @@
   <text class="morefont">快递商家 <text class="sign">*</text></text>
   <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput" data-index="{{index}}">
     <view class="picker">
-      {{controls[index].selectedExpress}}
+      {{controls[index].company}}
     </view>
   </picker>
 </view>

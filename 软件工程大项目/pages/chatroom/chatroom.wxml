@@ -1,6 +1,6 @@
 <!--pages/chatroom/chatroom.wxml-->
 <view class="container">
-<text class="pingtai">福代互助平台--消息</text>
+<text class="pingtai">福代互助平台</text>
 <view class="diver"></view>
 <view class="box">
   <scroll-view class="swipe" scroll-y>

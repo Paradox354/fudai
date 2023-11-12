@@ -6,6 +6,7 @@
     <scroll-viewb class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
         <view class="box">
+        <view class="box2">
           <view class="head"></view>
           <text class="type">代取类型</text>
           <text class="time">{{item.createTime}}</text>
@@ -14,6 +15,7 @@
           <view class="jiantou">--------</view>
           <text class="to">{{item.building}}号楼</text>
           <text class="price">￥ {{item.price}}</text>
+        </view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
           <view class="getorder" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>

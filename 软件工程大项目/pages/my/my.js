@@ -147,5 +147,15 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+ jumptoprivacy:function(){
+  wx.navigateTo({
+      url: '/pages/selfprivacy/selfprivacy',  /*跳转到course页面*/
+    })
+},
+jumptosetting:function(){
+  wx.navigateTo({
+      url: '/pages/setting/setting',  /*跳转到course页面*/
+    })
+},
 })

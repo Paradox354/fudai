@@ -8,9 +8,11 @@ Page({
   data: {
       controls:[
       ],
+      code:'',
       part:{
-        selectedExpress: '请选择快递商家',
+        company: '请选择快递商家',
         selectedExpress2: '请选择快递大小',
+        size:'',
         price:0,
         imgpath:''
       },
@@ -25,6 +27,8 @@ Page({
       flag:0,
       elseTo:'',
       smallnum: 0,
+      building:0,
+      layer:0,
       middlenum: 0,
       largenum: 0,
       images:[],
@@ -108,12 +112,10 @@ Page({
      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
      success: res => {
        if (this.data.images.length <= 1) {
-         const images = this.data.images.concat(res.tempFilePaths)
          var a='controls['+i+'].imgpath'
          console.log(res)
          this.setData({
-           [a]:images,
-           images: images,
+           [a]:res.tempFilePaths[0],
            flag:1,
            imgnum:this.data.imgnum+1
          })
@@ -133,7 +135,7 @@ Page({
     var i=e.currentTarget.dataset.index;
     if (index !== undefined) {
       var selectedExpress = this.data.expressList[index];
-      var a='controls['+i+'].selectedExpress'
+      var a='controls['+i+'].company'
       this.setData({
         [a]:selectedExpress
       })
@@ -141,18 +143,23 @@ Page({
 },
 bindPickerChange2: function (e) {
   var index = e.detail && e.detail.value;
-  var price = 1+index*2;
+  var list=[2,3,5]
+  var price =list[index]
   var i=e.currentTarget.dataset.index;
+  var money=this.data.controls[i].price;
   this.setData({
-    price:this.data.price+price
+    price:this.data.price+price-money
   })
+  var list=['小件','中件','大件']
   if (index !== undefined) {
     var selectedExpress2 = this.data.expressList2[index];
     var a='controls['+i+'].selectedExpress2'
     var b='controls['+i+'].price'
+    var c='controls['+i+'].size'
       this.setData({
         [a]:selectedExpress2,
-        [b]:price
+        [b]:price,
+        [c]:list[index]
       })
   }
 },
@@ -188,45 +195,45 @@ formsubmit()
           that.upload_info()
         }
         else{
-          let imgpath=[]
-            for (let i = 0; i < that.data.images.length; i++) {
-             imgpath.push(that.uploadfile(that.data.images[i]))
-            }
-            Promise.all(imgpath).then((res)=>{
-              that.upload_info()
-            })
+
+            for (let i = 0; i < that.data.controls.length; i++) {
+            console.log(that.data.controls[i].imgpath)
+             that.uploadfile(that.data.controls[i].imgpath,i)
+}
         }
       }
     }
   })
 },
 //上传图片和信息
-upload_info: function() {
+upload_info: function(i,pic) {
   var that =this;
   var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
   var incidentalMsg={
-    code:this.data.code,
-    phone:this.data.phone,
-    address:address,
+    "name": "力内则系红组克",
+    'code':that.data.code,
+    'phone':that.data.phone,
+    'address':address,
+    'picture':pic
 }
   let data = {
   'type':this.data.type,
-  'from':this.data.selectedExpress,
-  'size':this.data.size,
-  'building':1,
-  'layer':1,
-  'incidentalMsg':incidentalMsg,
-  'file':this.data.imgpath,
+  'from':'快递站',
+  'building':this.data.building,
+  'layer':this.data.layer,
+  "incidentalMsg":incidentalMsg,
   'elseTo':this.data.elseTo,
-  'price':this.data.money,
-  'remark':this.data.remark,
+  'size':this.data.controls[i].size,
+  'price':this.data.controls[i].price,
+  'company':this.data.controls[i].company,
+  'remark':this.data.remark
 }
 console.log(data)
   let url = that.data.rooturl+'/pt/publish/json';
-  wx.request({
+    wx.request({
     url: url,
     method: 'POST',
-    header: {
+  header: {
      'token':that.data.token,
    },
    data: data,
@@ -235,12 +242,11 @@ console.log(data)
    wx.navigateBack({
     delta: 2
   })
-  }
+   }
  });
 },
-uploadfile: function (filePath){
+uploadfile: function (filePath,i){
   let that=this
-  return new Promise((resolve,reject)=>{
       wx.uploadFile({
         url: that.data.rooturl + "/file/upload",
         filePath: filePath,
@@ -252,17 +258,11 @@ uploadfile: function (filePath){
           'token':that.data.token
         },
         success: function (res) {
-          console.log(res.data)
-          that.data.imgpaths.push(res.data)
-          resolve()
+          const data = JSON.parse(res.data);
+          const pic = data.data[0]; console.log(pic)
+          that.upload_info(i,pic)
         },
-        fail: function (err) {
-          console.log(err)
-          reject()
-        }
       })
-  })
-  
 },
 previewImage: function (e) {
   let that=this
@@ -279,6 +279,12 @@ handleDistrictChange: function (e) {
     selectedDistrict: selectedDistrict
   });
 },
+handleremark: function(event) {
+  let value = event.detail.value; // 获取输入框的值
+  this.setData({
+    remark: value, // 更新 phoneNumber 属性的值
+  });
+},
 handlePriceChange: function (e) {
   const index = e.detail.value;
   var a= parseInt(index)
@@ -290,8 +296,11 @@ handlePriceChange: function (e) {
 addControl: function () {
   this.setData({
     part:{
-      selectedExpress: '请选择快递商家',
+      company: '请选择快递商家',
       selectedExpress2: '请选择快递大小',
+      price:0,
+      size:'',
+      imgpath:'',
     },
     controls:this.data.controls.concat(this.data.part)
   })
@@ -312,14 +321,16 @@ handleBuildingChange: function (e) {
   const index = e.detail.value;
   const selectedBuilding = this.data.buildingOptions[index];
   this.setData({
-    selectedBuilding: selectedBuilding
+    selectedBuilding: selectedBuilding,
+    building:index
   });
 },
 handleDormitoryChange: function (e) {
   const index = e.detail.value;
   const selectedDormitory = this.data.dormitoryOptions[index];
   this.setData({
-    selectedDormitory: selectedDormitory
+    selectedDormitory: selectedDormitory,
+    layer:index
   });
 },
 handlePhoneNumberInput: function(event) {

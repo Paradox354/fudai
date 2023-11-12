@@ -5,25 +5,53 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
+    rooturl: 'http://47.113.216.236:9737',
+    token: '',
+    list: [],
+    inter: '',
+    status: [],
+    message:['1','2','3','4','5','6','7']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const token = wx.getStorageSync('token') || ''
     const list = wx.getStorageSync('list') || '';
-    this.setData(
-      {
-        list:list
+    this.setData({
+      list: list,
+      token: token
+    })
+    this.startInter()
+  },
+  getdetails() {
+    var that = this;
+    wx.request({
+      url: this.data.rooturl + '/pt/process/detail?taskId=' + this.data.list.id,
+      header: {
+        'token': this.data.token
+      },
+      success(res) {
+        that.data.status=res.data.data.msgList
+        console.log(that.data.status)
       }
-    )
-    console.log(list)
+    })
+  },
+  startInter: function () {
+    this.getdetails();
+    var that = this;
+    that.data.inter = setInterval(
+      function () {
+        that.getdetails();
+        console.log('setInterval 每过500毫秒执行一次任务')
+      }, 500 * 60);
+  },
+  endInter: function () {
+    var that = this;
+    that.clearInterval(that.data.inter)
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },
@@ -46,7 +74,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.endInter()
   },
 
   /**

@@ -1,0 +1,10 @@
+<!--pages/setting/setting.wxml-->
+<view class="container1">
+<view class="head">设置</view>
+<view class="moreitem" bind:tap="jumptonormal">
+<text>通用设置</text>
+</view>
+<view class="moreitem" bind:tap="jumptoself">
+<text>隐私设置</text>
+</view>
+</view>

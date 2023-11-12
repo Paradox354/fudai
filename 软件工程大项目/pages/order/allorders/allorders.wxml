@@ -10,7 +10,7 @@
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">订单状态</text>
           <text class="from">{{item.from}}</text>
-          <view class="jiantou">--------</view>
+          <view class="jiantou">----------</view>
           <text class="to">{{item.building}}号楼</text>
           <text class="price">￥{{item.price}}</text>
           <view class="divider"></view>

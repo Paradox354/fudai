@@ -10,7 +10,11 @@
     "pages/order/myhelp/myhelp",
     "pages/chat/chat",
     "pages/upinfo/content/content",
-    "pages/upinfo/state/state"
+    "pages/upinfo/state/state",
+    "pages/selfprivacy/selfprivacy",
+    "pages/setting/setting",
+    "pages/setting/self/self",
+    "pages/setting/normal/normal"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {
@@ -22,7 +26,6 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
-
     "backgroundColor": "#FFFFFF00",
     "list": [
       {
@@ -50,7 +53,7 @@
         "selectedIconPath": "img/my.png"
       }
     ],
-    "position": "bottom",  
+    "position": "bottom",
     "custom": true
   }
 }

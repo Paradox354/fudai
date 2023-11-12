@@ -1,0 +1,5 @@
+<!--pages/selfprivacy/selfprivacy.wxml-->
+<view class="container">
+<view class="head">隐私政策</view>
+
+</view>

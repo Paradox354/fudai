@@ -136,7 +136,9 @@ Page({
   onShareAppMessage() {
 
   },
-  jump:function(){
+  jump:function(e){
+    var index=e.currentTarget.dataset.index
+    wx.setStorageSync('list',this.data.list[index])
     wx.navigateTo({
         url: '../../upinfo/state/state',  /*跳转到course页面*/
       })
