@@ -17,7 +17,7 @@
 <view class="divider1"></view>
 <view class="phone">
   <text class="morefont">送件联系电话 <text class="sign">*</text></text>
-  <input type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
+  <input value="{{phone}}"type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
   </view>
 <view class="divider2"></view>
 <view class="elinfo">

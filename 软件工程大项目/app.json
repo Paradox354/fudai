@@ -14,7 +14,8 @@
     "pages/selfprivacy/selfprivacy",
     "pages/setting/setting",
     "pages/setting/self/self",
-    "pages/setting/normal/normal"
+    "pages/setting/normal/normal",
+    "pages/idconfig/idconfig"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {

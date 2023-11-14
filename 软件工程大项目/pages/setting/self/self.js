@@ -1,27 +1,34 @@
-// pages/setting/self/self.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    districtOptions: ['生活一区', '生活二区', '生活三区', '生活四区', '生活五区'],
+      districtOptions: ['生活一区', '生活二区', '生活三区', '生活四区', '生活五区'],
       selectedDistrict: '生活一区',
       buildingOptions: generateBuildingOptions(),
-      selectedBuilding: '1号楼',
+      selectedBuilding: 1,
       dormitoryOptions: generateDormitoryOptions(),
       selectedDormitory: '101',
       phone:'',
-      remark:'',
+      name:'',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
-
   },
-
+  comfirm()
+  {
+    wx.setStorageSync('selectedDistrict', this.data.selectedDistrict)
+    wx.setStorageSync('selectedBuilding', this.data.selectedBuilding)
+    wx.setStorageSync('selectedDormitory', this.data.selectedDormitory)
+    wx.setStorageSync('phone', this.data.phone)
+    wx.setStorageSync('name', this.data.name)
+    console.log('确认完毕')
+    app.globalData.defaultable=1;
+    wx.navigateBack({
+      delta:1
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -29,16 +36,10 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide() {
 
   },
@@ -102,14 +103,14 @@ Page({
   handleremark: function(event) {
     let value = event.detail.value; // 获取输入框的值
     this.setData({
-      remark: value, // 更新 phoneNumber 属性的值
+      name: value, // 更新 phoneNumber 属性的值
     });
   },
 })
 function generateBuildingOptions() {
   const buildingOptions = [];
   for (let i = 1; i <= 61; i++) {
-    buildingOptions.push(i + '号楼');
+    buildingOptions.push(i);
   }
   return buildingOptions;
 }

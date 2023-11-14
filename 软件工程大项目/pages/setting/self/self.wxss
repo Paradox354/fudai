@@ -8,29 +8,47 @@
   background-size: 100% 100%;
   background-position: center;
 }
+
 .head {
   position: relative;
   top: 0%;
   height: 60px;
   width: 100%;
   border-radius: 20px;
-border: 1px solid #FFF;
-background: rgba(255, 255, 255, 0.40);
-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
-display: flex;
-justify-content: center;
-align-items: center;
-font-family: STFangsong;
-font-size: 30px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: STFangsong;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
+
+.save {
+  position: relative;
+  top: 2%;
+  left: 78%;
+  height: 40px;
+  width: 20%;
+  background: rgba(25, 240, 25, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%;
+  font-family: STFangsong;
+  font-size: 20px;
+}
+
 .box {
   position: relative;
   top: 2%;
   width: 100%;
 }
+
 .item {
   position: relative;
   display: flex;
@@ -39,88 +57,95 @@ line-height: normal;
   margin-bottom: 12px;
   width: 98%;
   border-radius: 20px;
-border: 1px solid #FFF;
-background: rgba(255, 255, 255, 0.40);
-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
+
 .item text {
   position: relative;
   top: 20%;
   left: 4%;
   color: #000;
-font-family: STFangsong;
-font-size: 25px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: STFangsong;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
+
 .moinput1 {
   position: absolute;
   right: 26%;
   top: 25%;
   color: #3AC1EB;
-font-family: Inter;
-font-size: 22px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
 
-flex-shrink: 0;
+  flex-shrink: 0;
 }
+
 .moinput2 {
   position: absolute;
   right: 11%;
   top: 25%;
   color: #3AC1EB;
-font-family: Inter;
-font-size: 22px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
-flex-shrink: 0;
+  flex-shrink: 0;
 }
+
 .moinput3 {
   position: absolute;
   right: 2%;
   top: 25%;
   color: #3AC1EB;
-font-family: Inter;
-font-size: 22px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
-flex-shrink: 0;
+  flex-shrink: 0;
 }
+
 .diy-item {
   font-family: STFangsong;
 }
+
 .moinput {
   position: absolute;
   right: 0%;
   top: 30%;
   color: #3AC1EB;
   font-family: Kaiti;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 170px;
-height: 20px;
-flex-shrink: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 170px;
+  height: 20px;
+  flex-shrink: 0;
 }
-.phcolor{
-	color:#C8C9CC;
+
+.phcolor {
+  color: #C8C9CC;
   font-size: 15px;
   color: #3AC1EB;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-width: 170px;
-height: 20px;
-flex-shrink: 0;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 170px;
+  height: 20px;
+  flex-shrink: 0;
 }

@@ -5,11 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rooturl: 'http://47.113.216.236:9737',
+    rooturl: 'https://rrewuq.com',
     token: '',
     list: [],
     inter: '',
-    status: [],
+    statu: [],
     message:['1','2','3','4','5','6','7']
   },
 
@@ -33,8 +33,10 @@ Page({
         'token': this.data.token
       },
       success(res) {
-        that.data.status=res.data.data.msgList
-        console.log(that.data.status)
+        that.setData({
+          statu:res.data.data.msgList
+        })
+        console.log(that.data.statu)
       }
     })
   },
@@ -49,13 +51,13 @@ Page({
   },
   endInter: function () {
     var that = this;
-    that.clearInterval(that.data.inter)
+    clearInterval(that.data.inter)
   },
 
-  onReady() {
+  onReady() { 
 
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */

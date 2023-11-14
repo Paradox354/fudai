@@ -11,7 +11,7 @@
 </view>
 <view class="more">
 <scroll-view  class='out' scroll-y>
-  <view class="moreitem"><view class="info">
+  <view class="moreitem" bind:tap="jumptoconfig"><view class="info">
 <image src="../../img/signup.png"/>
 <text>认证</text>
 </view>
@@ -33,7 +33,7 @@
 <view class="moreitem">
   <view class="info">
 <image src="../../img/投诉.png"/>
-<text>投诉</text>
+<text bind:tap="logout">投诉</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>

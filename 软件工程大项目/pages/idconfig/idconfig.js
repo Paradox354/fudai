@@ -1,38 +1,20 @@
-// pages/upinfo/content/content.js
+// pages/idconfig/idconfig.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    images:['../../../img/home.png'],
-    list:[],
-    rooturl:'https://rrewuq.com',
-    token:'',
+    id:'',
     name:'',
+    professor:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad() {
-    var that=this;
-    wx.getStorage({
-      key:'name',
-      success(res)
-      {
-        that.setData({
-          name:res.data.nickName, 
-      })     
-      }
-    })
-    const token = wx.getStorageSync('token') || '';
-    const list = wx.getStorageSync('list') || ''
-    this.setData({
-      token:token,
-      list:list,
-    })
-    console.log(list)
+  onLoad(options) {
+
   },
 
   /**
@@ -83,12 +65,25 @@ Page({
   onShareAppMessage() {
 
   },
-  previewImage: function (e) {
-    let that=this
-    let current = e.currentTarget.dataset.src
-    wx.previewImage({
-      urls: that.data.images,
-      current:current
-    })
+  handlenumber: function(event) {
+    let value = event.detail.value; // 获取输入框的值
+    this.setData({
+      id: value, // 更新 phoneNumber 属性的值
+    });
+    console.log(this.data.id)
+  },
+  handlename: function(event) {
+    let value = event.detail.value; 
+    this.setData({
+      name: value, 
+    });
+    console.log(this.data.name)
+  },
+  handleprofessor: function(event) {
+    let value = event.detail.value; // 获取输入框的值
+    this.setData({
+      professor: value, // 更新 phoneNumber 属性的值
+    });
+    console.log(this.data.professor)
   },
 })

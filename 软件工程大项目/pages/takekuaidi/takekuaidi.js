@@ -1,4 +1,4 @@
-
+var app=getApp()
 // pages/takekuaidi/takekuaidi.js
 Page({
 
@@ -18,7 +18,7 @@ Page({
       },
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       expressList2: ['小件￥2','中件￥3','大件￥5'],
-      rooturl:'http://47.113.216.236:9737',
+      rooturl:'https://rrewuq.com',
       imgnum:0,
       imgpaths:[],
       num:0,
@@ -55,8 +55,11 @@ Page({
       list:[],
       token:token
     })
+    if(app.globalData.defaultable)
+    {
+      this.default();
+    }
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
   */
@@ -105,13 +108,47 @@ Page({
   onShareAppMessage() {
 
   },
+  default()
+  {
+    var selectedDistrict=wx.getStorageSync('selectedDistrict');
+    var selectedBuilding=wx.getStorageSync('selectedBuilding');
+    var selectedDormitory=wx.getStorageSync('selectedDormitory');
+    var phone=wx.getStorageSync('phone');
+    var name=wx.getStorageSync('name');
+    var a=parseInt(selectedDormitory);
+    this.setData({
+      selectedDistrict:selectedDistrict,
+      selectedBuilding:selectedBuilding+'号楼',
+      selectedDormitory:selectedDormitory,
+      building:selectedBuilding,
+      layer:a,
+      phone:phone,
+      name:name
+    })
+  },
   doUpload: function (e) {
   var i=e.currentTarget.dataset.index;
+  if(this.data.controls[i].company=='请选择快递商家'){
+    wx.showToast({
+      title: '请选择快递商家',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
+  if(!this.data.controls[i].size){
+    wx.showToast({
+      title: '请选择快递大小',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
     wx.chooseImage({
-     sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
-     sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+     sizeType: ['original', 'compressed'],
+     sourceType: ['album', 'camera'], 
      success: res => {
-       if (this.data.images.length <= 1) {
+       if (this.data.images.length < 1) {
          var a='controls['+i+'].imgpath'
          console.log(res)
          this.setData({
@@ -121,7 +158,7 @@ Page({
          })
        } else {
          wx.showToast({
-           title: '最多只能选择两张照片',
+           title: '最多只能选择一张照片',
            icon: 'none',
            duration: 2000,
            mask: true
@@ -167,7 +204,15 @@ formsubmit()
 {
   var that=this;
   var phoneNumber = this.data.phone;
-  var shanjia = this.data.selectedExpress;
+  if(!that.data.controls.length)
+  {
+    wx.showToast({
+      title: '请填写订单',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
   if(!phoneNumber){
     wx.showToast({
       title: '请填写联系电话',
@@ -176,9 +221,9 @@ formsubmit()
     });
     return;
   }
-  if(shanjia === '请选择快递商家'){
+  if(that.data.imgnum!=that.data.controls.length){
     wx.showToast({
-      title: '请填写快递商家',
+      title: '请上传图片',
       icon: 'none',
       duration: 2000
     });
@@ -195,7 +240,6 @@ formsubmit()
           that.upload_info()
         }
         else{
-
             for (let i = 0; i < that.data.controls.length; i++) {
             console.log(that.data.controls[i].imgpath)
              that.uploadfile(that.data.controls[i].imgpath,i)
@@ -259,7 +303,8 @@ uploadfile: function (filePath,i){
         },
         success: function (res) {
           const data = JSON.parse(res.data);
-          const pic = data.data[0]; console.log(pic)
+          const pic = data.data[0]; 
+          console.log(pic)
           that.upload_info(i,pic)
         },
       })

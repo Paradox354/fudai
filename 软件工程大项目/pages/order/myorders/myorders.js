@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rooturl:'http://47.113.216.236:9737',
+    rooturl:'https://rrewuq.com',
     token:'',
     page:1,
     from:'',

@@ -80,7 +80,7 @@ left: 18%;
   position: absolute;
   top: 40%;
   width: 380px;
-  height: 210px;
+  height: 250px;
   flex-shrink: 0;
   border-radius: 20px;
   background: rgba(240, 96, 234, 0.15);
@@ -88,7 +88,7 @@ left: 18%;
 }
 .func1{
   position: absolute;
-  top: 1%;
+  top: 4%;
   left: 5%;
   width: 100px;
   height: 100px;
@@ -100,7 +100,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func2{
   position: absolute;
-  top: 50%;
+  bottom: 5%;
   left: 5%;
   width: 100px;
   height: 100px;
@@ -112,7 +112,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func3{
   position: absolute;
-  top: 1%;
+  top: 4%;
   left: 36.5%;
   width: 100px;
   height: 100px;
@@ -124,7 +124,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func4{
   position: absolute;
-  top: 50%;
+  bottom: 5%;
   left: 36.5%;
   width: 100px;
   height: 100px;
@@ -136,7 +136,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func5{
   position: absolute;
-  top: 1%;
+  top: 4%;
   left: 68%;
   width: 100px;
   height: 100px;
@@ -148,7 +148,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func6{
   position: absolute;
-  top: 50%;
+  bottom: 5%;
   left: 68%;
   width: 100px;
   height: 100px;

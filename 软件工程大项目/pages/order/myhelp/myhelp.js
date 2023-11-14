@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    rooturl:'http://47.113.216.236:9737',
+    rooturl:'https://rrewuq.com',
     token:'',
     page:1,
     from:'',
@@ -54,6 +54,25 @@ Page({
       var that=this;
       wx.request({
         url: that.data.rooturl+'/pt/acp/cancel',
+        method:'POST',
+        data:
+        { 
+          'taskId':id
+        },
+        header:{
+          'token':that.data.token
+        },
+        success(res){
+          that.onLoad()
+      }
+      })
+    },
+    complete(event)
+    {
+      var id=event.currentTarget.dataset.id;
+      var that=this;
+      wx.request({
+        url: that.data.rooturl+'/pt/complete',
         method:'POST',
         data:
         { 

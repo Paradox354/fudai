@@ -6,14 +6,9 @@
     <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
     <view class="diy-item">{{ selectedDistrict }}</view>
   </picker>
+  
   <picker class="moinput2" mode="selector" range="{{ buildingOptions }}" bindchange="handleBuildingChange">
-    <view class="diy-item">{{ selectedBuilding }}</view>
-  </picker>
-  <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
-    <view class="diy-item">{{ selectedDistrict }}</view>
-  </picker>
-  <picker class="moinput2" mode="selector" range="{{ buildingOptions }}" bindchange="handleBuildingChange">
-    <view class="diy-item">{{ selectedBuilding }}</view>
+    <view class="diy-item">{{ selectedBuilding }}号楼</view>
   </picker>
   <picker class="moinput3" mode="selector" range="{{ dormitoryOptions }}" bindchange="handleDormitoryChange">
     <view class="diy-item">{{ selectedDormitory }}</view>
@@ -25,4 +20,5 @@
     <input value="{{remark}}" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" bindinput="handleremark"/>
     </view>
   </view>
+  <view class="save" bind:tap="comfirm">保存</view>
 </view>

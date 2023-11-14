@@ -3,7 +3,7 @@
   <tabBar selected="1"></tabBar>
 <view class="qqgroup"><text class="qqfont">加入官方QQ群：</text></view>
 <view class="order">
-    <scroll-viewb class="out" scroll-y>
+    <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
         <view class="box" bind:tap="jump" data-index="{{index}}">
           <view class="box2" bind:tap="jump">
@@ -21,6 +21,7 @@
           <view class="finishorder" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
         </view>
       </block>
-   </scroll-viewb>
+      <view class="zhanwei"></view>
+   </scroll-view>
   </view>
 </view>

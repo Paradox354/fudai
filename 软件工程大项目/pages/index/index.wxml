@@ -9,23 +9,23 @@
   <text class="func1font">快递代拿</text>
   </view>
   <view class="func2">
-  <view class="func2img"></view>
+  <view class="func2img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/3e1a6176e09b43c189c817ce01baecf6.jpg"/></view>
   <text class="func1font">饮品代拿</text>
   </view>
   <view class="func3">
-  <view class="func3img"></view>
+  <view class="func3img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/b2492418b6c8474bb9a72a38027eafdc.jpg"/></view>
   <text class="func1font">快递代寄</text>
   </view>
   <view class="func4">
-  <view class="func4img"></view>
+  <view class="func4img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/c3c59acbf3dc4996a7570134b6dc6d28.jpg"/></view>
   <text class="func1font">暂未开放</text>
   </view>
   <view class="func5">
-  <view class="func5img"></view>
+  <view class="func5img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cc5c798660ff44eab9239e48a5727f6a.jpg"/></view>
   <text class="func1font">校园代跑</text>
   </view>
   <view class="func6">
-  <view class="func6img"></view>
+  <view class="func6img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/dbe11b02ed224a92bad21e7072d502c7.jpg"/></view>
   <text class="func1font">暂未开放</text>
   </view>
   </view>
