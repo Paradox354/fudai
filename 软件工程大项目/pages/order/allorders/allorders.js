@@ -26,7 +26,7 @@ Page({
     recieve(e)
     {
       var id=e.currentTarget.dataset.id;
-      var id=this.data.list[0].id;
+      //var id=this.data.list[0].id;
       var that=this;
       wx.request({
         url: that.data.rooturl+'/pt/acp',
@@ -39,11 +39,37 @@ Page({
           'token':that.data.token
         },
         success(res){
+          if(res.data.status==500)
+          {
+            wx.showModal({
+              title: '您无法承接自己发布的订单',
+              content: '',
+              complete: (res) => {
+                if (res.cancel) {
+                }
+                if (res.confirm) {
+                }
+              }
+            })
+          }
+          else{
+            wx.showModal({
+              title: '接单成功',
+              content: '',
+              complete: (res) => {
+                if (res.confirm) {
+                  that.onLoad()
+                }
+              }
+            })
+          }
+          console.log(res)
           that.onLoad()
-      }
+      },
       })
     },
     onLoad() {
+    
     var that=this;
     const token = wx.getStorageSync('token') || ''
     this.setData({
@@ -57,7 +83,7 @@ Page({
           { 
             "type": "快递",
             "page": 1,
-            "pageSize": 5,
+            "pageSize": 20,
           },
           header:{
             'token':that.data.token
@@ -66,6 +92,7 @@ Page({
             that.setData({
               list:that.data.list.concat(res.data.data)
             })
+            console.log(that.data.list)
           }
         })
   },

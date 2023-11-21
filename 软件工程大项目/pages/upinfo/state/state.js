@@ -18,7 +18,7 @@ Page({
    */
   onLoad(options) {
     const token = wx.getStorageSync('token') || ''
-    const list = wx.getStorageSync('list') || '';
+    const list = wx.getStorageSync('orderlist') || '';
     this.setData({
       list: list,
       token: token

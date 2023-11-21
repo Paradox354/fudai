@@ -37,8 +37,7 @@
   </view>
   <view class="address">
   <view class="tu">
-  <view class="circle"></view>
-  <view class="jiantou"><image src="../../../img/Arrow9.jpg"/></view>
+  <view class="jiantou"><image src="../../../img/下箭头.png"/></view>
   </view>
   <view class="info">
   <view class="from">{{list.from}}</view>

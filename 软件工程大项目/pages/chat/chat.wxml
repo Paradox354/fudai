@@ -5,8 +5,9 @@
 <view class="phone"><image src="../../img/phone.png"/></view>
 </view>
 <view class="chatmsg">
-<scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}">
+<scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}" scroll-top="{{scrollTop}}">
 <block wx:for="{{messages}}" wx:key="unqiue">
+<view wx:if="{{item.type==1}}">
   <view class="message-item" wx:if="{{item.senderId!=userId}}">
     <view class="head1"><image src="../../img/关于我们.png"/></view>
     <text class="message-content">{{item.msg}}
@@ -18,13 +19,23 @@
     </text>
     <view class="head2"><image src="../../img/home.png"/></view>
   </view>
+</view>
+<view wx:if="{{item.type==2}}">
+  <view class="message-item" wx:if="{{item.senderId!=userId}}">
+    <view class="head1"><image src="../../img/关于我们.png"/></view>
+  <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}"></image>
+</view>
+  <view class="message-itemmy" wx:else>
+  <view class="myimg"><image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}"></image></view>
+    <view class="head2"><image src="../../img/home.png"/></view>
+  </view>
+</view>
 </block>
-  
 </scroll-view>
 </view>
 <view class="inbox">
-<view class="upimg"><image src="../../img/signup.png"/></view>
-<input type="text" value="{{inputValue}}" bindinput="onInput"/>
-<view class="send" bind:tap="sendMessage">发送</view>
+<view class="upimg" bind:tap="upimg"><image src="../../img/signup.png"/></view>
+<input type="text" value="{{inputValue}}" bindinput="bindKeyInput"/>
+<view class="send" bind:tap="submitTo">发送</view>
 </view>
 </view>

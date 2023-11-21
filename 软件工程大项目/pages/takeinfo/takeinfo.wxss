@@ -1,0 +1,351 @@
+/* pages/takeinfo/takeinfo.wxss */
+.container1 {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.addressinfo {
+  position: relative;
+  display: flex;
+  height: 90rpx;
+  width: 100%;
+}
+.from {
+  position: relative;
+  top: 9rpx;
+  width: 160rpx;
+height: 60rpx;
+flex-shrink: 0;
+left: 15%;
+  border-radius: 8px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.to {
+    position: relative;
+    top: 9rpx;
+    width: 160rpx;
+  height: 60rpx;
+  flex-shrink: 0;
+  left: 15%;
+    border-radius: 8px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jiantou {
+  position: relative;
+  left: 17%;
+  top: 14rpx;
+  width: 200rpx;
+  height: 60rpx;
+}
+.jiantou image {
+  max-width: 100%;
+  max-height: 100%;
+}
+.diver {
+  position: relative;
+  width: 90%;
+  height: 1px;
+  background-color: white;
+  left: 5%;
+}
+.info {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16rpx;
+}
+.code {
+  position: relative;
+  margin-top: 18rpx;
+  left: 20%;
+  width: 60%;
+  height: 160rpx;
+  background: #FFF;
+  opacity: 0.4;
+  box-shadow: (2px 2px 4px rgba(0, 0, 0, 0.40));
+}
+.takecode {
+  position: relative;
+  text-align: center;
+  top: 27%;
+  color: #000;
+font-family: Inter;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.size {
+  position: relative;
+  text-align: center;
+  top: 30%;
+  color: rgba(0, 0, 0, 0.40);
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.state {
+  position: relative;
+  margin-top: 9rpx;
+  margin-bottom: 18rpx;
+  width: 100%;
+}
+.statebox {
+  position: relative;
+  width: 100%;
+  display: flex;
+  margin-bottom: 4rpx;
+  margin-top: 15rpx;
+}
+.circle {
+  position: relative;
+  top: 30rpx;
+  left: 9%;
+  width: 90rpx;
+height: 90rpx;
+flex-shrink: 0;
+  border-radius: 90px;
+background: linear-gradient(0deg, rgba(244, 66, 66, 0.20) 0%, rgba(244, 66, 66, 0.20) 100%), #FFB0FC;
+}
+.infobox {
+  position: relative;
+  left: 13%;
+  width: 521rpx;
+height: 139rpx;
+flex-shrink: 0;
+  border-radius: 10px;
+background: rgba(255, 255, 255, 0.40);
+mix-blend-mode: soft-light;
+box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
+}
+.infobox .state {
+  position: absolute;
+  top: 0%;
+  left: 1%;
+  color: #000;
+font-family: Inter;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.infobox .time {
+  position: absolute;
+  right: 5%;
+  top: 8%;
+  color: #7B7B7B;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.infobox .message {
+  position: absolute;
+  bottom: 8%;
+  left: 2%;
+  color: #000;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.zhixian {
+  position: relative;
+  left: 14.5%;
+  width: 1px;
+height: 120rpx;
+background-color: salmon;
+
+}
+.imgbox {
+  position: relative;
+  left: 24%;
+  width: 70%;
+  height: 100rpx;
+  display: flex;
+}
+.imgbox image {
+  max-width: 100rpx;
+  max-height: 100%;
+}
+.upimg {
+  position: relative;
+  width: 90rpx;
+  border-radius: 8px;
+border: 1px dashed #000;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+}
+.upimg text {
+  position: absolute;
+  top: 8rpx;
+  left: 13rpx;
+}
+.out {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.func {
+  position: relative;
+  margin-top: 29rpx;
+  margin-bottom: 20rpx;
+  width: 90%;
+  left: 5%;
+  border-radius: 15px;
+  height: 200rpx;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.havetake {
+  position: absolute;
+  top: 3%;
+  left: 5%;
+  color: #C559A0;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.func .time {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+  color: #C459A0;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 111.341%;
+}
+.type {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  color: #C459A0;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 111.341%; /* 22.268px */
+}
+.funclist {
+  position: absolute;
+  bottom: 0%;
+  height: 50%;
+  width: 100%;
+  justify-content:space-around;
+  display: flex;
+}
+.function {
+  position: relative;
+  flex-direction: column;
+  height: 100%;
+  width: 15%;
+}
+.funcimg {
+  position: relative;
+  height: 80%;
+  width: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.funcimg image {
+  max-width: 100%;
+  max-height: 100%;
+}
+.content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Inter;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 400;
+}
+.moremsg {
+  position: relative;
+  width: 75%;
+  margin-top: 25rpx;
+  left: 12.5%;
+height: 205px;
+flex-shrink: 0;
+  border-radius: 10px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+}
+.msgitem {
+  position: relative;
+  height: 20%;
+  display: flex;
+  align-items:center;
+}
+.msgitem .first {
+  position: absolute;
+  left: 2%;
+  color: #C459A0;
+font-family: Inter;
+font-size: 17px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.msgitem .last {
+  position: absolute;
+  right: 2%;
+  color: #C459A0;
+font-family: Inter;
+font-size: 17px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.diver2 {
+  position: relative;
+  margin-top: 3rpx;
+  width: 90%;
+  height: 1px;
+  left: 5%;
+  background: darkorchid;
+}
+.arrive {
+  position: relative;
+  margin-top: 34rpx;
+  height: 120rpx;
+  width: 100%;
+  border-radius: 10px;
+border: 1px solid #FFF;
+background: rgba(255, 255, 255, 0.40);
+}
+.confirmarr {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 4%;
+  top: 25%;
+  height: 50%;
+  width: 20%;
+  border-radius: 10px;
+background: linear-gradient(0deg, rgba(244, 66, 66, 0.20) 0%, rgba(244, 66, 66, 0.20) 100%), #FFB0FC;
+}

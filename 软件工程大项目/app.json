@@ -1,21 +1,22 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs",
+    "pages/index/index","pages/order/myhelp/myhelp",
+    "pages/order/myorders/myorders",
+    "pages/upinfo/state/state",
+    "pages/upinfo/content/content",
+    "pages/chat/chat",
     "pages/my/my",
+    "pages/logs/logs",
     "pages/chatroom/chatroom",
     "pages/takekuaidi/takekuaidi",
     "pages/order/allorders/allorders",
-    "pages/order/myorders/myorders",
-    "pages/order/myhelp/myhelp",
-    "pages/chat/chat",
-    "pages/upinfo/content/content",
-    "pages/upinfo/state/state",
+    
     "pages/selfprivacy/selfprivacy",
     "pages/setting/setting",
     "pages/setting/self/self",
     "pages/setting/normal/normal",
-    "pages/idconfig/idconfig"
+    "pages/idconfig/idconfig",
+    "pages/takeinfo/takeinfo"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {

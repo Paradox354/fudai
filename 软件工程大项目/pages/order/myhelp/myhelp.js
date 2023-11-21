@@ -130,5 +130,13 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  jumptoinfo: function (e) {
+    var index=e.currentTarget.dataset.index
+    wx.setStorageSync('helplist',this.data.list[index])
+    wx.navigateTo({
+      url: '../../takeinfo/takeinfo',
+  
+    })
+  },
 })

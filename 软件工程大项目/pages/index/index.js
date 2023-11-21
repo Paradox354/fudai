@@ -4,7 +4,54 @@ const app = getApp()
 
 Page({
   data: {
-
+    rooturl:'https://rrewuq.com',
+  },
+  onLoad(){
+    const token=wx.getStorageSync('token')
+    if(token)
+    {
+      wx.request({
+      url: this.data.rooturl+'/token/renew',
+      method:'POST',
+      header:
+      {
+        'token':token
+      },
+      success(res)
+      {
+        if(res.data.status==500)
+        {
+          wx.setStorageSync('token', '')
+          wx.setStorageSync('name', '')
+          wx.showModal({
+            title: '请登录',
+            content: '',
+            complete: (res) => {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '/pages/my/my',
+                })
+              }
+            }
+          })
+        }
+      }
+    })
+    }
+    else{
+      wx.showModal({
+        title: '请登录',
+        content: '',
+        complete: (res) => {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/my/my',
+            })
+          }
+        }
+      })
+    }
+    
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&

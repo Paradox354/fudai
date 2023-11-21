@@ -30,13 +30,14 @@
 }
 .state .box{
   position: relative;
+  top: 5px;
   left: 5%;
   width: 90%;
   display: flex;
 }
 .box .jiantou {
   position: relative;
-  top: 14px;
+  top: 15px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -44,7 +45,7 @@
 }
 .box .info {
   position: relative;
-  top: 6px;
+  top: 0px;
   left: 3%;
   width: 75%;
   height: 0%;
@@ -95,7 +96,7 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
 }
 .shoot {
   position: relative;
-  top: 5px;
+  top: 0rpx;
   background-color: #910961;
   left: 7%;
   width: 1px;
@@ -107,17 +108,25 @@ box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.50);
 }
 .confirm {
   position: relative;
-  left: 70%;
-  width: 50px;
+  top: 0px;
+  left: 60%;
+  width: 70px;
+  height: 30px;
   border-radius: 10px;
-background: #FF00F5;
+  background: linear-gradient(0deg, rgba(244, 66, 66, 0.20) 0%, rgba(244, 66, 66, 0.20) 100%), #FFB0FC;
 display: flex;
 justify-content: center;
 align-items: center;
+color: #FFF;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
 .huowu {
   position: relative;
-  top: 7px;
+  top: 20px;
   left: 15%;
   width: 60px;
   height: 60px;

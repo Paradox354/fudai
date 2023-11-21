@@ -193,7 +193,7 @@ Page({
   },
   jumptoconfig: function () {
     wx.navigateTo({
-      url: '/pages/idconfig/idconfig',
+      url: '../idconfig/idconfig',
       /*跳转到course页面*/
     })
   },

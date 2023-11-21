@@ -26,7 +26,6 @@ Page({
   cancel(event)
     {
       var id=event.currentTarget.dataset.id;
-      // var id=this.data.list[0].id;
       var that=this;
       wx.request({
         url: that.data.rooturl+'/pt/delete',
@@ -138,9 +137,9 @@ Page({
   },
   jump:function(e){
     var index=e.currentTarget.dataset.index
-    wx.setStorageSync('list',this.data.list[index])
+    wx.setStorageSync('orderlist',this.data.list[index])
     wx.navigateTo({
         url: '../../upinfo/state/state',  /*跳转到course页面*/
-      })
+    })
 }
 })

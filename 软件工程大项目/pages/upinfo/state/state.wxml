@@ -4,23 +4,27 @@
   <scroll-view class='out' scroll-y>
     <view class="map"></view>
     <view class="state">
-    <block wx:for="{{statu}}" wx:key="unique">
-      <view class="box">
-        <view class="jiantou">
-        </view>
-        <view class="info">
-          <view><text class="orderstate">{{item.message}}</text>
-            <text class="time">{{item.createTime}}</text>
+      <block wx:for="{{statu}}" wx:key="unique">
+        <view class="box">
+          <view class="jiantou">
           </view>
-          <view><text class="orderstate">{{message[item.type]}}</text>
+          <view class="info">
+            <view><text class="orderstate">{{item.message}}</text>
+              <text class="time">{{item.createTime}}</text>
+            </view>
+            <view><text class="orderstate">{{message[item.type]}}</text>
+              <view class="confirm">确认</view>
+            </view>
           </view>
         </view>
-      </view>
-      <view class="box" wx:if="{{index!=statu.length-1}}">
-        <view class="shoot">
+        <view class="box" wx:if="{{index!=statu.length-1}}">
+          <view class="shoot">
+          </view>
+          <view class="huowu" wx:if="{{item.type==0}}">
+            <image src="../../../img/head.png" />
+          </view>
         </view>
-      </view>
-    </block>
+      </block>
 
     </view>
     <view class="zhanwei"></view>

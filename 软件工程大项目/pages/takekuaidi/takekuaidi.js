@@ -19,6 +19,7 @@ Page({
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       expressList2: ['小件￥2','中件￥3','大件￥5'],
       rooturl:'https://rrewuq.com',
+      images:[],
       imgnum:0,
       imgpaths:[],
       num:0,
@@ -31,7 +32,7 @@ Page({
       layer:0,
       middlenum: 0,
       largenum: 0,
-      images:[],
+      //images:[],
       adress:'',
       phone:'',
       type:'快递',
@@ -127,6 +128,7 @@ Page({
     })
   },
   doUpload: function (e) {
+  var that=this;
   var i=e.currentTarget.dataset.index;
   if(this.data.controls[i].company=='请选择快递商家'){
     wx.showToast({
@@ -144,14 +146,15 @@ Page({
     });
     return;
   }
-    wx.chooseImage({
+  wx.chooseImage({
      sizeType: ['original', 'compressed'],
      sourceType: ['album', 'camera'], 
      success: res => {
-       if (this.data.images.length < 1) {
+       if (res.tempFilePaths.length<=1) {
          var a='controls['+i+'].imgpath'
          console.log(res)
          this.setData({
+           images:that.data.images.concat(res.tempFilePaths[0]),
            [a]:res.tempFilePaths[0],
            flag:1,
            imgnum:this.data.imgnum+1
@@ -291,6 +294,7 @@ console.log(data)
 },
 uploadfile: function (filePath,i){
   let that=this
+  console.log(filePath)
       wx.uploadFile({
         url: that.data.rooturl + "/file/upload",
         filePath: filePath,
@@ -310,10 +314,10 @@ uploadfile: function (filePath,i){
       })
 },
 previewImage: function (e) {
-  let that=this
   let current = e.currentTarget.dataset.src
+  var that=this;
   wx.previewImage({
-    urls: that.data.images,
+    urls:that.data.images,
     current:current
   })
 },

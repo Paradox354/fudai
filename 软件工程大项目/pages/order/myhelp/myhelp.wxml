@@ -6,7 +6,7 @@
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
         <view class="box">
-        <view class="box2">
+        <view class="box2"  bind:tap="jumptoinfo"  data-index="{{index}}">
           <view class="head"></view>
           <text class="type">代取类型</text>
           <text class="time">{{item.createTime}}</text>
