@@ -7,13 +7,18 @@ Page({
   data: {
     id:'',
     name:'',
-    professor:''
+    professor:'',
+    zhuti:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
 
   },
 

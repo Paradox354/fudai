@@ -14,28 +14,27 @@ Page({
         selectedExpress2: '请选择快递大小',
         size:'',
         price:0,
-        imgpath:''
+        imgpath:'',
+        codeValue: "",
       },
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       expressList2: ['小件￥2','中件￥3','大件￥5'],
       rooturl:'https://rrewuq.com',
       images:[],
-      imgnum:0,
       imgpaths:[],
+      flagnum:0,
       num:0,
-      codeValue: "",
       token:'',
       flag:0,
       elseTo:'',
       smallnum: 0,
-      building:0,
+      building:1,
       layer:0,
       middlenum: 0,
       largenum: 0,
-      //images:[],
       adress:'',
       phone:'',
-      type:'快递',
+      type:'快递代拿',
       remark:'',
       price:0,
       money:0,
@@ -44,13 +43,14 @@ Page({
       buildingOptions: generateBuildingOptions(),
       selectedBuilding: '1号楼',
       dormitoryOptions: generateDormitoryOptions(),
-      selectedDormitory: '101'
+      selectedDormitory: '101',
+      zhuti:''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
     const token = wx.getStorageSync('token') || ''
     this.setData({
       list:[],
@@ -61,9 +61,6 @@ Page({
       this.default();
     }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-  */
   onReady() {
 
   },
@@ -157,7 +154,8 @@ Page({
            images:that.data.images.concat(res.tempFilePaths[0]),
            [a]:res.tempFilePaths[0],
            flag:1,
-           imgnum:this.data.imgnum+1
+           imgnum:this.data.imgnum+1,
+           flagnum:that.data.flagnum+1
          })
        } else {
          wx.showToast({
@@ -167,6 +165,7 @@ Page({
            mask: true
          })
        }
+       console.log(this.data.images)
      }
   })
 },
@@ -183,6 +182,7 @@ Page({
 },
 bindPickerChange2: function (e) {
   var index = e.detail && e.detail.value;
+  
   var list=[2,3,5]
   var price =list[index]
   var i=e.currentTarget.dataset.index;
@@ -202,6 +202,15 @@ bindPickerChange2: function (e) {
         [c]:list[index]
       })
   }
+},
+changecode(event) {
+  var that=this
+  let value = event.detail.value;
+  var index=event.currentTarget.dataset.index
+  var a='controls['+index+'].codeValue'
+  that.setData({
+    [a]:value
+  });
 },
 formsubmit()
 {
@@ -224,12 +233,8 @@ formsubmit()
     });
     return;
   }
-  if(that.data.imgnum!=that.data.controls.length){
-    wx.showToast({
-      title: '请上传图片',
-      icon: 'none',
-      duration: 2000
-    });
+  if(!this.check())
+  {
     return;
   }
   wx.showModal({
@@ -239,26 +244,24 @@ formsubmit()
         that.setData({
           date:new Date()
         })
-        if (that.data.imgnum == 0) {
-          that.upload_info()
-        }
-        else{
-            for (let i = 0; i < that.data.controls.length; i++) {
+        for (let i = 0; i < that.data.controls.length; i++) 
+        {
             console.log(that.data.controls[i].imgpath)
-             that.uploadfile(that.data.controls[i].imgpath,i)
-}
+            that.uploadfile(that.data.controls[i].imgpath,i)
         }
       }
     }
   })
 },
 //上传图片和信息
+
 upload_info: function(i,pic) {
   var that =this;
   var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
+  var name=wx.getStorageSync('name').nickName
   var incidentalMsg={
-    "name": "力内则系红组克",
-    'code':that.data.code,
+    "name": name,
+    'code':this.data.controls[i].codeValue,
     'phone':that.data.phone,
     'address':address,
     'picture':pic
@@ -295,6 +298,11 @@ console.log(data)
 uploadfile: function (filePath,i){
   let that=this
   console.log(filePath)
+  if(that.data.imgnum==0||filePath=='')
+  {
+    that.upload_info(i,'')
+    return
+  }
       wx.uploadFile({
         url: that.data.rooturl + "/file/upload",
         filePath: filePath,
@@ -342,7 +350,49 @@ handlePriceChange: function (e) {
     money:a
   });
 },
+check(){
+  var i=this.data.controls.length-1
+  var controls=this.data.controls
+  var flag=1;
+  if(controls[i].company=='请选择快递商家')
+  {
+    wx.showToast({
+      title: '请输入快递商家',
+      icon: 'none',
+      duration: 2000
+    })
+    flag=0;
+    return flag
+  }
+  if(controls[i].size=='')
+  {
+    wx.showToast({
+      title: '请输入快递大小',
+      icon: 'none',
+      duration: 2000
+    })
+    flag=0;
+    return flag
+  }
+  if(controls[i].imgpath==''&&controls[i].codeValue=='')
+  {
+    wx.showToast({
+      title: '请上传图片或者填写取件码',
+      icon: 'none',
+      duration: 2000
+    })
+    flag=0;
+    return flag
+  }
+  return flag
+},
 addControl: function () {
+  if(this.data.controls.length)
+  {
+    var flag=this.check()
+    console.log(flag)
+    if(!flag){return;}
+  }
   this.setData({
     part:{
       company: '请选择快递商家',
@@ -350,6 +400,8 @@ addControl: function () {
       price:0,
       size:'',
       imgpath:'',
+      codeValue: "",
+      flag:0
     },
     controls:this.data.controls.concat(this.data.part)
   })

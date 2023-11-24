@@ -1,5 +1,5 @@
 <!--pages/chat/chat.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
 <view class="name">
 <text class="id">骑手名称</text>
 <view class="phone"><image src="../../img/phone.png"/></view>

@@ -17,7 +17,8 @@ Page({
     pagesize:4,
     minP:1,
     maxP:10,
-    list:[]
+    list:[],
+    zhuti:''
   },
 
   /**
@@ -63,6 +64,10 @@ Page({
       })
     },
     onLoad(options) {
+      const app=getApp();
+      this.setData({
+        zhuti:app.globalData.zhuti
+      })
       var that=this
       const token = wx.getStorageSync('token') || ''
       this.setData({
@@ -89,7 +94,7 @@ Page({
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
-   */
+  */
   onReady() {
 
   },

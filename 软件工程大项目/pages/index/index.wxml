@@ -1,31 +1,31 @@
-<view class="container">
-  <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png"/>
+<view class="{{zhuti}}">
+  <view class="qiehuan" bind:tap="change">切换主题</view>
   <view class="title">福代互助平台</view>
   <view class="header"><text class="headerfont">平台简介及所需遵守政策</text></view>
   <view class="qqgroup"><text class="qqfont">加入官方QQ群: 83604387</text></view>
   <view class="func">
   <view class="func1" bind:tap="jumptotake">
-  <view class="func1img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/e1a1622441554299a4c9b730cd84be29.jpg"/></view>
+  <view class="func1img"><image src="{{url1}}"/></view>
   <text class="func1font">快递代拿</text>
   </view>
   <view class="func2">
-  <view class="func2img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/3e1a6176e09b43c189c817ce01baecf6.jpg"/></view>
+  <view class="func2img"><image src="{{url2}}"/></view>
   <text class="func1font">饮品代拿</text>
   </view>
   <view class="func3">
-  <view class="func3img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/b2492418b6c8474bb9a72a38027eafdc.jpg"/></view>
+  <view class="func3img"><image src="{{url3}}"/></view>
   <text class="func1font">快递代寄</text>
   </view>
   <view class="func4">
-  <view class="func4img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/c3c59acbf3dc4996a7570134b6dc6d28.jpg"/></view>
+  <view class="func4img"><image src="{{url4}}"/></view>
   <text class="func1font">暂未开放</text>
   </view>
   <view class="func5">
-  <view class="func5img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cc5c798660ff44eab9239e48a5727f6a.jpg"/></view>
+  <view class="func5img"><image src="{{url5}}"/></view>
   <text class="func1font">校园代跑</text>
   </view>
   <view class="func6">
-  <view class="func6img"><image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/dbe11b02ed224a92bad21e7072d502c7.jpg"/></view>
+  <view class="func6img"><image src="{{url6}}"/></view>
   <text class="func1font">暂未开放</text>
   </view>
   </view>

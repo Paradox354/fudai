@@ -1,23 +1,17 @@
 <!--pages/chatroom/chatroom.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
 <text class="pingtai">福代互助平台</text>
 <view class="diver"></view>
 <view class="box">
   <scroll-view class="swipe" scroll-y>
-  <view class="message" bind:tap="jump">
+<block wx:for="{{list}}" wx:key="unique">
+
+  <view class="message" bind:tap="jump" data-index="{{index}}">
   <view class="head"><image class="headimg" src="../../img/关于我们.png"/></view>
-  <text class="chatobject">联系人</text>
-  <text class="chatmsg">消息简介</text>
-  <view class="new">用于显示是否有新消息  *</view>
-  </view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
-  <view class="message"></view>
+  <text class="chatobject">{{item.lastMsg.senderId}}</text>
+  <text class="chatmsg">{{item.lastMsg.msg}}</text>
+  <view class="new" wx:if="{{!item.isRead}}">*</view>
+  </view></block>
 </scroll-view>
 </view>
 </view>

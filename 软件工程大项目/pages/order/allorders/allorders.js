@@ -17,7 +17,8 @@ Page({
     pagesize:4,
     minP:1,
     maxP:10,
-    list:[]
+    list:[],
+    zhuti:''
   },
 
   /**
@@ -69,7 +70,12 @@ Page({
       })
     },
     onLoad() {
-    
+      const app=getApp();
+      this.setData({
+        zhuti:app.globalData.zhuti
+      })
+      console.log(app.globalData.zhuti)
+      console.log(this.data.zhuti)
     var that=this;
     const token = wx.getStorageSync('token') || ''
     this.setData({
@@ -81,7 +87,7 @@ Page({
           method:'post',
           data:
           { 
-            "type": "快递",
+            "type": "快递代拿",
             "page": 1,
             "pageSize": 20,
           },
@@ -108,6 +114,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({

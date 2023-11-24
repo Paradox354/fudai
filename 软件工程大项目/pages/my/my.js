@@ -8,8 +8,13 @@ Page({
     rooturl: 'https://rrewuq.com',
     avatarUrl: '',
     name: "",
+    zhuti:''
   },
   onLoad() {
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
     const token = wx.getStorageSync('token') || '';
     if (token) {
       console.log(token);

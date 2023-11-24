@@ -1,11 +1,20 @@
 /* pages/order/allorders/allorders.wxss */
 /* pages/order/myhelp/myhelp.wxss */
-.container {
+.container1 {
   position: absolute;
   top: 0%;
-  width: 100%;
   height: 100%;
+  width: 100%;
   background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.container2 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/870c6b9d51e14d92a5afe264de71ece1.png');
   background-size: 100% 100%;
   background-position: center;
 }
@@ -25,6 +34,7 @@ line-height: normal;
 .qqgroup {
   position: absolute;
   top: 7%;
+  left: 4.5%;
   width: 360px;
   height: 40px;
   flex-shrink: 0;

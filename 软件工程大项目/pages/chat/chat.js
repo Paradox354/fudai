@@ -15,16 +15,23 @@ Page({
     //格式示例数据，可为空
     allContentList: [],
     num: 0,
-    taksId:'6550ba10198e3906f0e6d439',
+    taskId:'',
     scrollTop:0,
     images:[],
-    imgindex:0
+    imgindex:0,
+    zhuti:''
   },
   // 页面加载
-  onLoad: function () {
-    const userId=wx.getStorageSync('userid')||'';
+  onLoad: function (option) {
+    const app=getApp();
     this.setData({
-      userId:userId
+      zhuti:app.globalData.zhuti
+    })
+    const userId=wx.getStorageSync('userid')||'';
+    const taskId=option.taskId;
+    this.setData({
+      userId:userId,
+      taskId:taskId
     })
   },
   onShow: function (e) {
@@ -71,7 +78,7 @@ Page({
   },
   webSocket: function () {
     SocketTask = wx.connectSocket({
-      url: url+this.data.taksId+'/'+wx.getStorageSync('userid'),
+      url: url+this.data.taskId+'/'+this.data.userId,
       success: function (res) {
         console.log('WebSocket连接创建', res)
       },
@@ -88,7 +95,7 @@ Page({
     if (socketOpen) {
       var data={
         msg:that.data.inputValue,
-        senderId:wx.getStorageSync('userid'),
+        senderId:that.data.userId,
         type:1
       }
       sendSocketMessage(1,that.data.inputValue)

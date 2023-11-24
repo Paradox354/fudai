@@ -1,5 +1,5 @@
 <!--pages/takekuaidi/takekuaidi.wxml-->
-<view class="contain">
+<view class="{{zhuti}}">
 <scroll-view class='out' scroll-y>
   <view class="moreinfo">
 <view class="address" >
@@ -17,7 +17,7 @@
 <view class="divider1"></view>
 <view class="phone">
   <text class="morefont">送件联系电话 <text class="sign">*</text></text>
-  <input value="{{phone}}"type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
+  <input value="{{phone}}" type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
   </view>
 <view class="divider2"></view>
 <view class="elinfo">
@@ -51,7 +51,7 @@
   </picker>
 </view>
 <view class="te">
-  <textarea value="{{codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）"/>
+  <textarea value="{{controls[index].codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）" data-index="{{index}}" bindinput="changecode"/>
   </view>
 
   <view class="imgbox">

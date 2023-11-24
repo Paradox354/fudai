@@ -1,5 +1,5 @@
 <!--pages/setting/self/self.wxml-->
-<view class="container1">
+<view class="{{zhuti}}">
   <view class="head">隐私设置</view>
   <view class="box">
   <view class="item"><text>默认收货地址</text>

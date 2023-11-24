@@ -5,16 +5,41 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    rooturl:'https://rrewuq.com',
+    token:'',
+    list:[],
+    zhuti:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
+    var that=this;
+    const token=wx.getStorageSync('token');
+    this.setData({
+      token:token
+    })
+    console.log(token)
+    wx.request({
+      url: that.data.rooturl+'/chat/list?page=1&&pageSize=10',
+      method:'GET',
+      header:{
+        'token':token
+      },
+      success(res)
+      {
+        that.setData({
+          list:res.data
+        })
+        console.log(that.data.list)
+      }
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,9 +94,10 @@ Page({
   onShareAppMessage() {
 
   },
-  jump :function() {
+  jump :function(e) {
+    var index=e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: '/pages/chat/chat',
+      url: '/pages/chat/chat?taskId='+this.data.list[index].taskId,
     })
   }
 })

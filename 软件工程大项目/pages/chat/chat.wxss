@@ -1,9 +1,19 @@
 /* pages/chat/chat.wxss */
-.container {
+.container1 {
   position: absolute;
+  top: 0%;
   height: 100%;
   width: 100%;
   background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.container2 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/870c6b9d51e14d92a5afe264de71ece1.png');
   background-size: 100% 100%;
   background-position: center;
 }
@@ -100,26 +110,27 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   display: flex;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #f1f1f1;
+  background-color: rgb(255, 255, 255,0.4);
   /* 其他样式设置，例如圆角、边框等 */
 }
 .message-itemmy {
   display: flex;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: #f1f1f1;
+  background-color: rgb(255, 255, 255,0.4);
+  align-items: center;
   /* 其他样式设置，例如圆角、边框等 */
   justify-content: flex-end;
 }
 
 .message-content {
   position: relative;
-  top: 12px;
   left: 1%;
   width: 70%;
-  white-space: pre-wrap; /* 允许文本换行 */
   word-break: break-all;
   font-size: 20px;
+  display: flex;
+  align-items: center;
 }
 .myimg {
   position: relative;
@@ -134,12 +145,14 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 .message-contentmy {
   position: relative;
   display: flex;
+  top: -25rpx;
   justify-content: flex-end;
+  align-items: center;
+  width: 70%;
+  text-align: left;
   right: 20%;
-  white-space: pre-wrap; /* 允许文本换行 */
   word-break: break-all;
   font-size: 20px;
-  width: 70%;
 }
 .head1 {
   position: relative;

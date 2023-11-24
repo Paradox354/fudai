@@ -1,5 +1,5 @@
 <!--pages/my/my.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
 <text class="pingtai">福代互助平台</text>
 <view class="diver"></view>
 <view class="selfinfo">

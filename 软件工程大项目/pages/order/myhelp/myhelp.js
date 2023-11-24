@@ -17,13 +17,19 @@ Page({
     pagesize:4,
     minP:1,
     maxP:10,
-    list:[]
+    list:[],
+    zhuti:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
     onLoad(options) {
+      const app=getApp();
+      this.setData({
+        zhuti:app.globalData.zhuti
+      })
+      console.log(this.data.zhuti)
       var that=this
       const token = wx.getStorageSync('token') || ''
       this.setData({

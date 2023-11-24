@@ -1,24 +1,24 @@
 <!--pages/order/myorders/myorders.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
   <tabBar selected="1"></tabBar>
 <view class="qqgroup"><text class="qqfont">加入官方QQ群：</text></view>
 <view class="order">
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
-        <view class="box" bind:tap="jump" data-index="{{index}}">
-          <view class="box2" bind:tap="jump">
+        <view class="box" >
+          <view class="box2" bind:tap="jump" data-index="{{index}}">
             <view class="head"></view>
-          <text class="type">代取类型</text>
+          <text class="type">{{item.type}}</text>
           <text class="time">{{item.createTime}}</text>
-          <text class="orderstate">订单状态</text>
+          <text class="orderstate">{{item.status}}</text>
           <text class="from">{{item.from}}</text>
           <view class="jiantou">--------</view>
           <text class="to">{{item.building}}号楼</text>
           <text class="price">￥ {{item.price}}</text></view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
-          <view class="finishorder" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
+          <view class="getorder" wx:if="{{item.status!='待评价'}}" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
+          <view class="finishorder" wx:if="{{item.status!='待评价'}}" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
         </view>
       </block>
       <view class="zhanwei"></view>

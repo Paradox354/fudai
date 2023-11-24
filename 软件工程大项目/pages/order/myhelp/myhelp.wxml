@@ -1,5 +1,5 @@
 <!--pages/order/myhelp/myhelp.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
   <tabBar selected="2"></tabBar>
 <view class="qqgroup"><text class="qqfont">加入官方QQ群：</text></view>
 <view class="order">
@@ -8,9 +8,9 @@
         <view class="box">
         <view class="box2"  bind:tap="jumptoinfo"  data-index="{{index}}">
           <view class="head"></view>
-          <text class="type">代取类型</text>
+          <text class="type">{{item.type}}</text>
           <text class="time">{{item.createTime}}</text>
-          <text class="orderstate">订单状态</text>
+          <text class="orderstate">{{item.status}}</text>
           <text class="from">{{item.from}}</text>
           <view class="jiantou">--------</view>
           <text class="to">{{item.building}}号楼</text>

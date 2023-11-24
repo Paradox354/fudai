@@ -1,6 +1,8 @@
 // app.js
 App({
-  
+  globalData:{
+    zhuti: 'container1',
+  },
   onLaunch() {
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

@@ -1,15 +1,16 @@
 <!--pages/takeinfo/takeinfo.wxml-->
-<view class="container1">
+<view class="{{zhuti}}">
 <scroll-view class="out" scroll-y>
   <view class="addressinfo">
   <view class="from">{{list.from}}</view>
   <view class="jiantou"><image src="../../img/take.png"/></view>
-  <view class="to">{{list.building}}号楼{{list.layer}}</view>
+  <view class="to">{{list.building}}号楼</view>
 </view>
    <view class="diver"></view>
    <view class="info">
-   <view class="code"><view class="takecode">取件码</view>
+   <view class="code"><view class="takecode" wx:if="{{list.incidentalMsg.code}}">{{list.incidentalMsg.code}}</view>
    <view class="size">{{list.company}}|{{list.size}}</view>
+   <image src="{{list.incidentalMsg.picture}}"></image>
    </view>
    </view>
    <view class="diver"></view>
@@ -18,7 +19,7 @@
    <view class="circle"></view>
    <view class="infobox">
    <text class="state">已接单</text>
-   <text class="time">时间</text>
+   <text class="time">{{t1}}</text>
    <text class="message">请前往取货</text>
    </view>
    </view>
@@ -29,30 +30,35 @@
    <view class="circle"></view>
    <view class="infobox">
    <text class="state">取到货啦</text>
-   <text class="time">时间</text>
+   <text class="time">{{t2}}</text>
    <text class="message">请上传取货照片</text>
    </view>
    </view>
    <view class="statebox">
    <view class="zhixian"></view>
-   <view class="imgbox">
-   <image src="../../img/客服.png"/>
-   <view class="upimg"><text>上传图片</text></view>
+   <view class="imgbox" >
+    <image src="{{images[0]}}"></image>
+   <view class="upimg" bind:tap="upload"><text>上传图片</text></view>
+   <view class="cancel" bind:tap="cancel" data-index="0"><text>撤回图片</text></view>
+   <view class="upload" bind:tap="comfirm" data-index="0"><text>确认上传</text></view>
    </view>
    </view>
-   <view class="statebox">
+   <view class="statebox" wx:if="{{flag}}">
    <view class="circle"></view>
-   <view class="infobox">
-   <text class="state">抵达目的地！</text>
-   <text class="time">时间</text>
+   <view class="infobox" bind:tap="upload">
+   <text class="state">抵达目的地</text>
+   <text class="time">{{t3}}</text>
    <text class="message">请上传目的地和快递照片</text>
    </view>
    </view>
-   <view class="statebox">
+   <view class="statebox" wx:if="{{flag}}">
     <view class="zhixian"></view>
-   <view class="imgbox">
-   <image src="../../img/客服.png"/>
-   <view class="upimg"><text>上传图片</text></view>
+   <view class="imgbox"><image src="{{images[1]}}"></image>
+   <!-- <image src="../../img/客服.png"/> -->
+   
+   <view class="upimg" bind:tap="upload"><text>上传图片</text></view>
+   <view class="cancel" bind:tap="cancel" data-index="1"><text>撤回图片</text></view>
+   <view class="upload" bind:tap="comfirm" data-index="1"><text>确认上传</text></view>
    </view>
    </view>
    </view>
@@ -77,7 +83,7 @@
    </view>
    <text class="content">联系客服</text>
    </view>
-   <view class="function">
+   <view class="function" bind:tap="gotochat">
    <view class="funcimg"><image src="../../img/关于我们.png"/>
    </view>
    <text class="content">联系顾客</text>
@@ -93,24 +99,27 @@
    <view class="moremsg">
    <view class="msgitem">
    <text class="first">服务类型</text>
-   <text class="last">快递代取</text>
+   <text class="last">{{list.type}}</text>
    </view>
    <view class="msgitem">
    <text class="first">服务地址</text>
-   <text class="last">三区XX楼外卖架</text>
+   <text class="last">{{list.incidentalMsg.address}}</text>
    </view>
    <view class="msgitem">
-   <text class="last">某先生(11111111111)</text>
+   <text class="last">{{list.incidentalMsg.name}}({{list.incidentalMsg.phone}})</text>
    </view>
    <view class="msgitem">
    <text class="first">配送骑手：</text>
-   <text class="last">某先生</text>
+   <text class="last">{{list.receiverId}}</text>
    </view>
    <view class="diver2"></view>
    <view class="msgitem">
    <text class="first">订单号：</text>
-   <text class="last">aaaaaaaaaaa</text>
+   <text class="last">{{list.id}}</text>
    </view>
+   <view class="msgitem">
+    <text class="first">备注：</text>
+   <text class="last">{{list.remark}}</text></view>
    </view>
    <view class="arrive">
    <view class="confirmarr">确认送达</view>

@@ -10,19 +10,27 @@ Page({
     list: [],
     inter: '',
     statu: [],
-    message:['1','2','3','4','5','6','7']
+    message: ['1', '2', '3', '4', '5', '6', '7'],
+    zhuti: '',
+    check: 1,
+    comfirm: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const app = getApp();
+    this.setData({
+      zhuti: app.globalData.zhuti
+    })
     const token = wx.getStorageSync('token') || ''
-    const list = wx.getStorageSync('orderlist') || '';
+    const list = wx.getStorageSync('orderlist');
     this.setData({
       list: list,
       token: token
     })
+    console.log(list)
     this.startInter()
   },
   getdetails() {
@@ -33,10 +41,70 @@ Page({
         'token': this.data.token
       },
       success(res) {
+        var statu = that.data.statu
         that.setData({
-          statu:res.data.data.msgList
+          statu: res.data.data.msgList
         })
-        console.log(that.data.statu)
+      }
+    })
+  },
+  check() {
+    var that = this
+    wx.showModal({
+      title: '请确认您的快递',
+      complete: (res) => {
+        if (res.cancel) {
+          return
+        }
+        if (res.confirm) {
+          wx.request({
+            url: this.data.rooturl + '/pt/check',
+            method: 'POST',
+            data: {
+              'taskId': this.data.list.id
+            },
+            header: {
+              'token': this.data.token
+            },
+            success(res) {
+              console.log(res)
+              that.setData({
+                check: 0
+              })
+            }
+          })
+        }
+      }
+    })
+
+  },
+  comfirm() {
+    var that = this
+    wx.showModal({
+      title: '请确认送达',
+      content: '',
+      complete: (res) => {
+        if (res.cancel) {
+          return
+        }
+        if (res.confirm) {
+          wx.request({
+            url: that.data.rooturl + '/pt/confirm',
+            method: 'POST',
+            data: {
+              'taskId': that.data.list.id
+            },
+            header: {
+              'token': that.data.token
+            },
+            success(res) {
+              console.log(res)
+              that.setData({
+                confirm: 0
+              })
+            }
+          })
+        }
       }
     })
   },
@@ -54,10 +122,10 @@ Page({
     clearInterval(that.data.inter)
   },
 
-  onReady() { 
+  onReady() {
 
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */

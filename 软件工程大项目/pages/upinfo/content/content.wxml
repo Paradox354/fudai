@@ -1,5 +1,5 @@
 <!--pages/upinfo/content/content.wxml-->
-<view class="container">
+<view class="{{zhuti}}">
   <tabBar selected="1"></tabBar>
 <scroll-view class="out" scroll-y>
   <view class="box1">
@@ -11,14 +11,14 @@
   <text>申请售后</text>
   </view>
   <view class="funbox">
-  <view class="head"><image src="../../../img/head.png"/></view>
+  <view class="head" bind:tap="comfirm"><image src="../../../img/head.png"/></view>
   <text>确认收货</text>
   </view>
   <view class="funbox">
   <view class="head"><image src="../../../img/head.png"/></view>
   <text>联系客服</text>
   </view>
-  <view class="funbox">
+  <view class="funbox" bind:tap="gotochat">
   <view class="head"><image src="../../../img/head.png"/></view>
   <text>联系骑手</text>
   </view>
@@ -30,7 +30,7 @@
   </view>
   <view class="box2">
   <view class="idinfo">
-  <view class="idhead"><image src="../../../img/home.png"/></view>
+  <view class="idhead"><image src="{{images}}"/></view>
   <view class="id">{{name}}</view>
   <view class="time">{{list.createTime}}</view>
   <view class="price">￥ {{list.price}}</view>
@@ -47,9 +47,10 @@
   </view>
   <block>
     <view class="packinfo">
-  <view class="company">{{list.from}}</view>
+  <view class="company">{{list.company}}</view>
   <view class="size">{{list.size}}</view>
-  <view class="code">{{list.incidentalMsg.code}}</view>
+  <view class="code"><text>{{list.incidentalMsg.code}}</text>
+  <view class="imgview"><image src="{{list.incidentalMsg.picture}}" bindtap="previewImage"/></view></view>
   <view class="diver"></view>
   </view>
   </block>
@@ -59,7 +60,7 @@
   <view><text class="treat">服务类型：</text><text class="treatname">{{list.type}}</text></view>
   <view><text class="treat">服务地址：</text><text class="treatname">{{list.incidentalMsg.address}}</text></view>
   <view><text class="treatname">{{list.incidentalMsg.name}}</text></view>
-  <view><text class="treat">配送骑手：</text><text class="treatname">缺</text></view>
+  <view><text class="treat">配送骑手：</text><text class="treatname">{{list.receiverId}}</text></view>
   <view class="diver"></view>
   <view><text class="treat">订单号：</text><text class="treatname">{{list.id}}</text></view>
   </view>

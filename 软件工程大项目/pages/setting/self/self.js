@@ -13,8 +13,13 @@ Page({
       selectedDormitory: '101',
       phone:'',
       name:'',
+      zhuti:''
   },
   onLoad(options) {
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
   },
   comfirm()
   {
