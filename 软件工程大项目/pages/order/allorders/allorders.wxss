@@ -9,6 +9,15 @@
   background-size: 100% 100%;
   background-position: center;
 }
+.info {
+  position: absolute;
+  left: 12%;
+  width: 60%;
+  top: 40%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}
 .container2 {
   position: absolute;
   top: 0%;
@@ -52,7 +61,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 .out .box{ 
    position: relative;
    width: 360px;
-  height: 160px;
+  height: 180px;
   flex-shrink: 0;
    left: 4%;
    margin-top: 3%;
@@ -85,7 +94,7 @@ flex-shrink: 0;
  }
  .time {
    position: absolute;
-   top: 23%;
+   top: 18%;
    left: 15%;
    color: #9C8CCA;
   font-family: Inter;
@@ -120,48 +129,37 @@ font-weight: 400;
 line-height: normal;
  }
  .from {
-  width: 80px;
-  height: 30px;
   flex-shrink: 0;
   color: #000;
   font-family: STFangsong;
-font-size: 20px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-  position: absolute;
-  left: 11%;
-  top: 50%;
  }
  .jiantou {
-   position: absolute;
-   top: 52%;
-   left: 30%;
+   display: flex;
+    align-items: center;
  }
  .to {
-  width: 80px;
-  height: 30px;
   flex-shrink: 0;
   color: #000;
   font-family: STFangsong;
-font-size: 20px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-  position: absolute;
-  left: 55%;
-  top: 50%;
  }
  .price {
   position: absolute;
   left: 79%;
-  top: 49%;
+  top: 40%;
   width: 59px;
 height: 40px;
 flex-shrink: 0;
 color: #EFA515;
 font-family: STFangsong;
-font-size: 24px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -179,18 +177,18 @@ height: 18px;
 flex-shrink: 0;
 color: #000;
 font-family: Inter;
-font-size: 13px;
+font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 position: absolute;
-bottom: 5%;
+bottom: 8%;
 left: 7%;
 }
 .getorder {
   position: absolute;
-  bottom: 1%;
-  height: 20%;
+  bottom: 3%;
+  height: 18%;
   width: 30%;
   right: 5%;
   border-radius: 20px;

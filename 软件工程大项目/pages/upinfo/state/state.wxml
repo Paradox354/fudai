@@ -9,20 +9,21 @@
           </view>
           <view class="info">
             <view >
-              <text class="orderstate" wx:if="{{item.type!=3&&item.type!=7}}">{{item.message}}</text>
+              <text class="orderstate" wx:if="{{item.type!=6&&item.type!=3&&item.type!=7}}">{{item.message}}</text>
               <text class="orderstate" wx:else>{{item.message.msg}}</text>
+              <text class="orderstate" wx:if="{{item.type==6}}">{{item.message.reason}}</text>
               <text class="time">{{item.createTime}}</text>
             </view>
             <view><text class="orderstate"></text>
-              <view class="confirm" wx:if="{{item.type==3&&check==1}}" bind:tap="check">确认</view>
-              <view class="confirm" wx:if="{{item.type==7&&comfirm==1}}" bind:tap="comfirm">确认</view>
+              <view class="confirm" wx:if="{{item.type==3&&check==1&&!item.message.isSure}}" bind:tap="check">确认</view>
+              <view class="confirm" wx:if="{{item.type==7&&confirm==1&&!item.message.isSure}}" bind:tap="comfirm">确认</view>
             </view>
           </view>
         </view>
         <view class="box" >
           <view class="shoot"></view>
         <view class="huowu" wx:if="{{item.type==3||item.type==7}}">
-            <image src='{{item.message.picture}}'/>
+            <image src='{{item.message.picture}}' bind:tap="previewImage" data-imgsrc='{{item.message.picture}}'/>
         </view>
         </view>
       </block>

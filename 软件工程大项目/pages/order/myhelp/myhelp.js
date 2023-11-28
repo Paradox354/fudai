@@ -19,6 +19,7 @@ Page({
     maxP:10,
     list:[],
     zhuti:'',
+    respo:''
   },
 
   /**
@@ -30,29 +31,25 @@ Page({
         zhuti:app.globalData.zhuti
       })
       console.log(this.data.zhuti)
-      var that=this
-      const token = wx.getStorageSync('token') || ''
-      this.setData({
-        list:[],
-        token:token
-      })
-        wx.request({
-          url: that.data.rooturl+'/pt/list/acp',
-          method:'get',
-          data:
-          { 
-          },
-          header:{
-            'token':that.data.token
-          },
-          success(res){
-            that.setData({
-              list:that.data.list.concat(res.data.data)
-            })
-            console.log(res)
-            console.log(that.data.list)
-          }
-        })
+
+  },
+  cancelList:function(e){
+    var that=this
+    wx.showModal({
+      editable: true,
+      title:'请输入取消原因',
+      complete: (res) => {
+        if (res.cancel) {
+          return
+        }
+        if (res.confirm) {
+          that.setData({
+            respo:res.content
+          })
+          this.cancel(e)
+        }
+      }
+    })
   },
   cancel(event)
     {
@@ -63,13 +60,15 @@ Page({
         method:'POST',
         data:
         { 
-          'taskId':id
+          'taskId':id,
+          'reason':that.data.respo
         },
         header:{
           'token':that.data.token
         },
         success(res){
-          that.onLoad()
+          console.log(res)
+          that.onShow()
       }
       })
     },
@@ -88,7 +87,7 @@ Page({
           'token':that.data.token
         },
         success(res){
-          that.onLoad()
+          that.onShow()
       }
       })
     },
@@ -100,7 +99,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    var that=this
+    const token = wx.getStorageSync('token') || ''
+    this.setData({
+      list:[],
+      token:token
+    })
+      wx.request({
+        url: that.data.rooturl+'/pt/list/acp',
+        method:'get',
+        data:
+        { 
+        },
+        header:{
+          'token':that.data.token
+        },
+        success(res){
+          that.setData({
+            list:that.data.list.concat(res.data.data)
+          })
+          console.log(res)
+          console.log(that.data.list)
+        }
+      })
   },
 
   /**

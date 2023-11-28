@@ -17,6 +17,58 @@
   background-size: 100% 100%;
   background-position: center;
 }
+.ordercontent{
+  position: relative;
+  background-color: rgba(119, 0, 255, 0.3);
+  border: blue;
+  border-width: 2rpx;
+  border-radius: 5%;
+  padding: 2%;
+}
+.ordercontentmy{
+  position: relative;
+  background-color: rgba(119, 0, 255, 0.3);
+  border: blue;
+  right: 132rpx;
+  border-width: 2rpx;
+  border-radius: 5%;
+  padding: 2%;
+}
+.ordercontentmy image {
+  position: relative;
+  max-width: 180rpx;
+  max-height: 180rpx;
+  border-radius: 5%;
+  top: 2rpx;
+  left: 25rpx;
+}
+.ordercontent image {
+  position: relative;
+  max-width: 180rpx;
+  max-height: 180rpx;
+  border-radius: 5%;
+  top: 2rpx;
+  left: 25rpx;
+}
+.address{
+  position: relative;
+  font-size: 20px;
+  margin: 2rpx;
+}
+.code{
+  position: relative;
+  font-size: 20px;
+  margin: 2rpx;
+}
+.arrname {
+  position: relative;
+  font-size: 20px;
+  margin: 2rpx;
+}
+.kehuphone {
+  position: relative;
+  font-size: 20px;
+}
 .name {
   position: absolute;
   top: 0%;

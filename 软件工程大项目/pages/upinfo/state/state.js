@@ -13,7 +13,8 @@ Page({
     message: ['1', '2', '3', '4', '5', '6', '7'],
     zhuti: '',
     check: 1,
-    comfirm: 1
+    confirm: 1,
+    image:''
   },
 
   /**
@@ -28,7 +29,7 @@ Page({
     const list = wx.getStorageSync('orderlist');
     this.setData({
       list: list,
-      token: token
+      token: token,
     })
     console.log(list)
     this.startInter()
@@ -41,10 +42,10 @@ Page({
         'token': this.data.token
       },
       success(res) {
-        var statu = that.data.statu
         that.setData({
           statu: res.data.data.msgList
         })
+        console.log(that.data.statu)
       }
     })
   },
@@ -68,6 +69,10 @@ Page({
             },
             success(res) {
               console.log(res)
+              wx.showToast({
+                title: '已确认货物',
+                icon:'success'
+              })
               that.setData({
                 check: 0
               })
@@ -99,9 +104,14 @@ Page({
             },
             success(res) {
               console.log(res)
+              wx.showToast({
+                title: '已确认收货',
+                icon:'success'
+              })
               that.setData({
                 confirm: 0
               })
+              console.log(that.data.confirm)
             }
           })
         }
@@ -166,5 +176,13 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  previewImage: function (e) {
+    var current = e.target.dataset.imgsrc
+    var that=this;
+    wx.previewImage({
+      urls:[current],
+      current:current
+    })
+  },
 })

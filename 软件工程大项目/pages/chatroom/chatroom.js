@@ -51,6 +51,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    this.onLoad()
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -78,7 +79,27 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-
+    var that=this;
+    const token=wx.getStorageSync('token');
+    this.setData({
+      token:token
+    })
+    console.log(token)
+    wx.request({
+      url: that.data.rooturl+'/chat/list?page=1&&pageSize=10',
+      method:'GET',
+      header:{
+        'token':token
+      },
+      success(res)
+      {
+        that.setData({
+          list:res.data
+        })
+        console.log(that.data.list)
+      }
+    })
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -91,13 +112,17 @@ Page({
   /**
    * 用户点击右上角分享
    */
+  
+  onTabItemTap(item) {
+    this.onLoad();
+ },
   onShareAppMessage() {
 
   },
   jump :function(e) {
     var index=e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: '/pages/chat/chat?taskId='+this.data.list[index].taskId,
+      url: '/pages/chat/chat?taskId='+this.data.list[index].taskId+'&senderId='+this.data.list[index].lastMsg.senderId+'&role='+this.data.list[index].role,
     })
   }
 })

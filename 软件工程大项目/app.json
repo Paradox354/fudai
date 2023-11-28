@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index","pages/order/myhelp/myhelp",
+    "pages/index/index",
+    "pages/order/myhelp/myhelp",
     "pages/order/myorders/myorders",
     "pages/upinfo/state/state",
     "pages/upinfo/content/content",
@@ -10,7 +11,6 @@
     "pages/chatroom/chatroom",
     "pages/takekuaidi/takekuaidi",
     "pages/order/allorders/allorders",
-    
     "pages/selfprivacy/selfprivacy",
     "pages/setting/setting",
     "pages/setting/self/self",

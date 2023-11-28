@@ -135,11 +135,15 @@ line-height: normal;
 .huowu {
   position: relative;
   top: 20px;
+
   left: 15%;
   width: 60px;
   height: 60px;
 }
 .huowu image {
+  border: white 1px;
+  border-style: solid;
+  border-radius: 10%;
   max-width: 100%;
   max-height: 100%;
 }

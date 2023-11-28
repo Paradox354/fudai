@@ -39,7 +39,7 @@ Page({
           'token':that.data.token
         },
         success(res){
-        that.onLoad()
+        that.onShow()
       }
       })
     },
@@ -59,7 +59,7 @@ Page({
           'token':that.data.token
         },
         success(res){
-          that.onLoad()
+          that.onShow()
       }
       })
     },
@@ -68,29 +68,7 @@ Page({
       this.setData({
         zhuti:app.globalData.zhuti
       })
-      var that=this
-      const token = wx.getStorageSync('token') || ''
-      this.setData({
-        list:[],
-        token:token
-      })
-        wx.request({
-          url: that.data.rooturl+'/pt/list/pub',
-          method:'get',
-          data:
-          { 
-          },
-          header:{
-            'token':that.data.token
-          },
-          success(res){
-            that.setData({
-              list:that.data.list.concat(res.data.data)
-            })
-            console.log(res)
-            console.log(that.data.list)
-          }
-        })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -103,7 +81,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    var that=this
+    const token = wx.getStorageSync('token') || ''
+    this.setData({
+      list:[],
+      token:token
+    })
+      wx.request({
+        url: that.data.rooturl+'/pt/list/pub',
+        method:'get',
+        data:
+        { 
+        },
+        header:{
+          'token':that.data.token
+        },
+        success(res){
+          that.setData({
+            list:that.data.list.concat(res.data.data)
+          })
+          console.log(res)
+          console.log(that.data.list)
+        }
+      })
   },
 
   /**

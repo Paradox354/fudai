@@ -1,61 +1,119 @@
 // pages/my/my.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     rooturl: 'https://rrewuq.com',
     avatarUrl: '',
-    name: "",
-    zhuti:''
+    avatarUrl1:'',
+    nickname: "",
+    zhuti: '',
+    isCertificate: true,
+    open: 0,
+    imgpath: ''
   },
   onLoad() {
-    const app=getApp();
+    const app = getApp();
     this.setData({
-      zhuti:app.globalData.zhuti
+      zhuti: app.globalData.zhuti
     })
     const token = wx.getStorageSync('token') || '';
     if (token) {
       console.log(token);
-      this.getinfo()
+      this.gewxMsg()
     } else {
       wx.showModal({
         title: '请登录',
         content: '',
         complete: (res) => {
-          if(res.confirm){this.login();}
-          else{}
+          if (res.confirm) {
+            this.login();
+          }
         }
       })
     }
   },
-  getinfo()
+  gewxMsg()
   {
-    let that = this
-    wx.getStorage({ //异步获取缓存
-      key: "name", //本地缓存中指定的 key
-      success: (res) => {
-        console.log('获取缓存成功', res)
-        this.setData({
-          name: res.data.nickName,
-          avatarUrl: res.data.avatarUrl
-        })
+    var that=this;
+    wx.request({
+      url: that.data.rooturl+'/user/wxMsg',
+      method:'GET',
+      header:
+      {
+        'token':wx.getStorageSync('token')
       },
-      fail(res) {
-        console.log(res)
-        wx.showModal({
-          title: '感谢您使用！',
-          content: '请允许小程序可以使用您的头像和名字！',
-          success(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-              that.getUserProfile()
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-            }
-          }
+      success(res)
+      {
+        var name={
+          nickName:res.data.data.username,
+          avatarUrl:res.data.data.avatar
+        }
+        that.setData({
+          nickname:name.nickName,
+          avatarUrl:name.avatarUrl
         })
+        console.log(name)
+        wx.setStorageSync('name', name)
+      }
+    })
+  },
+  upwxMsg(imgpath) {
+    var that = this;
+    wx.request({
+      url: that.data.rooturl + '/user/wxMsg',
+      method: 'POST',
+      data: {
+        'name': that.data.nickname,
+        'avatar': imgpath
+      },
+      header: {
+        'token': wx.getStorageSync('token')
+      },
+      success(res)
+      {
+        console.log(res)
+      }
+    })
+    that.setData({
+      open: 0
+    })
+    wx.hideLoading()
+  },
+  upimg() {
+    var that = this
+    wx.showLoading({
+      title: '正在上传',
+    })
+    wx.uploadFile({
+      url: that.data.rooturl + "/file/upload",
+      filePath: that.data.avatarUrl,
+      name: 'files',
+      formData: {},
+      header: {
+        "Content-Type": "application/form-data",
+        'token': wx.getStorageSync('token')
+      },
+      success(res) {
+        console.log(res)
+        const data = JSON.parse(res.data);
+        var imgpath = data.data[0]
+        that.upwxMsg(imgpath)
+      },
+    })
+  },
+  getinfo() {
+    let that = this
+    wx.showModal({
+      title: '感谢您使用！',
+      content: '请允许小程序可以使用您的头像和名字！',
+      success(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          that.setData({
+            open: 1
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
   },
@@ -89,29 +147,7 @@ Page({
       }
     })
   },
-  getUserProfile(e) {
-    wx.getUserProfile({
-      desc: '用于保存用户的昵称',
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-        })
-        wx.setStorage({
-          key: 'name', //本地缓存中指定的 key(类型：string)
-          data: res.userInfo,
-          success: (s) => {
-            this.setData({
-              avatarUrl: res.userInfo.avatarUrl,
-              name: res.userInfo.nickName
-            })
-          },
-          fail: (f) => {}
-        })
-      }
-    })
-  },
-  //登录的回调函数
+
   login() {
     var that = this;
     wx.login({
@@ -126,6 +162,9 @@ Page({
           },
           success: (res) => {
             console.log(res)
+            that.setData({
+              isCertificate: res.data.data.isCertificate,
+            })
             wx.setStorageSync('token', res.data.data.token);
             wx.setStorageSync('userid', res.data.data.userId);
             that.getinfo()
@@ -142,6 +181,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    const app = getApp();
+    this.setData({
+      zhuti: app.globalData.zhuti
+    })
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -177,12 +220,22 @@ Page({
   onReachBottom() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  onShareAppMessage() {},
+  changeNickName(e) {
+    let name = e.detail.value;
+    if (name.length === 0) return;
+    this.setData({
+      nickname: e.detail.value
+    })
+  },
+  onChooseAvatar(e) {
+    const {
+      avatarUrl
+    } = e.detail
+    console.log(avatarUrl);
+    this.setData({
+      avatarUrl: avatarUrl,
+    })
   },
   jumptoprivacy: function () {
     wx.navigateTo({
@@ -198,7 +251,7 @@ Page({
   },
   jumptoconfig: function () {
     wx.navigateTo({
-      url: '../idconfig/idconfig',
+      url: '../idconfig/idconfig?isCertificate=' + this.data.isCertificate,
       /*跳转到course页面*/
     })
   },

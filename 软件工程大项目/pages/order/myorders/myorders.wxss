@@ -114,10 +114,8 @@ flex-shrink: 0;
  }
  .orderstate {
    position: absolute;
-   right: 10%;
+   right: 9%;
    top: 10%;
-   width: 80px;
-height: 16px;
 flex-shrink: 0;
 color: #000;
 font-family: STFangsong;
@@ -127,52 +125,50 @@ font-weight: 400;
 line-height: normal;
  }
  .from {
-  width: 80px;
-  height: 30px;
   flex-shrink: 0;
   color: #000;
   font-family: STFangsong;
-font-size: 20px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-  position: absolute;
-  left: 11%;
-  top: 50%;
  }
  .jiantou {
-  position: absolute;
-  top: 52%;
-  left: 30%;
-}
-.to {
-  width: 80px;
-  height: 30px;
+   display: flex;
+    align-items: center;
+ }
+ .to {
   flex-shrink: 0;
   color: #000;
   font-family: STFangsong;
-font-size: 20px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-  position: absolute;
-  left: 55%;
-  top: 50%;
  }
  .price {
   position: absolute;
   left: 79%;
-  top: 49%;
+  top: 53%;
   width: 59px;
 height: 40px;
 flex-shrink: 0;
 color: #EFA515;
 font-family: STFangsong;
-font-size: 24px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
  }
+ .info {
+  position: absolute;
+  left: 12%;
+  width: 60%;
+  top: 53%;
+  display: flex;
+  justify-content: space-between;
+  align-items: space-between;
+}
  .divider {
   position: absolute;
   top: 75%;
@@ -186,17 +182,17 @@ line-height: normal;
   flex-shrink: 0;
   color: #000;
   font-family: Inter;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   position: absolute;
-  bottom: 5%;
+  bottom: 7%;
   left: 7%;
   }
 .getorder {
   position: absolute;
-  bottom: 0%;
+  bottom:1.5%;
   height: 20%;
   width: 20%;
   right: 30%;
@@ -211,7 +207,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .finishorder {
   position: absolute;
-  bottom: 0%;
+  bottom: 1.5%;
   height: 20%;
   width: 20%;
   right: 5%;

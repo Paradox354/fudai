@@ -50,7 +50,7 @@
   <view class="company">{{list.company}}</view>
   <view class="size">{{list.size}}</view>
   <view class="code"><text>{{list.incidentalMsg.code}}</text>
-  <view class="imgview"><image src="{{list.incidentalMsg.picture}}" bindtap="previewImage"/></view></view>
+  <view class="imgview" wx:if="{{list.incidentalMsg.picture}}"><image src="{{list.incidentalMsg.picture}}" bindtap="previewImage"/></view></view>
   <view class="diver"></view>
   </view>
   </block>

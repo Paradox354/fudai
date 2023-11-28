@@ -19,9 +19,8 @@
 }
 .pingtai {
   position: absolute;
-  top: 1%;
+  top: 10px;
   left: 30%;
-  width: 375px;
 height: 40px;
 flex-shrink: 0;
 color: rgba(101, 101, 101, 0.80);
@@ -79,26 +78,24 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .chatobject {
   position: absolute;
-  top: 20%;
+  top: 16%;
   left: 28%;
-height: 23px;
 flex-shrink: 0;
 color: #000;
 font-family: STFangsong;
-font-size: 18px;
+font-size: 25px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
 .chatmsg {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 28%;
-height: 18px;
 flex-shrink: 0;
 color: #000;
 font-family: STFangsong;
-font-size: 14px;
+font-size: 17px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
@@ -106,6 +103,14 @@ line-height: normal;
 .new {
   position: absolute;
   right: 5%;
-  top: 30%;
-  color: red;
+  top: 40%;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: white;
+  border-radius: 50%;
+  background-color: red;
+  color: rgb(255, 255, 255);
 }

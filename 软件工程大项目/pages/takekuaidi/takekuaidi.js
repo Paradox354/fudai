@@ -1,11 +1,8 @@
 var app=getApp()
 // pages/takekuaidi/takekuaidi.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+      lianxi:'',
       controls:[
       ],
       code:'',
@@ -16,6 +13,7 @@ Page({
         price:0,
         imgpath:'',
         codeValue: "",
+        from:'',
       },
       expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
       expressList2: ['小件￥2','中件￥3','大件￥5'],
@@ -169,14 +167,44 @@ Page({
      }
   })
 },
+cancelimg(e)
+{
+  var i=e.currentTarget.dataset.index;
+  var that=this;
+  wx.showModal({
+    title: '确认删除照片吗',
+    content: '',
+    complete: (res) => {
+      if (res.confirm) {
+        var a='controls['+i+'].imgpath';
+        var imagges=that.data.images;
+        imagges.pop()
+        that.setData({
+          [a]:'',
+          images:imagges,
+          imgnum:this.data.imgnum-1,
+          flagnum:that.data.flagnum-1
+        })
+        
+      }
+    }
+  })
+},
   bindPickerChange: function (e) {
     var index = e.detail && e.detail.value;
     var i=e.currentTarget.dataset.index;
     if (index !== undefined) {
       var selectedExpress = this.data.expressList[index];
       var a='controls['+i+'].company'
+      var b='controls['+i+'].from'
+      var from='快递站';
+      if(selectedExpress=='邮政快递')
+      {
+        from='邮政'
+      }
       this.setData({
-        [a]:selectedExpress
+        [a]:selectedExpress,
+        [b]:from
       })
     }
 },
@@ -233,6 +261,15 @@ formsubmit()
     });
     return;
   }
+  var name=this.data.lianxi
+  if(!name){
+    wx.showToast({
+      title: '请填写收件人姓名',
+      icon: 'none',
+      duration: 2000
+    });
+    return;
+  }
   if(!this.check())
   {
     return;
@@ -256,9 +293,14 @@ formsubmit()
 //上传图片和信息
 
 upload_info: function(i,pic) {
+  
+wx.showLoading({
+  title: '提交订单中'
+ })
   var that =this;
   var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
-  var name=wx.getStorageSync('name').nickName
+  var name=that.data.lianxi
+  console.log(name)
   var incidentalMsg={
     "name": name,
     'code':this.data.controls[i].codeValue,
@@ -268,7 +310,7 @@ upload_info: function(i,pic) {
 }
   let data = {
   'type':this.data.type,
-  'from':'快递站',
+  'from':this.data.controls[i].from,
   'building':this.data.building,
   'layer':this.data.layer,
   "incidentalMsg":incidentalMsg,
@@ -289,15 +331,23 @@ console.log(data)
    data: data,
    success(res) {
    console.log(res)
+
+   setTimeout(()=>{},2000);
    wx.navigateBack({
-    delta: 2
+    delta: 2,
+    success: function(){
+      wx.hideLoading()
+      wx.showToast({
+        title: '提交订单成功',
+        icon: 'success'
+      })
+    }
   })
    }
  });
 },
 uploadfile: function (filePath,i){
   let that=this
-  console.log(filePath)
   if(that.data.imgnum==0||filePath=='')
   {
     that.upload_info(i,'')
@@ -344,10 +394,9 @@ handleremark: function(event) {
 },
 handlePriceChange: function (e) {
   const index = e.detail.value;
-  var a= parseInt(index)
-  if(index==''){a=0}
+  console.log(index)
   this.setData({
-    money:a
+    lianxi: index
   });
 },
 check(){
@@ -401,7 +450,8 @@ addControl: function () {
       size:'',
       imgpath:'',
       codeValue: "",
-      flag:0
+      flag:0,
+      from:''
     },
     controls:this.data.controls.concat(this.data.part)
   })
@@ -447,6 +497,9 @@ handlePhoneNumberInput: function(event) {
     buildingOptions.push(i + '号楼');
   }
   return buildingOptions;
+}
+function after(){
+
 }
 function generateDormitoryOptions() {
   const dormitoryOptions = [];

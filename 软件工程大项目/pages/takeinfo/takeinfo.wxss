@@ -185,17 +185,26 @@ background-color: salmon;
 .imgbox {
   position: relative;
   left: 24%;
-  width: 70%;
+  width: 60%;
   height: 100rpx;
   display: flex;
 }
 .code image {
-  max-width: 100rpx;
-  max-height: 100rpx;
+  position: absolute;
+  bottom: 1%;
+  border: black 1px;
+  border-radius: 10%;
+  border-style: solid;
+  left: 1%;
+  max-width: 80rpx;
+  max-height: 80rpx;
 }
 .imgbox image {
+  border: white 1px;
+  border-style: solid;
+  border-radius: 10%;
   max-width: 100rpx;
-  max-height: 100%;
+  max-height: 99%;
 }
 .upimg {
   position: relative;
@@ -297,9 +306,9 @@ line-height: 111.341%; /* 22.268px */
 }
 .moremsg {
   position: relative;
-  width: 75%;
+  width: 85%;
   margin-top: 25rpx;
-  left: 12.5%;
+  left: 7.5%;
 height: 235px;
 flex-shrink: 0;
   border-radius: 10px;
@@ -363,20 +372,17 @@ background: linear-gradient(0deg, rgba(244, 66, 66, 0.20) 0%, rgba(244, 66, 66, 
 }
 .cancel {
   position: relative;
-  left: 2%;
-  width: 90rpx;
-  border-radius: 8px;
-background: rgba(250, 3, 3, 0.4);
-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+  height: 30rpx;
+  width: 30rpx;
 }
-.cancel text {
-  position: absolute;
-  top: 8rpx;
-  left: 13rpx;
+.cancel image {
+max-width: 100%;
+max-height: 100%;
+border-style: hidden;
 }
 .upload {
   position: relative;
-  left: 5%;
+  left: 13rpx;
   width: 90rpx;
   border-radius: 8px;
 background: rgba(76, 245, 112, 0.4);

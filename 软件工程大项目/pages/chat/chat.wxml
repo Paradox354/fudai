@@ -1,41 +1,81 @@
 <!--pages/chat/chat.wxml-->
 <view class="{{zhuti}}">
-<view class="name">
-<text class="id">骑手名称</text>
-<view class="phone"><image src="../../img/phone.png"/></view>
-</view>
-<view class="chatmsg">
-<scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}" scroll-top="{{scrollTop}}">
-<block wx:for="{{messages}}" wx:key="unqiue">
-<view wx:if="{{item.type==1}}">
-  <view class="message-item" wx:if="{{item.senderId!=userId}}">
-    <view class="head1"><image src="../../img/关于我们.png"/></view>
-    <text class="message-content">{{item.msg}}
-    </text>
+  <view class="name">
+    <text class="id">{{name}} {{sendname}}</text>
+    <view class="phone">
+      <image src="../../img/phone.png" />
+    </view>
   </view>
-  <view class="message-itemmy" wx:else>
-    <text class="message-contentmy">
-      {{item.msg}}
-    </text>
-    <view class="head2"><image src="../../img/home.png"/></view>
+  <view class="chatmsg">
+    <scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}" scroll-top="{{scrollTop}}">
+      <block wx:for="{{messages}}" wx:key="unqiue">
+        <view wx:if="{{item.type==1}}">
+          <view class="message-item" wx:if="{{item.senderId!=userId}}">
+            <view class="head1">
+              <image src="../../img/关于我们.png" />
+            </view>
+            <text class="message-content">{{item.msg}}
+            </text>
+          </view>
+          <view class="message-itemmy" wx:else>
+            <text class="message-contentmy">
+              {{item.msg}}
+            </text>
+            <view class="head2">
+              <image src="../../img/home.png" />
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.type==2}}">
+          <view class="message-item" wx:if="{{item.senderId!=userId}}">
+            <view class="head1">
+              <image src="../../img/关于我们.png" />
+            </view>
+            <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
+          </view>
+          <view class="message-itemmy" wx:else>
+            <view class="myimg">
+              <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
+            </view>
+            <view class="head2">
+              <image src="../../img/home.png" />
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{item.type==3}}">
+          <view class="message-item" wx:if="{{item.senderId==userId}}">
+            <view class="head1">
+              <image src="../../img/关于我们.png" />
+            </view>
+            <view class="ordercontent">
+              <view class="address">送达地址：{{item.msg.address}}</view>
+              <view class="code">取件码:{{item.msg.code}}</view>
+              <view class="arrname">客户姓名:{{item.msg.name}}</view>
+              <view class="kehuphone">客户联系电话:{{item.msg.phone}}</view>
+              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}"/>
+            </view>
+          </view>
+          <view class="message-itemmy" wx:else>
+            <view class="ordercontentmy">
+              <view class="address">送达地址：{{item.msg.address}}</view>
+              <view class="code">取件码:{{item.msg.code}}</view>
+              <view class="arrname">客户姓名:{{item.msg.name}}</view>
+              <view class="kehuphone">客户联系电话:{{item.msg.phone}}</view>
+              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}"/>
+            </view>
+            <view class="head2">
+              <image src="../../img/home.png" />
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
   </view>
-</view>
-<view wx:if="{{item.type==2}}">
-  <view class="message-item" wx:if="{{item.senderId!=userId}}">
-    <view class="head1"><image src="../../img/关于我们.png"/></view>
-  <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}"></image>
-</view>
-  <view class="message-itemmy" wx:else>
-  <view class="myimg"><image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}"></image></view>
-    <view class="head2"><image src="../../img/home.png"/></view>
+  <view class="inbox" wx:if="{{statu}}">
+    <view class="upimg" bind:tap="upimg">
+      <image src="../../img/signup.png" />
+    </view>
+    <input type="text" value="{{inputValue}}" bindinput="bindKeyInput" />
+    <view class="send" bind:tap="submitTo">发送</view>
   </view>
-</view>
-</block>
-</scroll-view>
-</view>
-<view class="inbox">
-<view class="upimg" bind:tap="upimg"><image src="../../img/signup.png"/></view>
-<input type="text" value="{{inputValue}}" bindinput="bindKeyInput"/>
-<view class="send" bind:tap="submitTo">发送</view>
-</view>
 </view>

@@ -124,7 +124,7 @@ Page({
     let current = e.currentTarget.dataset.src
     var that=this;
     wx.previewImage({
-      urls:that.data.images,
+      urls:[that.data.list.incidentalMsg.picture],
       current:current
     })
   },

@@ -3,17 +3,15 @@
 <view class="head">认证</view>
 <view class="item">
 <text class="content">学号</text>
-<input type="number" class="moinput" placeholder="输入学号" placeholder-class="phcolor" bindinput="handlenumber"/>
+<input disabled="{{isCertificate}}" value="{{code}}" type="number" class="moinput" placeholder="输入学号" placeholder-class="phcolor" bindinput="handlenumber"/>
 </view>
 <view class="item">
 <text class="content">姓名</text>
-<input type="text" class="moinput" placeholder="输入姓名" placeholder-class="phcolor" bindinput="handlename"/>
+<input disabled="{{isCertificate}}"  value="{{name}}" type="text" class="moinput" placeholder="输入姓名" placeholder-class="phcolor" bindinput="handlename"/>
 </view>
 <view class="item">
 <text class="content">专业</text>
-<input type="text" class="moinput" placeholder="输入专业" placeholder-class="phcolor" bindinput="handleprofessor"/>
+<input disabled="{{isCertificate}}"  value="{{major}}" type="text" class="moinput" placeholder="输入专业" placeholder-class="phcolor" bindinput="handleprofessor"/>
 </view>
-<view class="item">
-<text class="content">官方QQ群:</text>
-</view>
+<view class="confirm" bind:tap="certificate" wx:if="{{!isCertificate}}">认证</view>
 </view>

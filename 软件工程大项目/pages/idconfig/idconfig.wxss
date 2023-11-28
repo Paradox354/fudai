@@ -71,3 +71,17 @@ line-height: normal;
   font-weight: 400;
   line-height: normal;
 }
+.confirm {
+  position: relative;
+  height: 5%;
+  width: 25%;
+  left: 70%;
+  background-color: rgba(255, 255, 255, 0.7);
+  font-family: STFangsong;
+  font-size: 20px;
+  border-radius: 10%;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

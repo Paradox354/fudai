@@ -1,7 +1,6 @@
 
 // pages/order/allorders/allorders.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -59,13 +58,11 @@ Page({
               content: '',
               complete: (res) => {
                 if (res.confirm) {
-                  that.onLoad()
+                  that.onShow()
                 }
               }
             })
           }
-          console.log(res)
-          that.onLoad()
       },
       })
     },
@@ -76,6 +73,24 @@ Page({
       })
       console.log(app.globalData.zhuti)
       console.log(this.data.zhuti)
+      
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow() {
+    const app=getApp();
+    this.setData({
+      zhuti:app.globalData.zhuti
+    })
     var that=this;
     const token = wx.getStorageSync('token') || ''
     this.setData({
@@ -101,20 +116,6 @@ Page({
             console.log(that.data.list)
           }
         })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({

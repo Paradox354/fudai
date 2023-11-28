@@ -1,25 +1,86 @@
 // pages/idconfig/idconfig.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    id:'',
-    name:'',
-    professor:'',
-    zhuti:''
+    code: "",
+    name: "",
+    major: "",
+    zhuti:'',
+    rooturl: 'https://rrewuq.com',
+    isCertificate:true
   },
-
+  certificate()
+  {
+    var that=this
+    wx.showModal({
+      title: '请确认认证信息',
+      complete: (res) => {
+        if (res.confirm) {
+          wx.request({
+            url: that.data.rooturl+'/user/certificate',
+            method:'POST',
+            data:{
+              'code':that.data.code,
+              'name':that.data.name,
+              'major':that.data.major
+            },
+            header:{
+              'token':wx.getStorageSync('token')
+            },
+            success(res)
+            {console.log(res)
+            wx.showModal({
+              title: '认证成功',
+              complete: (res) => {
+                if (res.confirm) {
+                  wx.navigateBack()
+                  {
+                    delta:1
+                  }
+                }
+              }
+            })}
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    var that=this
+    wx.request({
+        url: that.data.rooturl+'/user/certificate',
+        method:'GET',
+        header:{
+          'token':wx.getStorageSync('token')
+        },
+        success(res){
+          console.log(res)
+          if(res.data.message=='操作成功')
+          {
+            that.setData({
+            'code':res.data.data.code,
+            'name':res.data.data.name,
+            'major':res.data.data.major,
+            'isCertificate':true
+          })
+          }
+          else{
+            that.setData({
+              'isCertificate':false
+            })
+          }
+          
+        }
+      })
     const app=getApp();
     this.setData({
       zhuti:app.globalData.zhuti
     })
-
+    this.setData({
+      isCertificate:options.isCertificate
+    })
   },
 
   /**
@@ -73,9 +134,9 @@ Page({
   handlenumber: function(event) {
     let value = event.detail.value; // 获取输入框的值
     this.setData({
-      id: value, // 更新 phoneNumber 属性的值
+      code: value, // 更新 phoneNumber 属性的值
     });
-    console.log(this.data.id)
+    console.log(this.data.code)
   },
   handlename: function(event) {
     let value = event.detail.value; 
@@ -87,8 +148,8 @@ Page({
   handleprofessor: function(event) {
     let value = event.detail.value; // 获取输入框的值
     this.setData({
-      professor: value, // 更新 phoneNumber 属性的值
+      major: value, // 更新 phoneNumber 属性的值
     });
-    console.log(this.data.professor)
+    console.log(this.data.major)
   },
 })

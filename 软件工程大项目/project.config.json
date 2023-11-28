@@ -11,7 +11,7 @@
     "scopeDataCheck": false,
     "coverView": true,
     "es6": true,
-    "postcss": true,
+    "postcss": false,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "preloadBackgroundData": false,

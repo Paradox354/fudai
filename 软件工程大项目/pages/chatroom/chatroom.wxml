@@ -1,17 +1,21 @@
 <!--pages/chatroom/chatroom.wxml-->
 <view class="{{zhuti}}">
-<text class="pingtai">福代互助平台</text>
-<view class="diver"></view>
-<view class="box">
-  <scroll-view class="swipe" scroll-y>
-<block wx:for="{{list}}" wx:key="unique">
-
-  <view class="message" bind:tap="jump" data-index="{{index}}">
-  <view class="head"><image class="headimg" src="../../img/关于我们.png"/></view>
-  <text class="chatobject">{{item.lastMsg.senderId}}</text>
-  <text class="chatmsg">{{item.lastMsg.msg}}</text>
-  <view class="new" wx:if="{{!item.isRead}}">*</view>
-  </view></block>
-</scroll-view>
-</view>
+  <text class="pingtai">福代互助平台</text>
+  <view class="diver"></view>
+  <view class="box">
+    <scroll-view class="swipe" scroll-y>
+      <block wx:for="{{list}}" wx:key="unique">
+        <view class="message" bind:tap="jump" data-index="{{index}}">
+          <view class="head">
+            <image class="headimg" src="../../img/关于我们.png" />
+          </view>
+          <text class="chatobject">{{item.role}} {{item.lastMsg.senderId}}</text>
+          <text class="chatmsg" wx:if="{{item.lastMsg.type==3}}">用户信息</text>
+          <text class="chatmsg" wx:if="{{item.lastMsg.type==2}}">[图片]</text>
+          <text class="chatmsg" wx:if="{{item.lastMsg.type==1}}">{{item.lastMsg.msg}}</text>
+          <view class="new" wx:if="{{!item.isRead}}">{{item.msgNum}}</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
 </view>

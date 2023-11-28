@@ -26,8 +26,8 @@
   </view>
 <view class="divider3"></view>
 <view class="moreprice">
-  <text class="morefont">追加金额</text>
-  <input type="number" class="moinput" placeholder="输入赏金" placeholder-class="phcolor" bindinput="handlePriceChange"/>
+  <text class="morefont">收件人姓名<text class="sign">*</text></text>
+  <input type="text" value="{{lianxi}}" class="moinput" placeholder="请输入姓名" placeholder-class="phcolor" bindinput="handlePriceChange"/>
   </view>
 <view class="divider4"></view>
 </view>
@@ -55,8 +55,9 @@
   </view>
 
   <view class="imgbox">
-  <view class="img">
+  <view class="img" wx:if="{{controls[index].imgpath}}">
     <image src="{{controls[index].imgpath}}" bindtap="previewImage"></image>
+    <view class='cancel' wx:if="{{controls[index].imgpath}}" bind:tap="cancelimg" data-index="{{index}}"><image src="../../img/删除.png"/></view>
   </view>
   <view class="imgview">
   <button type="primary" bindtap="doUpload" data-index="{{index}}">上传图片</button>

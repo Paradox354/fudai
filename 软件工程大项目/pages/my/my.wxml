@@ -6,8 +6,7 @@
 <view class="head" bind:tap="login">
 <image class="headimg" src="{{avatarUrl}}" />
 </view>
-<text class="name">{{name}}</text>
-<text class="number">微信号</text>
+<text class="name">{{nickname}}</text>
 </view>
 <view class="more">
 <scroll-view  class='out' scroll-y>
@@ -33,7 +32,7 @@
 <view class="moreitem">
   <view class="info">
 <image src="../../img/投诉.png"/>
-<text bind:tap="logout">投诉</text>
+<text>投诉</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
@@ -51,7 +50,27 @@
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
-</scroll-view>
-
+<view class="moreitem" bind:tap="logout">
+  <view class="info">
+<image src="../../img/privacy.png"/>
+<text>退出登录</text>
 </view>
+<image class="jiantou" src="../../img/右箭头.png"/>
+</view>
+</scroll-view>
+</view>
+<view class="container3 " wx:if="{{open}}">
+  <view class="renzheng">
+<image src="{{avatarUrl}}" class="uphead"/>
+<view class="upload">  <button open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+  上传头像 
+</button></view>
+
+ <view class="upname">
+  <input type="nickname" placeholder="请输入昵称" bindblur="changeNickName" value="{{nickname}}"/>
+</view>
+<view class="confirm" bind:tap="upimg">确认上传</view>
+</view>
+</view>
+
 </view>

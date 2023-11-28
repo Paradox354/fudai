@@ -11,15 +11,16 @@
           <text class="type">{{item.type}}</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">{{item.status}}</text>
-          <text class="from">{{item.from}}</text>
+          <view class="info">
+            <text class="from">{{item.from}}</text>
           <view class="jiantou">--------</view>
           <text class="to">{{item.building}}号楼</text>
+          </view>
           <text class="price">￥ {{item.price}}</text>
         </view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
-          <view class="finishorder" data-id="{{item.id}}" bind:tap="complete">确认送达</view>
+          <view class="getorder" bind:tap="cancelList" data-id="{{item.id}}">取消订单</view>
         </view>
       </block>
       <view class="zhanwei"></view>
