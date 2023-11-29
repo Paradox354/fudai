@@ -94,7 +94,7 @@ line-height: 111.341%; /* 8.907px */
 height: 70%;
 flex-shrink: 0;
   border-radius: 90px;
-background: #D9D9D9;
+background: rgb(255, 255, 255,0);
 overflow: hidden;
 }
 .head image {
@@ -229,7 +229,7 @@ flex-shrink: 0;
   position: relative;
   left: 20%;
   width: 50%;
-  height: 200rpx;
+  height: 170rpx;
 }
 .jiantou image {
   max-width: 100%;

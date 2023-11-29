@@ -8,12 +8,12 @@
         <view class="box">
         <view class="box2"  bind:tap="jumptoinfo"  data-index="{{index}}">
           <view class="head"></view>
-          <text class="type">{{item.type}}</text>
+          <text class="type">{{item.type}}（{{item.size}}）</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">{{item.status}}</text>
           <view class="info">
             <text class="from">{{item.from}}</text>
-          <view class="jiantou">--------</view>
+          <view class="jiantou"><image src="../../../img/direction.png"/></view>
           <text class="to">{{item.building}}号楼</text>
           </view>
           <text class="price">￥ {{item.price}}</text>

@@ -11,7 +11,7 @@
 }
 .info {
   position: absolute;
-  left: 12%;
+  left: 7%;
   width: 60%;
   top: 40%;
   display: flex;
@@ -27,19 +27,7 @@
   background-size: 100% 100%;
   background-position: center;
 }
-.qqfont {
-  position: absolute;
-  top: 20%;
-  width: 219px;
-height: 21px;
-flex-shrink: 0;
-color: #000;
-font-family: STFangsong;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
+
 .qqgroup {
   position: absolute;
   top: 7%;
@@ -50,6 +38,22 @@ line-height: normal;
   border-radius: 10px;
 background: rgba(255, 255, 255, 0.60);
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+display: flex;
+align-items: center;
+justify-content: space-around;
+font-family: STFangsong;
+font-size: 18px;
+}
+.qqgroup view {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.qqgroup view image{
+  max-height: 60rpx;
+  max-width: 35rpx;
+  
 }
 .out{ 
   position: absolute;
@@ -88,7 +92,6 @@ font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-width: 90px;
 height: 18px;
 flex-shrink: 0;
  }
@@ -137,6 +140,130 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
  }
+ .choose1 {
+   position: absolute;
+   bottom: 0%;
+  width: 90%;
+  height: 550px;
+  flex-shrink: 0;
+  border-radius: 20px 20px 0px 0px;
+border: 2px solid #FFF;
+background: linear-gradient(180deg, #AFD0D9 0%, rgba(175, 208, 217, 0.00) 100%), rgba(255, 255, 255, 0.80);
+font-family: STFangsong;
+font-size: 20px;
+padding: 5%;
+ }
+ .choose2 {
+  position: absolute;
+  bottom: 0%;
+ width: 90%;
+ height: 550px;
+ flex-shrink: 0;
+ border-radius: 20px 20px 0px 0px;
+border: 2px solid #FFF;
+background: linear-gradient(180deg, rgba(240, 193, 206, 0.95) 0%, rgba(247, 221, 228, 0.53) 81.67%, rgba(255, 255, 255, 0.00) 100%), rgba(255, 255, 255, 0.80);
+font-family: STFangsong;
+font-size: 20px;
+padding: 5%;
+}
+ .typename {
+   position: relative;
+   width: 30%;
+ }
+ .typecondition {
+   position: relative;
+   margin-top: 14rpx;
+   margin-bottom: 14rpx;
+   width: 100%;
+   display: flex;
+ }
+ .typecondition2 {
+  position: relative;
+  margin-top: 14rpx;
+  margin-bottom: 14rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+ .typecondition .item {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: rgb(255, 255, 255,0.4);
+ }
+ .typecondition .item1 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .typecondition .item2 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .typecondition .item3 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .typecondition .item4 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .typecondition .item5 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .choose1 image {
+   position: absolute;
+   max-width: 60rpx;
+   max-height: 60rpx;
+   right: 5%;
+ }
+ .choose2 image {
+  position: absolute;
+  max-width: 60rpx;
+  max-height: 60rpx;
+  right: 5%;
+}
+ .typecondition .item6 {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 30%;
+  background: #ff6600;
+ }
+ .positionname{
+   position: relative;
+   margin-top: 35rpx;
+ }
  .jiantou {
    display: flex;
     align-items: center;
@@ -150,6 +277,47 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
  }
+ .building {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300rpx;
+  background: rgb(255, 255, 255,0.4);
+ }
+ .moinput2 {
+  display: flex;
+font-family: STFangsong;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+flex-shrink: 0;
+width: 45%;
+}
+.heng {
+  margin-right: 40rpx;
+  background: rgb(255, 255, 255,0);
+}
+.confirm {
+    position: relative;
+    top: 130rpx;
+    width: 100%;
+    display: flex;
+}
+.confirm view {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 40rpx;
+  width: 50%;
+}
+.refresh {
+  background-color: white;
+}
+.certain {
+  background-color: rgba(43, 255, 0, 0.3);
+}
  .price {
   position: absolute;
   left: 79%;
@@ -184,6 +352,10 @@ line-height: normal;
 position: absolute;
 bottom: 8%;
 left: 7%;
+}
+.jiantou image {
+  max-width: 200rpx;
+  max-height: 80rpx;
 }
 .getorder {
   position: absolute;

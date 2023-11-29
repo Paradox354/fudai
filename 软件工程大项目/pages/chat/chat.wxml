@@ -31,7 +31,7 @@
             <view class="head1">
               <image src="../../img/关于我们.png" />
             </view>
-            <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
+            <image class="yourimg" src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
           </view>
           <view class="message-itemmy" wx:else>
             <view class="myimg">

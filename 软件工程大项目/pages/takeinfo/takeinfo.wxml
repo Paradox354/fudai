@@ -70,27 +70,22 @@
    <text class="type">快递代取</text>
    <view class="funclist">
    <view class="function" bind:tap="cancelList">
-   <view class="funcimg"><image src="../../img/关于我们.png"/>
+   <view class="funcimg"><image src="../../img/取消接单.png"/>
    </view>
    <text class="content">取消接单</text>
    </view>
    <view class="function">
-   <view class="funcimg"><image src="../../img/关于我们.png"/>
-   </view>
-   <text class="content">上报异常</text>
-   </view>
-   <view class="function">
-   <view class="funcimg"><image src="../../img/关于我们.png"/>
+   <view class="funcimg"><image src="../../img/联系客服.png"/>
    </view>
    <text class="content">联系客服</text>
    </view>
    <view class="function" bind:tap="gotochat">
-   <view class="funcimg"><image src="../../img/关于我们.png"/>
+   <view class="funcimg"><image src="../../img/联系顾客.png"/>
    </view>
    <text class="content">联系顾客</text>
    </view>
    <view class="function">
-   <view class="funcimg"><image src="../../img/关于我们.png"/>
+   <view class="funcimg"><image src="../../img/投诉.png"/>
    </view>
    <text class="content">投诉</text>
    </view>

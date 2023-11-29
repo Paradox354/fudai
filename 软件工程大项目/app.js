@@ -2,6 +2,9 @@
 App({
   globalData:{
     zhuti: 'container1',
+    zhuti2: 'choose2',
+    zhuti3: 'addressinfo1',
+    zhuti3: 'addinfo1'
   },
   onLaunch() {
     wx.loadFontFace({

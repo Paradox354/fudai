@@ -8,6 +8,54 @@
   background-size: 100% 100%;
   background-position: center;
 }
+.msg {
+  position: relative;
+  display: flex;
+  margin-top: 7px;
+  left: 1%;
+  flex-direction:column;
+  width: 98%;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, 0.40);
+}
+.choose {
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  border-radius: 5%;
+  height: 65rpx;
+  width: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 0, 0, 0.5);
+  font-size: 20px;
+}
+.save {
+  position: relative;
+  font-family: STFangsong;
+}
+.div {
+  position: relative;
+  left: 5%;
+  width: 90%;
+  height: 1px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  background: #dac5c5;
+}
+.msg .msgaddress{
+  position: relative;
+  left: 5%;
+  font-size: 23px;
+}
+.msg .msgphone {
+  position: relative;
+  left: 5%;
+  font-size: 18px;
+  color: rgba(101, 101, 101, 0.80);
+}
 .container2 {
   position: absolute;
   top: 0%;
@@ -37,7 +85,7 @@
   line-height: normal;
 }
 
-.save {
+.up {
   position: relative;
   top: 2%;
   left: 78%;

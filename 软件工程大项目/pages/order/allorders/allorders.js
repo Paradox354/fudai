@@ -17,7 +17,21 @@ Page({
     minP:1,
     maxP:10,
     list:[],
-    zhuti:''
+    zhuti:'',
+    zhuti2:'',
+    flag1:1,
+    flag2:1,
+    open:1,
+    selectedBuilding: '1号楼',
+    buildingOptions: generateBuildingOptions(),
+    price1:'',
+    price2:'',
+    choosetype:'item',
+    choose2:'item',
+    choose3:'item',
+    choosesize1:'item',
+    choosesize2:'item',
+    choosesize3:'item',
   },
 
   /**
@@ -89,8 +103,10 @@ Page({
   onShow() {
     const app=getApp();
     this.setData({
-      zhuti:app.globalData.zhuti
+      zhuti:app.globalData.zhuti,
+      zhuti2:app.globalData.zhuti2
     })
+    console.log(this.data.zhuti2)
     var that=this;
     const token = wx.getStorageSync('token') || ''
     this.setData({
@@ -158,5 +174,188 @@ Page({
    */
   onShareAppMessage() {
 
-  }
+  },
+  choosechange1:function(){
+    if(this.data.choosetype=='item1'){
+      this.setData({
+        choosetype:'item'
+      })
+    }
+    else{
+      this.setData({
+        choosetype:'item1'
+      })
+    }
+  },
+  choosechange2:function(){
+    if(this.data.choose2=='item2'&&this.data.choose3=='item'){
+      this.setData({
+        choose2:'item'
+      })
+    }
+    else if(this.data.choose2=='item'&&this.data.choose3=='item3'){
+      this.setData({
+        choose2:'item2',
+        choose3:'item',
+      })
+    }
+    else{
+      this.setData({
+        choose2:'item2'
+      })
+    }
+  },
+  choosechange3:function(){
+    if(this.data.choose2=='item2'&&this.data.choose3=='item'){
+      this.setData({
+        choose2:'item',
+        choose3:'item3'
+      })
+    }
+    else if(this.data.choose2=='item'&&this.data.choose3=='item3'){
+      this.setData({
+        choose3:'item',
+      })
+    }
+    else{
+      this.setData({
+        choose3:'item3'
+      })
+    }
+  },
+  sizechange1:function(){
+    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize1:'item4'
+      })
+    }
+    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize1:'item'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize1:'item4',
+        choosesize2:'item'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
+      this.setData({
+        choosesize1:'item4',
+        choosesize3:'item'
+      })
+    }
+  },
+  sizechange2:function(){
+    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize2:'item5'
+      })
+    }
+    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize1:'item',
+        choosesize2:'item5'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize2:'item'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
+      this.setData({
+        choosesize2:'item5',
+        choosesize3:'item'
+      })
+    }
+  },
+  sizechange3:function(){
+    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize3:'item6'
+      })
+    }
+    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize1:'item',
+        choosesize3:'item6'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
+      this.setData({
+        choosesize2:'item',
+        choosesize3:'item6'
+      })
+    }
+    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
+      this.setData({
+        choosesize3:'item'
+      })
+    }
+  },
+  refresh:function(){
+    this.setData({
+      price1:'',
+      price2:'',
+      choosetype:'item',
+      choose2:'item',
+      choose3:'item',
+      choosesize1:'item',
+      choosesize2:'item',
+      choosesize3:'item',
+      selectedBuilding: '1号楼',
+    })
+  },
+  ChangeTimeOrder:function(){
+    this.setData({
+      flag1:-(this.data.flag1)
+    })
+  },
+  handlePhoneNumberInput: function(event) {
+    let value = event.detail.value; // 获取输入框的值
+    this.setData({
+      price1: value, // 更新 phoneNumber 属性的值
+    });
+  },
+  handlePriceInput: function(event) {
+    let value = event.detail.value; // 获取输入框的值
+    this.setData({
+      price2: value, // 更新 phoneNumber 属性的值
+    });
+    console.log(this.data.price2)
+  },
+  cancel:function(){
+    this.setData({
+      open: -(this.data.open)
+    })
+    this.refresh()
+  },
+  ChangePriceOrder:function(){
+    this.setData({
+      flag2:-(this.data.flag2)
+    })
+  },
+  OpenChoose:function(){
+    this.setData({
+      open: -(this.data.open)
+    })
+    console.log(this.data.open)
+  },
+  handleBuildingChange: function (e) {
+    const index = e.detail.value;
+    const selectedBuilding = this.data.buildingOptions[index];
+    this.setData({
+      selectedBuilding: selectedBuilding,
+      building:index
+    });
+  },
 })
+function generateBuildingOptions() {
+  const buildingOptions = [];
+  for (let i = 1; i <= 61; i++) {
+    buildingOptions.push(i + '号楼');
+  }
+  return buildingOptions;
+}

@@ -50,9 +50,9 @@
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
-<view class="moreitem" bind:tap="logout">
+<view class="moreitem" bind:tap="logout" wx:if="{{avatarUrl}}">
   <view class="info">
-<image src="../../img/privacy.png"/>
+<image src="../../img/退出登录.png"/>
 <text>退出登录</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>

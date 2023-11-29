@@ -79,7 +79,6 @@ font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-width: 90px;
 height: 18px;
 flex-shrink: 0;
  }
@@ -162,7 +161,7 @@ line-height: normal;
  }
  .info {
   position: absolute;
-  left: 12%;
+  left: 8%;
   width: 60%;
   top: 53%;
   display: flex;
@@ -189,6 +188,10 @@ line-height: normal;
   position: absolute;
   bottom: 7%;
   left: 7%;
+  }
+  .jiantou image{
+    max-width: 200rpx;
+    max-height: 80rpx;
   }
 .getorder {
   position: absolute;

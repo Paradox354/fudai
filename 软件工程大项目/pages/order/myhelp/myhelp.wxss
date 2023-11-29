@@ -49,9 +49,13 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   height: 100%;
   background-color: rgb(255,255,255,0);
 }
+.jiantou image{
+  max-width: 200rpx;
+  max-height: 80rpx;
+}
 .info {
   position: absolute;
-  left: 12%;
+  left: 8%;
   width: 60%;
   top: 53%;
   display: flex;
@@ -88,7 +92,6 @@ font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-width: 90px;
 height: 18px;
 flex-shrink: 0;
  }

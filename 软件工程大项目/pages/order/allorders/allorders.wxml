@@ -1,17 +1,27 @@
 <view class="{{zhuti}}">
   <tabBar selected="0"></tabBar>
-  <view class="qqgroup"><text class="qqfont">加入官方QQ群：</text></view>
-  <view class="order">
+  <view class="qqgroup">
+  <view bind:tap="ChangeTimeOrder">时间
+    <image src="../../../img/order2.png" wx:if="{{flag1==1}}"/>
+  <image src="../../../img/order1.png" wx:if="{{flag1==-1}}" />
+  
+  </view>
+  <view bind:tap="ChangePriceOrder">价格
+    <image src="../../../img/order2.png" wx:if="{{flag2==1}}"/>
+    <image src="../../../img/order1.png" wx:if="{{flag2==-1}}"/></view>
+  <view bind:tap="OpenChoose">筛选<image src="../../../img/筛选1.png"/></view>
+  </view>
+  <view class="order" >
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
         <view class="box">
           <view class="head"></view>
-          <text class="type">{{item.type}}</text>
+          <text class="type">{{item.type}}（{{item.size}}）</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">待接单</text>
           <view class="info">          
           <text class="from">{{item.from}}</text>
-          <view class="jiantou">--------</view>
+          <view class="jiantou"><image src="../../../img/direction.png" /></view>
           <text class="to">{{item.building}}号楼</text></view>
           <text class="price">￥{{item.price}}</text>
           <view class="divider"></view>
@@ -20,5 +30,39 @@
         </view>
       </block>
    </scroll-view>
+   <view class="{{zhuti2}}" wx:if="{{open==-1}}">
+    <image src="../../../img/删除.png" bind:tap="cancel"/>
+    <view class="typename">服务类型</view>
+    <view class="typecondition">
+    <view class="{{choosetype}}" bind:tap="choosechange1">代取快递</view>
+    </view>
+    <view class="typename">快递点</view>
+    <view class="typecondition">
+      <view class="{{choose2}}" bind:tap="choosechange2">快递中心</view>
+      <view class="{{choose3}}" bind:tap="choosechange3">邮政</view>
+    </view>
+    <view class="typename">宿舍楼</view>
+    <view class="typecondition2">
+        <picker class="moinput2" mode="selector" range="{{ buildingOptions }}" bindchange="handleBuildingChange">
+          <view class="building">{{ selectedBuilding }}</view>
+  </picker>
+    </view>
+    <view class="typename">价格区间</view>
+    <view class="typecondition">
+      <view class="item">￥<input type="number" value="{{price1}}" bindinput="handlePhoneNumberInput"/></view>
+      <view class="heng">—</view>
+      <view class="item">￥<input type="number"  value="{{price2}}" bindinput="handlePriceInput"/></view>
+    </view>
+    <view class="typename">快递规模</view>
+    <view class="typecondition">
+      <view class="{{choosesize1}}" bind:tap="sizechange1">小件</view>
+      <view class="{{choosesize2}}" bind:tap="sizechange2">中件</view>
+      <view class="{{choosesize3}}" bind:tap="sizechange3">大件</view>
+    </view>
+    <view class="confirm">
+      <view class="refresh" bind:tap="refresh">重置</view>
+      <view class="certain">查看筛选订单</view>
+    </view>
+   </view>
   </view>
 </view>

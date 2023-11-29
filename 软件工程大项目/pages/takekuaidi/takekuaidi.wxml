@@ -75,5 +75,19 @@
 <view class="pay" bind:tap="formsubmit" >提交订单
 </view>
 </view>
-
+<view class="{{zhuti3}}">
+<view class="basic">
+<text>选择收货地址</text>
+<image src="../../img/删除.png"/>
+</view>
+<view class="msg">
+<text class="msgaddress">福大生活区三区32号楼302</text>
+<text class="msgphone">蒋先生  12345678912</text>
+<view class="choose">选择</view>
+<view class="div"></view>
+</view>
+<view class="{{zhuti4}}" bind:tap="jump">
+<image src="../../img/新增.png" />
+新增/修改默认收货地址</view>
+</view>
 </view>

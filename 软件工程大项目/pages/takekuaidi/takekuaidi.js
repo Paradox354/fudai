@@ -2,6 +2,8 @@ var app=getApp()
 // pages/takekuaidi/takekuaidi.js
 Page({
   data: {
+    zhuti4:'',
+    zhuti3:'',
       lianxi:'',
       controls:[
       ],
@@ -47,7 +49,9 @@ Page({
   onLoad(options) {
     const app=getApp();
     this.setData({
-      zhuti:app.globalData.zhuti
+      zhuti:app.globalData.zhuti,
+      zhuti3:app.globalData.zhuti3,
+      zhuti4:app.globalData.zhuti4
     })
     const token = wx.getStorageSync('token') || ''
     this.setData({
@@ -434,6 +438,11 @@ check(){
     return flag
   }
   return flag
+},
+jump:function(){
+ wx.navigateTo({
+   url: '../setting/self/self',
+ })
 },
 addControl: function () {
   if(this.data.controls.length)

@@ -7,23 +7,23 @@
   <view class="time">12:30</view>
   <view class="funclist">
     <view class="funbox">
-  <view class="head"><image src="../../../img/head.png"/></view>
+  <view class="head"><image src="../../../img/申请售后.png"/></view>
   <text>申请售后</text>
   </view>
   <view class="funbox">
-  <view class="head" bind:tap="comfirm"><image src="../../../img/head.png"/></view>
+  <view class="head" bind:tap="comfirm"><image src="../../../img/确认收货.png"/></view>
   <text>确认收货</text>
   </view>
   <view class="funbox">
-  <view class="head"><image src="../../../img/head.png"/></view>
+  <view class="head"><image src="../../../img/联系客服.png"/></view>
   <text>联系客服</text>
   </view>
   <view class="funbox" bind:tap="gotochat">
-  <view class="head"><image src="../../../img/head.png"/></view>
+  <view class="head"><image src="../../../img/联系骑手.png"/></view>
   <text>联系骑手</text>
   </view>
   <view class="funbox">
-  <view class="head"><image src="../../../img/head.png"/></view>
+  <view class="head"><image src="../../../img/投诉.png"/></view>
   <text>投诉</text>
   </view>
   </view>

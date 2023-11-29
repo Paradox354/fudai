@@ -7,26 +7,26 @@ Component({
       {
         "pagePath": "/pages/index/index",
         "text": "首页",
-        "iconPath": "/img/home6.png",
-        "selectedIconPath": "/img/home.png"
+        "iconPath": "/img/home1.png",
+        "selectedIconPath": "/img/home2.png"
       },
       {
         "pagePath": "/pages/order/allorders/allorders",
         "text": "订单",
-        "iconPath": "/img/order16.png",
-        "selectedIconPath": "/img/home.png"
+        "iconPath": "/img/order3.png",
+        "selectedIconPath": "/img/6order4.png"
       },
       {
         "pagePath": "/pages/chatroom/chatroom",
         "text": "聊天室",
-        "iconPath": "/img/Rectangle 16.png",
-        "selectedIconPath": "/img/home.png"
+        "iconPath": "/img/chat1.png",
+        "selectedIconPath": "/img/chat2.png"
       },
       {
         "pagePath": "/pages/my/my",
         "text": "我的",
-        "iconPath": "/img/my2.png",
-        "selectedIconPath": "/img/my.png"
+        "iconPath": "/img/my1.png",
+        "selectedIconPath": "/img/my2.png"
       }
     ],
   },

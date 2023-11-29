@@ -1,6 +1,14 @@
 <!--pages/setting/self/self.wxml-->
 <view class="{{zhuti}}">
   <view class="head">隐私设置</view>
+  <view class="save">
+    <view class="msg">
+<text class="msgaddress">福大生活区三区32号楼302</text>
+<text class="msgphone">蒋先生  12345678912</text>
+<view class="choose">删除</view>
+<view class="div"></view>
+</view>
+  </view>
   <view class="box">
   <view class="item"><text>默认收货地址</text>
     <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
@@ -20,5 +28,5 @@
     <input value="{{remark}}" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" bindinput="handleremark"/>
     </view>
   </view>
-  <view class="save" bind:tap="comfirm">保存</view>
+  <view class="up" bind:tap="comfirm">提交</view>
 </view>
