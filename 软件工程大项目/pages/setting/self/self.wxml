@@ -2,12 +2,14 @@
 <view class="{{zhuti}}">
   <view class="head">隐私设置</view>
   <view class="save">
+  <block wx:for="{{msglist}}" wx:key="unique">
     <view class="msg">
-<text class="msgaddress">福大生活区三区32号楼302</text>
-<text class="msgphone">蒋先生  12345678912</text>
-<view class="choose">删除</view>
+<text class="msgaddress">{{item.addressDetail}}</text>
+<text class="msgphone">{{item.name}}  {{item.phoneEnd}}</text>
+<view class="choose" data-index="{{index}}" bind:tap="delusemsg">删除</view>
 <view class="div"></view>
 </view>
+</block>
   </view>
   <view class="box">
   <view class="item"><text>默认收货地址</text>
@@ -28,5 +30,5 @@
     <input value="{{remark}}" class="moinput" placeholder="所有人可见" placeholder-class="phcolor" bindinput="handleremark"/>
     </view>
   </view>
-  <view class="up" bind:tap="comfirm">提交</view>
+  <view class="up" bind:tap="upusemsg">提交</view>
 </view>

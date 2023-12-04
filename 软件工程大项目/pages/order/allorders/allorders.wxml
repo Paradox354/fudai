@@ -2,43 +2,66 @@
   <tabBar selected="0"></tabBar>
   <view class="qqgroup">
   <view bind:tap="ChangeTimeOrder">时间
-    <image src="../../../img/order2.png" wx:if="{{flag1==1}}"/>
-  <image src="../../../img/order1.png" wx:if="{{flag1==-1}}" />
+    <image src="../../../img/order2.png" wx:if="{{flag1!=1}}"/>
+    <image src="../../../img/order1.png" wx:else />
   
   </view>
   <view bind:tap="ChangePriceOrder">价格
-    <image src="../../../img/order2.png" wx:if="{{flag2==1}}"/>
-    <image src="../../../img/order1.png" wx:if="{{flag2==-1}}"/></view>
+    <image src="../../../img/order2.png" wx:if="{{flag2!=1}}"/>
+    <image src="../../../img/order1.png" wx:else/>
+  </view>
+
   <view bind:tap="OpenChoose">筛选<image src="../../../img/筛选1.png"/></view>
   </view>
   <view class="order" >
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
-        <view class="box">
-          <view class="head"></view>
+        <view class="box" wx:if="{{item.type=='快递代寄'}}">
+          <view class="{{pg}}"></view>
+          <text class="type">{{item.type}}（{{item.size}}）</text>
+          <text class="time">{{item.createTime}}</text>
+          <text class="orderstate">待接单</text>
+          <view class="info">          
+          <text class="from">{{item.building}}号楼</text>
+          <view class="jiantou"><image src="../../../img/direction.png" /></view>
+          <text class="to">{{item.company}}</text>
+          <text class="price">￥{{item.price}}</text>
+          </view>
+          <view class="divider"></view>
+          <text class="beizhu">备注:{{item.remark}}</text>
+          <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>
+        </view>
+
+
+        <view class="box" wx:else>
+          <view class="{{pg}}"></view>
           <text class="type">{{item.type}}（{{item.size}}）</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">待接单</text>
           <view class="info">          
           <text class="from">{{item.from}}</text>
           <view class="jiantou"><image src="../../../img/direction.png" /></view>
-          <text class="to">{{item.building}}号楼</text></view>
+          <text class="to">{{item.building}}号楼</text>
           <text class="price">￥{{item.price}}</text>
+          </view> 
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
           <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>
         </view>
+        
       </block>
    </scroll-view>
    <view class="{{zhuti2}}" wx:if="{{open==-1}}">
     <image src="../../../img/删除.png" bind:tap="cancel"/>
     <view class="typename">服务类型</view>
     <view class="typecondition">
-    <view class="{{choosetype}}" bind:tap="choosechange1">代取快递</view>
+    <view class="{{choosetype}}" bind:tap="typechange1">快递代拿</view>
+    <view class="{{choosetype1}}" bind:tap="typechange2">快递代寄</view>
+    <view class="{{choosetype2}}" bind:tap="typechange3">外卖代拿</view>
     </view>
     <view class="typename">快递点</view>
     <view class="typecondition">
-      <view class="{{choose2}}" bind:tap="choosechange2">快递中心</view>
+      <view class="{{choose2}}" bind:tap="choosechange2">快递站</view>
       <view class="{{choose3}}" bind:tap="choosechange3">邮政</view>
     </view>
     <view class="typename">宿舍楼</view>
@@ -61,7 +84,7 @@
     </view>
     <view class="confirm">
       <view class="refresh" bind:tap="refresh">重置</view>
-      <view class="certain">查看筛选订单</view>
+      <view class="certain" bind:tap="onShow">查看筛选订单</view>
     </view>
    </view>
   </view>

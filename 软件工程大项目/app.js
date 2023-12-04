@@ -4,7 +4,9 @@ App({
     zhuti: 'container1',
     zhuti2: 'choose2',
     zhuti3: 'addressinfo1',
-    zhuti3: 'addinfo1'
+    zhuti3: 'addinfo1',
+    pg:'',
+    headurl:''
   },
   onLaunch() {
     wx.loadFontFace({

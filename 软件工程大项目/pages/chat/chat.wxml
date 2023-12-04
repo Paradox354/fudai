@@ -2,9 +2,6 @@
 <view class="{{zhuti}}">
   <view class="name">
     <text class="id">{{name}} {{sendname}}</text>
-    <view class="phone">
-      <image src="../../img/phone.png" />
-    </view>
   </view>
   <view class="chatmsg">
     <scroll-view class="msg" scroll-y scroll-into-view="{{toBottom}}" scroll-top="{{scrollTop}}">
@@ -12,7 +9,7 @@
         <view wx:if="{{item.type==1}}">
           <view class="message-item" wx:if="{{item.senderId!=userId}}">
             <view class="head1">
-              <image src="../../img/关于我们.png" />
+              <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/8f9b8822aa314d59a057609638808ba1.png" />
             </view>
             <text class="message-content">{{item.msg}}
             </text>
@@ -22,14 +19,14 @@
               {{item.msg}}
             </text>
             <view class="head2">
-              <image src="../../img/home.png" />
+              <image src="{{headurl}}" />
             </view>
           </view>
         </view>
         <view wx:if="{{item.type==2}}">
           <view class="message-item" wx:if="{{item.senderId!=userId}}">
             <view class="head1">
-              <image src="../../img/关于我们.png" />
+              <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/8f9b8822aa314d59a057609638808ba1.png" />
             </view>
             <image class="yourimg" src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
           </view>
@@ -38,14 +35,14 @@
               <image src="{{item.msg}}" bind:tap="previewImage" data-index="{{index}}" data-imgsrc="{{item.msg}}"></image>
             </view>
             <view class="head2">
-              <image src="../../img/home.png" />
+              <image src="{{headurl}}" />
             </view>
           </view>
         </view>
         <view wx:if="{{item.type==3}}">
           <view class="message-item" wx:if="{{item.senderId==userId}}">
             <view class="head1">
-              <image src="../../img/关于我们.png" />
+              <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/665992b1a4414d62abb0efa245098a78.png" />
             </view>
             <view class="ordercontent">
               <view class="address">送达地址：{{item.msg.address}}</view>
@@ -64,7 +61,7 @@
               <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}"/>
             </view>
             <view class="head2">
-              <image src="../../img/home.png" />
+              <image src="{{headurl}}" />
             </view>
           </view>
         </view>
@@ -73,7 +70,7 @@
   </view>
   <view class="inbox" wx:if="{{statu}}">
     <view class="upimg" bind:tap="upimg">
-      <image src="../../img/signup.png" />
+      <image src="../../img/图片.png" />
     </view>
     <input type="text" value="{{inputValue}}" bindinput="bindKeyInput" />
     <view class="send" bind:tap="submitTo">发送</view>

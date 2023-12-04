@@ -72,5 +72,4 @@
 <view class="confirm" bind:tap="upimg">确认上传</view>
 </view>
 </view>
-
 </view>

@@ -5,9 +5,9 @@
 <view class="order">
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
-        <view class="box">
+        <view class="box" wx:if="{{item.type!='快递代寄'}}">
         <view class="box2"  bind:tap="jumptoinfo"  data-index="{{index}}">
-          <view class="head"></view>
+          <view class="{{pg}}"></view>
           <text class="type">{{item.type}}（{{item.size}}）</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">{{item.status}}</text>
@@ -15,8 +15,28 @@
             <text class="from">{{item.from}}</text>
           <view class="jiantou"><image src="../../../img/direction.png"/></view>
           <text class="to">{{item.building}}号楼</text>
-          </view>
           <text class="price">￥ {{item.price}}</text>
+          </view>
+        </view>
+          <view class="divider"></view>
+          <text class="beizhu">备注:{{item.remark}}</text>
+          <view class="getorder" bind:tap="cancelList" data-id="{{item.id}}">取消订单</view>
+        </view>
+
+
+        <view class="box" wx:else>
+        <view class="box2"  bind:tap="jumptoinfo"  data-index="{{index}}">
+          <view class="{{pg}}"></view>
+          <text class="type">{{item.type}}（{{item.size}}）</text>
+          <text class="time">{{item.createTime}}</text>
+          <text class="orderstate">{{item.status}}</text>
+          <view class="info">
+            <text class="from">{{item.building}}号楼</text>
+          <view class="jiantou"><image src="../../../img/direction.png"/></view>
+          <text class="to">{{item.company}}</text>
+          <text class="price">￥ {{item.price}}</text>
+          </view>
+
         </view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>

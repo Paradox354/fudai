@@ -18,7 +18,8 @@ Page({
     minP:1,
     maxP:10,
     list:[],
-    zhuti:''
+    zhuti:'',
+    pg:''
   },
 
   /**
@@ -66,7 +67,8 @@ Page({
     onLoad(options) {
       const app=getApp();
       this.setData({
-        zhuti:app.globalData.zhuti
+        zhuti:app.globalData.zhuti,
+        pg:app.globalData.pg
       })
 
   },
@@ -97,8 +99,12 @@ Page({
           'token':that.data.token
         },
         success(res){
+          var arr=new Array();
+          arr=res.data.data;
+          arr=arr.reverse();
+          console.log(arr)
           that.setData({
-            list:that.data.list.concat(res.data.data)
+            list:arr
           })
           console.log(res)
           console.log(that.data.list)

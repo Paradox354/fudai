@@ -101,16 +101,30 @@ flex-shrink: 0;
    height: 40px;
    width: 100%;
  }
- .head {
-   position: absolute;
-   top: 6%;
-   left: 2%;
-   background-color: #4490C7;
-   border-radius: 50%;
-   overflow: hidden;
-   width: 40px;
-   height: 40px;
- }
+ .head1 {
+  position: absolute;
+  top: 6%;
+  left: 2%;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/ef083692358b4b5491590cae5c2d8366.png');
+  background-size: 100% 100%;
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.head2 {
+ position: absolute;
+ top: 6%;
+ left: 2%;
+ background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/dcb2ad5034454561a9e3ae51ae13b8c2.png');
+ background-size: 100% 100%;
+ background-position: center;
+ width: 40px;
+ height: 40px;
+ border-radius: 50%;
+ overflow: hidden;
+}
  .orderstate {
    position: absolute;
    right: 9%;
@@ -146,9 +160,7 @@ font-weight: 400;
 line-height: normal;
  }
  .price {
-  position: absolute;
-  left: 79%;
-  top: 53%;
+  position: relative;
   width: 59px;
 height: 40px;
 flex-shrink: 0;
@@ -161,8 +173,8 @@ line-height: normal;
  }
  .info {
   position: absolute;
-  left: 8%;
-  width: 60%;
+  left: 5%;
+  width: 90%;
   top: 53%;
   display: flex;
   justify-content: space-between;

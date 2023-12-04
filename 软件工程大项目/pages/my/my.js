@@ -152,6 +152,9 @@ Page({
     var that = this;
     wx.login({
       success: res => {
+        wx.showLoading({
+          title: '登录中...',
+        })
         const code = res.code;
         console.log(code)
         wx.request({
@@ -167,6 +170,7 @@ Page({
             })
             wx.setStorageSync('token', res.data.data.token);
             wx.setStorageSync('userid', res.data.data.userId);
+            wx.hideLoading()
             that.getinfo()
           }
         })
@@ -236,6 +240,9 @@ Page({
     this.setData({
       avatarUrl: avatarUrl,
     })
+    const app=getApp()
+    app.globalData.headurl=avatarUrl
+    console.log(app.globalData.headurl)
   },
   jumptoprivacy: function () {
     wx.navigateTo({

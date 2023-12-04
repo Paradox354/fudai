@@ -31,10 +31,11 @@ Page({
       building:1,
       layer:101,
       middlenum: 0,
+      name:'',
       largenum: 0,
       adress:'',
       phone:'',
-      type:'快递代拿',
+      type:'快递代寄',
       remark:'',
       price:0,
       money:0,
@@ -45,8 +46,7 @@ Page({
       dormitoryOptions: generateDormitoryOptions(),
       selectedDormitory: '101',
       zhuti:'',
-      addlist:'',
-      name:''
+      addlist:''
   },
   close()
   {
@@ -75,7 +75,7 @@ Page({
   chusemsg(e)
   {
     var index=e.currentTarget.dataset.index;
-    this.data.addlist[index].addressDetail
+    console.log(this.data.addlist[index])
     this.setData({
       name:this.data.addlist[index].name,
       phone:this.data.addlist[index].phoneEnd,
@@ -331,12 +331,12 @@ wx.showLoading({
     "name":this.data.name,
     'code':this.data.controls[i].codeValue,
     'phone':that.data.phone,
-    'address':address,
+    'address':this.data.controls[i].from,
     'picture':pic
 }
   let data = {
   'type':this.data.type,
-  'from':this.data.controls[i].from,
+  'from':address,
   'building':this.data.building,
   'layer':this.data.layer,
   "incidentalMsg":incidentalMsg,
@@ -499,7 +499,7 @@ removeControl: function () {
     controls: controls
   });
 },
-handleBuildingChange: function (e) {
+handleBuildingChange: function (e) { 
   const index = e.detail.value;
   const selectedBuilding = this.data.buildingOptions[index];
   var a=parseInt(index)+1

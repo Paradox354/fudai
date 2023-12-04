@@ -5,7 +5,8 @@ Page({
     rooturl:'https://rrewuq.com',
     token:'',
     name:'',
-    zhuti:''
+    zhuti:'',
+    headurl:''
   },
 
   /**
@@ -83,7 +84,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    const app=getApp()
+    this.setData({
+      headurl:app.globalData.headurl
+    })
   },
 
   /**

@@ -17,11 +17,12 @@ Page({
   },
   onLoad(){
     const app=getApp();
-    if(!app.globalData.zhuti||!app.globalData.zhuti2||!app.globalData.zhuti3||!!app.globalData.zhuti4){
+    if(!app.globalData.zhuti||!app.globalData.zhuti2||!app.globalData.zhuti3||!app.globalData.zhuti4||!app.globalData.pg){
       app.globalData.zhuti='container1',
       app.globalData.zhuti2='choose2',
       app.globalData.zhuti3='addressinfo1',
-      app.globalData.zhuti4='addinfo1'
+      app.globalData.zhuti4='addinfo1',
+      app.globalData.pg='head1'
     }
     this.setData({
       zhuti:app.globalData.zhuti
@@ -96,13 +97,24 @@ Page({
         url: '/pages/takekuaidi/takekuaidi',  /*跳转到course页面*/
       })
 },
+jumptosend:function(){
+  wx.navigateTo({
+      url: '../sendkuaidi/sendkuaidi',  /*跳转到course页面*/
+    })
+},
+jumptowaimai:function(){
+  wx.navigateTo({
+      url: '../takewaimai/takewaimai',  /*跳转到course页面*/
+    })
+},
   change:function(){
     const app=getApp();
     if(this.data.i==1){
       app.globalData.zhuti='container2';
       app.globalData.zhuti2='choose1';
       app.globalData.zhuti3='addressinfo2'
-      app.globalData.zhuti4='addinfo2'
+      app.globalData.zhuti4='addinfo2',
+      app.globalData.pg='head2'
       this.setData({
         i:2,
         zhuti:app.globalData.zhuti,
@@ -119,7 +131,8 @@ Page({
       app.globalData.zhuti='container1';
       app.globalData.zhuti2='choose2';
       app.globalData.zhuti3='addressinfo1'
-      app.globalData.zhuti4='addinfo1'
+      app.globalData.zhuti4='addinfo1',
+      app.globalData.pg='head1'
       this.setData({
         zhuti: app.globalData.zhuti,
         i:1,

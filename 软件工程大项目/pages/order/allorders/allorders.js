@@ -1,93 +1,93 @@
-
 // pages/order/allorders/allorders.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    rooturl:'https://rrewuq.com',
-    token:'',
-    page:1,
-    from:'',
-    builidng:'',
-    layer:'',
-    size:'',
-    elseTo:'',
-    pagesize:4,
-    minP:1,
-    maxP:10,
-    list:[],
-    zhuti:'',
-    zhuti2:'',
-    flag1:1,
-    flag2:1,
-    open:1,
+    rooturl: 'https://rrewuq.com',
+    token: '',
+    page: 1,
+    from: '',
+    builidng: '',
+    layer: '',
+    type: '',
+    size: '',
+    elseTo: '',
+    pagesize: 4,
+    minP: 24323,
+    maxP: 100000,
+    list: [],
+    zhuti: '',
+    zhuti2: '',
+    flag1: 0,
+    flag2: 0,
+    open: 1,
     selectedBuilding: '1号楼',
+    building: 0,
     buildingOptions: generateBuildingOptions(),
-    price1:'',
-    price2:'',
-    choosetype:'item',
-    choose2:'item',
-    choose3:'item',
-    choosesize1:'item',
-    choosesize2:'item',
-    choosesize3:'item',
+    price1: '',
+    price2: '',
+    choosetype: 'item',
+    choosetype1: 'item',
+    choosetype2: 'item',
+    choose2: 'item',
+    choose3: 'item',
+    choosesize1: 'item',
+    choosesize2: 'item',
+    choosesize3: 'item',
+    selectedtype: 0, //0表示未选中任何服务类型，1表示选中代取快递
+    selectedkuaidi: 0, //0表示未选中任何快递点，1表示选中快递中心，2表示选中邮政
+    selectedsize: 0, //0表示未选中任何快递规模，1表示选中小件，2为中件，3为大件
+    pg:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-    recieve(e)
-    {
-      var id=e.currentTarget.dataset.id;
-      //var id=this.data.list[0].id;
-      var that=this;
-      wx.request({
-        url: that.data.rooturl+'/pt/acp',
-        method:'POST',
-        data:
-        { 
-          'taskId':id
-        },
-        header:{
-          'token':that.data.token
-        },
-        success(res){
-          if(res.data.status==500)
-          {
-            wx.showModal({
-              title: '您无法承接自己发布的订单',
-              content: '',
-              complete: (res) => {
-                if (res.cancel) {
-                }
-                if (res.confirm) {
-                }
-              }
-            })
-          }
-          else{
-            wx.showModal({
-              title: '接单成功',
-              content: '',
-              complete: (res) => {
-                if (res.confirm) {
-                  that.onShow()
-                }
-              }
-            })
-          }
+  recieve(e) {
+    var id = e.currentTarget.dataset.id;
+    var that = this;
+    wx.request({
+      url: that.data.rooturl + '/pt/acp',
+      method: 'POST',
+      data: {
+        'taskId': id
       },
-      })
-    },
-    onLoad() {
-      const app=getApp();
-      this.setData({
-        zhuti:app.globalData.zhuti
-      })
-      console.log(app.globalData.zhuti)
-      console.log(this.data.zhuti)
-      
+      header: {
+        'token': that.data.token
+      },
+      success(res) {
+        if (res.data.status == 500) {
+          wx.showModal({
+            title: '您无法承接自己发布的订单',
+            content: '',
+            complete: (res) => {
+              if (res.cancel) {}
+              if (res.confirm) {}
+            }
+          })
+        } else {
+          wx.showModal({
+            title: '接单成功',
+            content: '',
+            complete: (res) => {
+              if (res.confirm) {
+                that.onShow()
+              }
+            }
+          })
+        }
+      },
+    })
+  },
+  onLoad() {
+    const app = getApp();
+    this.setData({
+      zhuti: app.globalData.zhuti
+    })
+    console.log(app.globalData.zhuti)
+    console.log(this.data.zhuti)
+
   },
 
   /**
@@ -101,37 +101,57 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    const app=getApp();
+    const app = getApp();
     this.setData({
-      zhuti:app.globalData.zhuti,
-      zhuti2:app.globalData.zhuti2
+      zhuti: app.globalData.zhuti,
+      zhuti2: app.globalData.zhuti2,
+      pg:app.globalData.pg
     })
     console.log(this.data.zhuti2)
-    var that=this;
+    var that = this;
     const token = wx.getStorageSync('token') || ''
     this.setData({
-      list:[],
-      token:token
+      list: [],
+      token: token
     })
+    var data = {
+      "page": 1,
+      "pageSize": 100000,
+      'priceOrder': this.data.flag2,
+      'timeOrder': this.data.flag1,
+      'minp': this.data.minP,
+      'maxp': this.data.maxP,
+    };
+    if (this.data.from) {
+      data.from = this.data.from
+    }
+    if (this.data.size) {
+      data.size = this.data.size
+    }
+    if (this.data.building) {
+      data.building = this.data.building
+    }
+    if (this.data.type) {
+      data.type = this.data.type;
+    };
+    if (this.data.from) {
+      data.from = this.data.from
+    }
+    console.log(data)
     wx.request({
-      url: that.data.rooturl+'/pt/list',
-          method:'post',
-          data:
-          { 
-            "type": "快递代拿",
-            "page": 1,
-            "pageSize": 20,
-          },
-          header:{
-            'token':that.data.token
-          },
-          success(res){
-            that.setData({
-              list:that.data.list.concat(res.data.data)
-            })
-            console.log(that.data.list)
-          }
+      url: that.data.rooturl + '/pt/list',
+      method: 'post',
+      data: data,
+      header: {
+        'token': that.data.token
+      },
+      success(res) {
+        that.setData({
+          list: that.data.list.concat(res.data.data)
         })
+        console.log(that.data.list)
+      }
+    })
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -175,169 +195,276 @@ Page({
   onShareAppMessage() {
 
   },
-  choosechange1:function(){
-    if(this.data.choosetype=='item1'){
+  typechange1: function () {
+    if (this.data.choosetype == 'item1' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choosetype:'item'
+        choosetype: 'item',
+        selectedtype: 0,
+        type: ''
       })
-    }
-    else{
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choosetype:'item1'
+        choosetype: 'item1',
+        selectedtype: 1,
+        type: '快递代拿'
       })
-    }
-  },
-  choosechange2:function(){
-    if(this.data.choose2=='item2'&&this.data.choose3=='item'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item7' && this.data.choosetype2 == 'item') {
       this.setData({
-        choose2:'item'
+        choosetype: 'item1',
+        choosetype1: 'item',
+        type: '快递代拿'
       })
-    }
-    else if(this.data.choose2=='item'&&this.data.choose3=='item3'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item8') {
       this.setData({
-        choose2:'item2',
-        choose3:'item',
-      })
-    }
-    else{
-      this.setData({
-        choose2:'item2'
+        choosetype: 'item1',
+        choosetype2: 'item',
+        type: '快递代拿'
       })
     }
   },
-  choosechange3:function(){
-    if(this.data.choose2=='item2'&&this.data.choose3=='item'){
+  typechange2: function () {
+    if (this.data.choosetype == 'item1' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choose2:'item',
-        choose3:'item3'
+        choosetype: 'item',
+        choosetype1: 'item7',
+        type: '快递代寄'
       })
-    }
-    else if(this.data.choose2=='item'&&this.data.choose3=='item3'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choose3:'item',
+        choosetype1: 'item7',
+        type: '快递代寄'
       })
-    }
-    else{
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item7' && this.data.choosetype2 == 'item') {
       this.setData({
-        choose3:'item3'
+        choosetype1: 'item',
+        type: ''
       })
-    }
-  },
-  sizechange1:function(){
-    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item8') {
       this.setData({
-        choosesize1:'item4'
-      })
-    }
-    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
-      this.setData({
-        choosesize1:'item'
-      })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
-      this.setData({
-        choosesize1:'item4',
-        choosesize2:'item'
-      })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
-      this.setData({
-        choosesize1:'item4',
-        choosesize3:'item'
+        choosetype1: 'item7',
+        choosetype2: 'item',
+        type: '快递代寄'
       })
     }
   },
-  sizechange2:function(){
-    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+  typechange3: function () {
+    if (this.data.choosetype == 'item1' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choosesize2:'item5'
+        choosetype: 'item',
+        choosetype2: 'item8',
+        type: '外卖代拿'
       })
-    }
-    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item') {
       this.setData({
-        choosesize1:'item',
-        choosesize2:'item5'
+        choosetype2: 'item8',
+        type: '外卖代拿'
       })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item7' && this.data.choosetype2 == 'item') {
       this.setData({
-        choosesize2:'item'
+        choosetype1: 'item',
+        choosetype2: 'item8',
+        type: '外卖代拿'
       })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
+    } else if (this.data.choosetype == 'item' && this.data.choosetype1 == 'item' && this.data.choosetype2 == 'item8') {
       this.setData({
-        choosesize2:'item5',
-        choosesize3:'item'
-      })
-    }
-  },
-  sizechange3:function(){
-    if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
-      this.setData({
-        choosesize3:'item6'
-      })
-    }
-    else if(this.data.choosesize1=='item4'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item'){
-      this.setData({
-        choosesize1:'item',
-        choosesize3:'item6'
-      })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item5'&&this.data.choosesize3=='item'){
-      this.setData({
-        choosesize2:'item',
-        choosesize3:'item6'
-      })
-    }
-    else if(this.data.choosesize1=='item'&&this.data.choosesize2=='item'&&this.data.choosesize3=='item6'){
-      this.setData({
-        choosesize3:'item'
+        choosetype2: 'item',
+        type: ''
       })
     }
   },
-  refresh:function(){
+  choosechange2: function () {
+    if (this.data.choose2 == 'item2' && this.data.choose3 == 'item') {
+      this.setData({
+        choose2: 'item',
+        selectedkuaidi: 0,
+        from: ''
+      })
+    } else if (this.data.choose2 == 'item' && this.data.choose3 == 'item3') {
+      this.setData({
+        choose2: 'item2',
+        choose3: 'item',
+        selectedkuaidi: 1,
+        from: '快递站'
+      })
+    } else {
+      this.setData({
+        choose2: 'item2',
+        selectedkuaidi: 1,
+        from: '快递站'
+      })
+    }
+  },
+  choosechange3: function () {
+    if (this.data.choose2 == 'item2' && this.data.choose3 == 'item') {
+      this.setData({
+        choose2: 'item',
+        choose3: 'item3',
+        selectedkuaidi: 2,
+        from: '邮政'
+      })
+    } else if (this.data.choose2 == 'item' && this.data.choose3 == 'item3') {
+      this.setData({
+        choose3: 'item',
+        selectedkuaidi: 0,
+        from: ''
+      })
+    } else {
+      this.setData({
+        choose3: 'item3',
+        selectedkuaidi: 2,
+        from: '邮政'
+      })
+    }
+  },
+  sizechange1: function () {
+    if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize1: 'item4',
+        selectedsize: 1,
+        size: '小件'
+      })
+    } else if (this.data.choosesize1 == 'item4' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize1: 'item',
+        selectedsize: 0,
+        size: ''
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item5' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize1: 'item4',
+        choosesize2: 'item',
+        selectedsize: 1,
+        size: '小件'
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item6') {
+      this.setData({
+        choosesize1: 'item4',
+        choosesize3: 'item',
+        selectedsize: 1,
+        size: '小件'
+      })
+    }
+  },
+  sizechange2: function () {
+    if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize2: 'item5',
+        selectedsize: 2,
+        size: '中件'
+      })
+    } else if (this.data.choosesize1 == 'item4' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize1: 'item',
+        choosesize2: 'item5',
+        selectedsize: 2,
+        size: '中件'
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item5' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize2: 'item',
+        selectedsize: 0,
+        size: ''
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item6') {
+      this.setData({
+        choosesize2: 'item5',
+        choosesize3: 'item',
+        selectedsize: 2,
+        size: '中件'
+      })
+    }
+  },
+  sizechange3: function () {
+    if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize3: 'item6',
+        selectedsize: 3,
+        size: '大件'
+      })
+    } else if (this.data.choosesize1 == 'item4' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize1: 'item',
+        choosesize3: 'item6',
+        selectedsize: 3,
+        size: '大件'
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item5' && this.data.choosesize3 == 'item') {
+      this.setData({
+        choosesize2: 'item',
+        choosesize3: 'item6',
+        selectedsize: 3,
+        size: '大件'
+      })
+    } else if (this.data.choosesize1 == 'item' && this.data.choosesize2 == 'item' && this.data.choosesize3 == 'item6') {
+      this.setData({
+        choosesize3: 'item',
+        selectedsize: 0,
+        size: ''
+      })
+    }
+  },
+  refresh: function () {
     this.setData({
-      price1:'',
-      price2:'',
-      choosetype:'item',
-      choose2:'item',
-      choose3:'item',
-      choosesize1:'item',
-      choosesize2:'item',
-      choosesize3:'item',
+      price1: '',
+      price2: '',
+      choosetype: 'item',
+      choosetype1: 'item',
+      choosetype2: 'item',
+      choose2: 'item',
+      choose3: 'item',
+      choosesize1: 'item',
+      choosesize2: 'item',
+      choosesize3: 'item',
       selectedBuilding: '1号楼',
+      selectedtype: 0,
+      selectedkuaidi: 0,
+      selectedsize: 0,
+      type: '',
+      from: '',
+      size: '',
+      building: 0
     })
+    this.onShow()
   },
-  ChangeTimeOrder:function(){
+  ChangeTimeOrder: function () {
+    var a = 0;
+    if (this.data.flag1 == 0) {
+      a = 1;
+    }
     this.setData({
-      flag1:-(this.data.flag1)
+      flag1: a
     })
+    this.onShow()
   },
-  handlePhoneNumberInput: function(event) {
+  handlePhoneNumberInput: function (event) {
     let value = event.detail.value; // 获取输入框的值
     this.setData({
       price1: value, // 更新 phoneNumber 属性的值
     });
   },
-  handlePriceInput: function(event) {
+  handlePriceInput: function (event) {
     let value = event.detail.value; // 获取输入框的值
     this.setData({
       price2: value, // 更新 phoneNumber 属性的值
     });
     console.log(this.data.price2)
   },
-  cancel:function(){
+  cancel: function () {
     this.setData({
       open: -(this.data.open)
     })
-    this.refresh()
   },
-  ChangePriceOrder:function(){
+  ChangePriceOrder: function () {
+    var a = 0;
+    if (this.data.flag2 == 0) {
+      a = 1;
+    }
     this.setData({
-      flag2:-(this.data.flag2)
+      flag2: a
     })
+    this.onShow()
   },
-  OpenChoose:function(){
+  OpenChoose: function () {
     this.setData({
       open: -(this.data.open)
     })
@@ -345,13 +472,16 @@ Page({
   },
   handleBuildingChange: function (e) {
     const index = e.detail.value;
+    var a = parseInt(index) + 1
     const selectedBuilding = this.data.buildingOptions[index];
     this.setData({
       selectedBuilding: selectedBuilding,
-      building:index
+      building: index,
+      building: a
     });
   },
 })
+
 function generateBuildingOptions() {
   const buildingOptions = [];
   for (let i = 1; i <= 61; i++) {

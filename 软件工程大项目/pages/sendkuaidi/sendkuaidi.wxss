@@ -101,7 +101,7 @@ line-height: normal;
   font-size: 36rpx;
   color: #616161;
 }
-.signad .add1{
+.signad .add{
   position: relative;
   display: flex;
   justify-content: center;
@@ -604,4 +604,14 @@ line-height: normal;
   display: flex;
   margin-top: 10rpx;
   justify-content:right;
+}
+.zhuyi {
+  position: relative;
+  font-family: STFangsong;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 0, 0);
+  font-size: 16px;
+  display: flex;
+  margin-top: 25rpx;
 }

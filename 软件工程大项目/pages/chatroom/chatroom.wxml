@@ -7,7 +7,8 @@
       <block wx:for="{{list}}" wx:key="unique">
         <view class="message" bind:tap="jump" data-index="{{index}}">
           <view class="head">
-            <image class="headimg" src="../../img/关于我们.png" />
+            <image wx:if="{{item.role=='委托方'}}" class="headimg" src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/8f9b8822aa314d59a057609638808ba1.png" />
+            <image wx:if="{{item.role=='骑手'}}" class="headimg" src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/665992b1a4414d62abb0efa245098a78.png" />
           </view>
           <text class="chatobject">{{item.role}} {{item.lastMsg.senderId}}</text>
           <text class="chatmsg" wx:if="{{item.lastMsg.type==3}}">用户信息</text>

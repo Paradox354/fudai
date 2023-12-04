@@ -1,123 +1,144 @@
 <!--pages/takeinfo/takeinfo.wxml-->
 <view class="{{zhuti}}">
-<scroll-view class="out" scroll-y>
-  <view class="addressinfo">
-  <view class="from">{{list.from}}</view>
-  <view class="jiantou"><image src="../../img/take.png"/></view>
-  <view class="to">{{list.building}}号楼</view>
-</view>
-   <view class="diver"></view>
-   <view class="info">
-   <view class="code"><view class="takecode" wx:if="{{list.incidentalMsg.code}}">{{list.incidentalMsg.code}}</view>
-   <view class="size">{{list.company}}|{{list.size}}</view>
-   <image wx:if="{{list.incidentalMsg.picture}}" src="{{list.incidentalMsg.picture}}" data-imgsrc="{{list.incidentalMsg.picture}}" bind:tap="previewImage"></image>
-   </view>
-   </view>
-   <view class="diver"></view>
-   <view class="state">
-   <view class="statebox">
-   <view class="circle"></view>
-   <view class="infobox">
-   <text class="state">已接单</text>
-   <text class="time">{{t1}}</text>
-   <text class="message">请前往取货</text>
-   </view>
-   </view>
-   <view class="statebox">
-   <view class="zhixian"></view>
-   </view>
-   <view class="statebox">
-   <view class="circle"></view>
-   <view class="infobox">
-   <text class="state">取到货啦</text>
-   <text class="time">{{t2}}</text>
-   <text class="message">请上传取货照片</text>
-   </view>
-   </view>
-   <view class="statebox">
-   <view class="zhixian"></view>
-   <view class="imgbox" >
-    <image src="{{images[0]}}" data-imgsrc="{{images[0]}}" bind:tap="previewImage" wx:if="{{images[0]}}"></image>
-    <view class="cancel" bind:tap="cancel" data-index="0" wx:if="{{flag1!=1&&images[0]}}"><image src="../../img/删除.png"/></view>
-   <view class="upimg" bind:tap="upload" wx:if="{{flag1!=1}}"><text>上传图片</text></view>
+  <scroll-view class="out" scroll-y>
+    <view class="addressinfo" wx:if="{{list.type=='快递代寄'}}">
+      <view class="from">{{list.building}}号楼</view>
+      <view class="jiantou">
+        <image src="../../img/take.png" />
+      </view>
+      <view class="to">{{list.incidentalMsg.address}}</view>
+    </view>
+    <view class="addressinfo" wx:else>
+      <view class="from">{{list.from}}</view>
+      <view class="jiantou">
+        <image src="../../img/take.png" />
+      </view>
+      <view class="to">{{list.building}}号楼</view>
+    </view>
+    <view class="diver"></view>
+    <view class="info">
+      <view class="code">
+        <view class="takecode" wx:if="{{list.incidentalMsg.code}}">{{list.incidentalMsg.code}}</view>
+        <view class="size">{{list.company}}|{{list.size}}</view>
+        <image wx:if="{{list.incidentalMsg.picture}}" src="{{list.incidentalMsg.picture}}" data-imgsrc="{{list.incidentalMsg.picture}}" bind:tap="previewImage"></image>
+      </view>
+    </view>
+    <view class="diver"></view>
+    <view class="state">
+      <view class="statebox">
+        <view class="circle"></view>
+        <view class="infobox">
+          <text class="state">已接单</text>
+          <text class="time">{{t1}}</text>
+          <text class="message">请前往取货</text>
+        </view>
+      </view>
+      <view class="statebox">
+        <view class="zhixian"></view>
+      </view>
+      <view class="statebox">
+        <view class="circle"></view>
+        <view class="infobox">
+          <text class="state">取到货啦</text>
+          <text class="time">{{t2}}</text>
+          <text class="message">请上传取货照片</text>
+        </view>
+      </view>
+      <view class="statebox">
+        <view class="zhixian"></view>
+        <view class="imgbox">
+          <image src="{{images[0]}}" data-imgsrc="{{images[0]}}" bind:tap="previewImage" wx:if="{{images[0]}}"></image>
+          <view class="cancel" bind:tap="cancel" data-index="0" wx:if="{{flag1!=1&&images[0]}}">
+            <image src="../../img/删除.png" />
+          </view>
+          <view class="upimg" bind:tap="upload" wx:if="{{flag1!=1}}"><text>上传图片</text></view>
 
-   <view class="upload" bind:tap="comfirm" data-index="0" wx:if="{{flag1!=1&&images[0]}}"><text>确认上传</text></view>
-   </view>
-   </view>
-   <view class="statebox" wx:if="{{flag1==1}}">
-   <view class="circle"></view>
-   <view class="infobox" bind:tap="upload">
-   <text class="state">抵达目的地</text>
-   <text class="time">{{t3}}</text>
-   <text class="message">请上传目的地和快递照片</text>
-   </view>
-   </view>
-   <view class="statebox" wx:if="{{flag1==1}}">
-    <view class="zhixian"></view>
-   <view class="imgbox"><image src="{{images[1]}}" data-imgsrc="{{images[1]}}" bind:tap="previewImage" wx:if="{{images[1]}}"></image>
-   <!-- <image src="../../img/客服.png"/> -->
-   <view class="cancel" bind:tap="cancel" data-index="1" wx:if="{{flag2!=1&&images[1]&&havetap==-1}}"><image src="../../img/删除.png" mode=""/></view>
-   <view class="upimg" bind:tap="upload" wx:if="{{flag2!=1&&havetap==-1}}"><text>上传图片</text></view>
+          <view class="upload" bind:tap="comfirm" data-index="0" wx:if="{{flag1!=1&&images[0]}}"><text>确认上传</text></view>
+        </view>
+      </view>
+      <view class="statebox" wx:if="{{flag1==1}}">
+        <view class="circle"></view>
+        <view class="infobox" bind:tap="upload">
+          <text class="state">抵达目的地</text>
+          <text class="time">{{t3}}</text>
+          <text class="message">请上传目的地和快递照片</text>
+        </view>
+      </view>
+      <view class="statebox" wx:if="{{flag1==1}}">
+        <view class="zhixian"></view>
+        <view class="imgbox">
+          <image src="{{images[1]}}" data-imgsrc="{{images[1]}}" bind:tap="previewImage" wx:if="{{images[1]}}"></image>
+          <!-- <image src="../../img/客服.png"/> -->
+          <view class="cancel" bind:tap="cancel" data-index="1" wx:if="{{flag2!=1&&images[1]&&havetap==-1}}">
+            <image src="../../img/删除.png" mode="" />
+          </view>
+          <view class="upimg" bind:tap="upload" wx:if="{{flag2!=1&&havetap==-1}}"><text>上传图片</text></view>
 
-   <view class="upload" bind:tap="comfirm" data-index="1" wx:if="{{flag2!=1&&images[1]&&havetap==-1}}"><text>确认上传</text></view>
-   </view>
-   </view>
-   </view>
-   <view class="diver"></view>
-   <view class="func">
-   <text class="havetake">已用时</text>
-   <text class="time">{{nhour}}小时{{nmin}}分</text>
-   <text class="type">快递代取</text>
-   <view class="funclist">
-   <view class="function" bind:tap="cancelList">
-   <view class="funcimg"><image src="../../img/取消接单.png"/>
-   </view>
-   <text class="content">取消接单</text>
-   </view>
-   <view class="function">
-   <view class="funcimg"><image src="../../img/联系客服.png"/>
-   </view>
-   <text class="content">联系客服</text>
-   </view>
-   <view class="function" bind:tap="gotochat">
-   <view class="funcimg"><image src="../../img/联系顾客.png"/>
-   </view>
-   <text class="content">联系顾客</text>
-   </view>
-   <view class="function">
-   <view class="funcimg"><image src="../../img/投诉.png"/>
-   </view>
-   <text class="content">投诉</text>
-   </view>
-   </view>
-   </view>
-   <view class="diver"></view>
-   <view class="moremsg">
-   <view class="msgitem">
-   <text class="first">服务类型</text>
-   <text class="last">{{list.type}}</text>
-   </view>
-   <view class="msgitem">
-   <text class="first">服务地址</text>
-   <text class="last">{{list.incidentalMsg.address}}</text>
-   </view>
-   <view class="msgitem">
-   <text class="last">{{list.incidentalMsg.name}}({{list.incidentalMsg.phone}})</text>
-   </view>
-   <view class="msgitem">
-   <text class="first">配送骑手：</text>
-   <text class="last">{{list.receiverId}}</text>
-   </view>
-   <view class="diver2"></view>
-   <view class="msgitem">
-   <text class="first">订单号：</text>
-   <text class="last">{{list.id}}</text>
-   </view>
-   <view class="msgitem">
-    <text class="first">备注：</text>
-   <text class="last">{{list.remark}}</text></view>
-   </view>
-   <view class="arrive">
-   </view>
-</scroll-view>
+          <view class="upload" bind:tap="comfirm" data-index="1" wx:if="{{flag2!=1&&images[1]&&havetap==-1}}"><text>确认上传</text></view>
+        </view>
+      </view>
+    </view>
+    <view class="diver"></view>
+    <view class="func">
+      <text class="havetake">已用时</text>
+      <text class="time">{{nhour}}小时{{nmin}}分</text>
+      <text class="type">{{list.type}}</text>
+      <view class="funclist">
+        <view class="function" bind:tap="cancelList">
+          <view class="funcimg">
+            <image src="../../img/取消接单.png" />
+          </view>
+          <text class="content">取消接单</text>
+        </view>
+        <view class="function">
+          <view class="funcimg">
+            <image src="../../img/联系客服.png" />
+          </view>
+          <text class="content">联系客服</text>
+        </view>
+        <view class="function" bind:tap="gotochat">
+          <view class="funcimg">
+            <image src="../../img/联系顾客.png" />
+          </view>
+          <text class="content">联系顾客</text>
+        </view>
+        <view class="function">
+          <view class="funcimg">
+            <image src="../../img/投诉.png" />
+          </view>
+          <text class="content">投诉</text>
+        </view>
+      </view>
+    </view>
+    <view class="diver"></view>
+    <view class="moremsg">
+      <view class="msgitem">
+        <text class="first">服务类型</text>
+        <text class="last">{{list.type}}</text>
+      </view>
+      <view class="msgitem">
+        <text class="first">服务地址</text>
+        <text  wx:if="{{list.type=='快递代寄'}}" class="last">{{list.from}}</text>
+        <text  wx:else class="last">{{list.incidentalMsg.address}}</text>
+      </view>
+      <view class="msgitem">
+        <text class="last">{{list.incidentalMsg.name}}({{list.incidentalMsg.phone}})</text>
+      </view>
+      <view class="msgitem">
+        <text class="first">配送骑手：</text>
+        <text class="last">{{list.receiverId}}</text>
+      </view>
+      <view class="diver2"></view>
+      <view class="msgitem">
+        <text class="first">订单号：</text>
+        <text class="last">{{list.id}}</text>
+      </view>
+      <view class="msgitem">
+        <text class="first">备注：</text>
+        <text class="last">{{list.remark}}</text>
+      </view>
+    </view>
+    <view class="arrive">
+    </view>
+  </scroll-view>
 </view>

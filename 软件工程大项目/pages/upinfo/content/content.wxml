@@ -30,7 +30,7 @@
   </view>
   <view class="box2">
   <view class="idinfo">
-  <view class="idhead"><image src="{{images}}"/></view>
+  <view class="idhead"><image src="{{headurl}}"/></view>
   <view class="id">{{name}}</view>
   <view class="time">{{list.createTime}}</view>
   <view class="price">￥ {{list.price}}</view>

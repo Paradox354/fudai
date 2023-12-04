@@ -219,6 +219,8 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   top: 1%;
   width: 60px;
   height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .head1 image {
   position: relative;
@@ -231,6 +233,8 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   right: 2%;
   width: 60px;
   height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .head2 image {
   position: absolute;

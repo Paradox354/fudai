@@ -16,7 +16,9 @@
     "pages/setting/self/self",
     "pages/setting/normal/normal",
     "pages/idconfig/idconfig",
-    "pages/takeinfo/takeinfo"
+    "pages/takeinfo/takeinfo",
+    "pages/sendkuaidi/sendkuaidi",
+    "pages/takewaimai/takewaimai"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {

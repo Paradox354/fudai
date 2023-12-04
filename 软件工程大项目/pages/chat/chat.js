@@ -22,7 +22,8 @@ Page({
     imgindex: 0,
     zhuti: '',
     name: '',
-    statu: true
+    statu: true,
+    headurl:''
   },
   // 页面加载
   onLoad: function (option) {
@@ -43,6 +44,11 @@ Page({
     })
   },
   onShow: function (e) {
+    const app=getApp()
+    this.setData({
+      headurl:app.globalData.headurl
+    })
+    console.log(this.data.headurl)
     if (!socketOpen) {
       this.webSocket();
     }
@@ -66,7 +72,7 @@ Page({
       socketOpen = false
     })
     SocketTask.onMessage(onMessage => {
-      console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息')
+      console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息\n'+onMessage.data)
       that.setData({
         messages: this.data.messages.concat(JSON.parse(onMessage.data)),
       })

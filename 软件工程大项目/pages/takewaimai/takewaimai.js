@@ -2,6 +2,7 @@ var app=getApp()
 // pages/takekuaidi/takekuaidi.js
 Page({
   data: {
+    name:'',
     zhuti4:'',
     open:-1,
     zhuti3:'',
@@ -9,15 +10,15 @@ Page({
       ],
       code:'',
       part:{
-        company: '请选择快递商家',
-        selectedExpress2: '请选择快递大小',
+        company: '请选择外卖地址',
+        selectedExpress2: '请选择外卖大小',
         size:'',
         price:0,
         imgpath:'',
         codeValue: "",
         from:'',
       },
-      expressList: ['请选择快递商家', '圆通快递', '中通快递', '韵达快递', '顺丰快递', '邮政快递', '京东快递', '极兔快递', '其他'],
+      expressList: ['请选择外卖地址', '三区门口', '一区门口',   '其他'],
       expressList2: ['小件￥2','中件￥3','大件￥5'],
       rooturl:'https://rrewuq.com',
       images:[],
@@ -34,7 +35,7 @@ Page({
       largenum: 0,
       adress:'',
       phone:'',
-      type:'快递代拿',
+      type:'外卖代拿',
       remark:'',
       price:0,
       money:0,
@@ -45,8 +46,7 @@ Page({
       dormitoryOptions: generateDormitoryOptions(),
       selectedDormitory: '101',
       zhuti:'',
-      addlist:'',
-      name:''
+      addlist:''
   },
   close()
   {
@@ -75,7 +75,6 @@ Page({
   chusemsg(e)
   {
     var index=e.currentTarget.dataset.index;
-    this.data.addlist[index].addressDetail
     this.setData({
       name:this.data.addlist[index].name,
       phone:this.data.addlist[index].phoneEnd,
@@ -85,7 +84,6 @@ Page({
       selectedDormitory:this.data.addlist[index].layer,
       selectedDistrict:this.data.addlist[index].addressDetail.slice(0,4)
     })
-    console.log(this.data.districtOptions)
   },
   onReady() {
 
@@ -220,16 +218,12 @@ cancelimg(e)
       var selectedExpress = this.data.expressList[index];
       var a='controls['+i+'].company'
       var b='controls['+i+'].from'
-      var from='快递站';
-      if(selectedExpress=='邮政快递')
-      {
-        from='邮政'
-      }
+      var from=selectedExpress;
       this.setData({
         [a]:selectedExpress,
         [b]:from
       })
-    }
+  }
 },
 show:function(){
   this.setData({
@@ -501,8 +495,8 @@ removeControl: function () {
 },
 handleBuildingChange: function (e) {
   const index = e.detail.value;
-  const selectedBuilding = this.data.buildingOptions[index];
   var a=parseInt(index)+1
+  const selectedBuilding = this.data.buildingOptions[index];
   this.setData({
     selectedBuilding: selectedBuilding,
     building:a

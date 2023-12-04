@@ -8,11 +8,11 @@
   <view class="func1img"><image src="{{url1}}"/></view>
   <text class="func1font">快递代拿</text>
   </view>
-  <view class="func2">
+  <view class="func2" bind:tap="jumptowaimai">
   <view class="func2img"><image src="{{url2}}"/></view>
   <text class="func1font">饮品代拿</text>
   </view>
-  <view class="func3">
+  <view class="func3" bind:tap="jumptosend">
   <view class="func3img"><image src="{{url3}}"/></view>
   <text class="func1font">快递代寄</text>
   </view>

@@ -160,6 +160,7 @@ Page({
         that.setData({
           list: res.data.data
         })
+        console.log(that.data.list)
       }
     })
     wx.request({

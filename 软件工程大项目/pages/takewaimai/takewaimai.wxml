@@ -3,7 +3,7 @@
 <scroll-view class='out' scroll-y>
   <view class="moreinfo">
 <view class="address" >
-<text class="morefont">收件地址 <text class="sign">*</text></text>
+<text class="morefont">收货地址 <text class="sign">*</text></text>
 <picker class="moinput1" mode="selector" range="{{ districtOptions }}" bindchange="handleDistrictChange">
     <view class="diy-item">{{ selectedDistrict }}</view>
   </picker>
@@ -16,7 +16,7 @@
 </view>
 <view class="divider1"></view>
 <view class="phone">
-  <text class="morefont">送件联系电话 <text class="sign">*</text></text>
+  <text class="morefont">联系电话 <text class="sign">*</text></text>
   <input value="{{phone}}" type="number" class="moinput" placeholder="请输入电话号码" placeholder-class="phcolor"  bindinput="handlePhoneNumberInput"/>
   </view>
 <view class="divider2"></view>
@@ -26,7 +26,7 @@
   </view>
 <view class="divider3"></view>
 <view class="moreprice">
-  <text class="morefont">收件人姓名<text class="sign">*</text></text>
+  <text class="morefont">收货人姓名<text class="sign">*</text></text>
   <input type="text" value="{{name}}" class="moinput" placeholder="请输入姓名" placeholder-class="phcolor" bindinput="handlePriceChange"/>
   </view>
 <view class="divider4"></view>
@@ -37,7 +37,7 @@
 <block wx:for="{{controls}}" wx:key="index">
   <view class="codeview">
   <view class="scor">
-  <text class="morefont">快递商家 <text class="sign">*</text></text>
+  <text class="morefont">外卖地址 <text class="sign">*</text></text>
   <picker mode="selector" range="{{expressList}}" bindchange="bindPickerChange" class="moinput" data-index="{{index}}">
     <view class="picker">
       {{controls[index].company}}
@@ -45,7 +45,7 @@
   </picker>
 </view>
 <view class="scor">
-  <text class="morefont">快递大小 <text class="sign">*</text></text>
+  <text class="morefont">外卖大小 <text class="sign">*</text></text>
   <picker mode="selector" range="{{expressList2}}" bindchange="bindPickerChange2" class="moinput" data-index="{{index}}">
     <view class="picker">
       {{controls[index].selectedExpress2}}
@@ -53,7 +53,7 @@
   </picker>
 </view>
 <view class="te">
-  <textarea value="{{controls[index].codeValue}}" placeholder="输入取件码或上传截图（仅接单的接单员可见）" data-index="{{index}}" bindinput="changecode"/>
+  <textarea value="{{controls[index].codeValue}}" placeholder="输入外卖订单信息或或上传截图（仅接单的接单员可见）" data-index="{{index}}" bindinput="changecode"/>
   </view>
 
   <view class="imgbox">
@@ -68,10 +68,14 @@
 </view>
 </block>
 <view class="signad">
-  <view class="add1" bind:tap="addControl">+</view>
+  <view class="add" bind:tap="addControl">+</view>
 <view class="jian" bind:tap="removeControl">-</view>
-</view>
 
+
+</view>
+<view class="zhuyi">
+下单前请确保外卖已送达或即将送达!!!
+</view>
 
 
 </scroll-view>
