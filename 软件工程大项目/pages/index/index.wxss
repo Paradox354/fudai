@@ -91,7 +91,7 @@ left: 18%;
   top: 40%;
   left: 1%;
   width: 380px;
-  height: 250px;
+  height: 250rpx;
   flex-shrink: 0;
   border-radius: 20px;
   background: rgba(240, 96, 234, 0.15);
@@ -99,7 +99,7 @@ left: 18%;
 }
 .func1{
   position: absolute;
-  top: 4%;
+  top: 10%;
   left: 5%;
   width: 100px;
   height: 100px;
@@ -123,7 +123,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func3{
   position: absolute;
-  top: 4%;
+  top: 10%;
   left: 36.5%;
   width: 100px;
   height: 100px;
@@ -147,7 +147,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
 }
 .func5{
   position: absolute;
-  top: 4%;
+  top: 10%;
   left: 68%;
   width: 100px;
   height: 100px;
@@ -263,7 +263,7 @@ box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
   position: absolute;
   background-color: rgb(255, 178, 127);
   left: 5%;
-  bottom: 20%;
+  top: 60%;
   width: 20%;
   height: 5%;
   display: flex;

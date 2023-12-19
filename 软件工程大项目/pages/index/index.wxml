@@ -8,25 +8,13 @@
   <view class="func1img"><image src="{{url1}}"/></view>
   <text class="func1font">快递代拿</text>
   </view>
-  <view class="func2" bind:tap="jumptowaimai">
-  <view class="func2img"><image src="{{url2}}"/></view>
-  <text class="func1font">饮品代拿</text>
+  <view class="func5" bind:tap="jumptowaimai">
+  <view class="func5img"><image src="{{url5}}"/></view>
+  <text class="func1font">外卖代拿</text>
   </view>
   <view class="func3" bind:tap="jumptosend">
   <view class="func3img"><image src="{{url3}}"/></view>
   <text class="func1font">快递代寄</text>
-  </view>
-  <view class="func4">
-  <view class="func4img"><image src="{{url4}}"/></view>
-  <text class="func1font">暂未开放</text>
-  </view>
-  <view class="func5">
-  <view class="func5img"><image src="{{url5}}"/></view>
-  <text class="func1font">校园代跑</text>
-  </view>
-  <view class="func6">
-  <view class="func6img"><image src="{{url6}}"/></view>
-  <text class="func1font">暂未开放</text>
   </view>
   </view>
 </view>

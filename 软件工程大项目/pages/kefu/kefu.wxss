@@ -1,4 +1,4 @@
-/* pages/idconfig/idconfig.wxss */
+/* pages/kefu/kefu.wxss *//* pages/selfprivacy/selfprivacy.wxss */
 .container1 {
   position: absolute;
   top: 0%;
@@ -20,7 +20,7 @@
 .head {
   position: relative;
   top: 1%;
-  height: 60px;
+  height: 8%;
   width: 100%;
   border-radius: 20px;
 border: 1px solid #FFF;
@@ -35,53 +35,26 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
-.item {
-  display: flex;
+.code {
   position: relative;
-  top: 12px;
-  left: 2.5%;
-  height: 60px;
-  width: 95%;
+  margin-top: 5%;
   border-radius: 20px;
 border: 1px solid #FFF;
 background: rgba(255, 255, 255, 0.40);
-box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
-margin-bottom: 5px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
-.content {
-  position: relative;
-  top: 20%;
-  left: 5%;
-  color: #000;
-font-family: STFangsong;
-font-size: 27px;
+.code text{
+  font-family: STFangsong;
+font-size: 28px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 }
-.moinput {
-  position: relative;
-  top: 33%;
-  left: 50%;
-  width: 30%;
-  color: #000;
-  font-family: STFangsong;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.confirm {
-  position: relative;
-  height: 5%;
-  width: 25%;
-  left: 70%;
-  background-color: rgba(255, 255, 255, 0.7);
-  font-family: STFangsong;
-  font-size: 20px;
-  border-radius: 10%;
-  margin-top: 5%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.code image{
+  margin-top: 10px;
+  border-radius: 20px;
+  max-width: 98%;
+  max-height: 98%;
 }

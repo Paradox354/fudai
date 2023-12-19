@@ -24,21 +24,33 @@ Page({
     this.setData({
       token:token
     })
-    console.log(token)
-    wx.request({
-      url: that.data.rooturl+'/chat/list?page=1&&pageSize=10',
-      method:'GET',
-      header:{
-        'token':token
-      },
-      success(res)
-      {
-        that.setData({
-          list:res.data
-        })
-        console.log(that.data.list)
-      }
-    })
+    if (that.data.token == '') {
+      wx.showModal({
+        title: '请登录',
+        complete: (res) => {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/my/my',
+            })
+          }
+        }
+      })
+    }else{
+      wx.request({
+        url: that.data.rooturl+'/chat/list?page=1&&pageSize=10',
+        method:'GET',
+        header:{
+          'token':token
+        },
+        success(res)
+        {
+          that.setData({
+            list:res.data
+          })
+          console.log(that.data.list)
+        }
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -75,9 +87,6 @@ Page({
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh() {
     var that=this;
     const token=wx.getStorageSync('token');

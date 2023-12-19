@@ -9,7 +9,8 @@
         <view wx:if="{{item.type==1}}">
           <view class="message-item" wx:if="{{item.senderId!=userId}}">
             <view class="head1">
-              <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/8f9b8822aa314d59a057609638808ba1.png" />
+              <image wx:if="{{name=='骑手'}}" src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/665992b1a4414d62abb0efa245098a78.png" />
+              <image wx:else src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/8f9b8822aa314d59a057609638808ba1.png" />
             </view>
             <text class="message-content">{{item.msg}}
             </text>
@@ -45,20 +46,26 @@
               <image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/665992b1a4414d62abb0efa245098a78.png" />
             </view>
             <view class="ordercontent">
+              <view class="type">订单类型:{{item.msg.type}}</view>
               <view class="address">送达地址：{{item.msg.address}}</view>
-              <view class="code">取件码:{{item.msg.code}}</view>
+              <view wx:if="{{item.msg.type=='快递代拿'}}" class="code">取件码:{{item.msg.code}}</view>
+              <view wx:if="{{item.msg.type=='快递代寄'}}" class="code">寄件码:{{item.msg.code}}</view>
               <view class="arrname">客户姓名:{{item.msg.name}}</view>
               <view class="kehuphone">客户联系电话:{{item.msg.phone}}</view>
-              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}"/>
+              <view class="number">订单编号:{{item.msg.taskId}}</view>
+              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}" />
             </view>
           </view>
           <view class="message-itemmy" wx:else>
             <view class="ordercontentmy">
+              <view class="type">订单类型:{{item.msg.type}}</view>
               <view class="address">送达地址：{{item.msg.address}}</view>
-              <view class="code">取件码:{{item.msg.code}}</view>
+              <view wx:if="{{item.msg.type=='快递代拿'}}" class="code">取件码:{{item.msg.code}}</view>
+              <view wx:if="{{item.msg.type=='快递代寄'}}" class="code">寄件码:{{item.msg.code}}</view>
               <view class="arrname">客户姓名:{{item.msg.name}}</view>
               <view class="kehuphone">客户联系电话:{{item.msg.phone}}</view>
-              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}"/>
+              <view class="number">订单编号:{{item.msg.taskId}}</view>
+              <image src="{{item.msg.picture}}" data-imgsrc="{{item.msg.picture}}" bind:tap="previewImage" wx:if="{{item.msg.picture}}" />
             </view>
             <view class="head2">
               <image src="{{headurl}}" />

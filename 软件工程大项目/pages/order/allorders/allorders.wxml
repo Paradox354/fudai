@@ -4,7 +4,6 @@
   <view bind:tap="ChangeTimeOrder">时间
     <image src="../../../img/order2.png" wx:if="{{flag1!=1}}"/>
     <image src="../../../img/order1.png" wx:else />
-  
   </view>
   <view bind:tap="ChangePriceOrder">价格
     <image src="../../../img/order2.png" wx:if="{{flag2!=1}}"/>
@@ -16,39 +15,45 @@
   <view class="order" >
     <scroll-view class="out" scroll-y>
       <block wx:for="{{list}}" wx:key="unique">
-        <view class="box" wx:if="{{item.type=='快递代寄'}}">
-          <view class="{{pg}}"></view>
+        <view class="box"> 
+          <image class="head1" src="{{item.userAvatar}}"
+          bind:tap="takeUserMsg" data-publisherId="{{item.publisherId}}" data-index="{{index}}"/>
           <text class="type">{{item.type}}（{{item.size}}）</text>
           <text class="time">{{item.createTime}}</text>
           <text class="orderstate">待接单</text>
           <view class="info">          
-          <text class="from">{{item.building}}号楼</text>
+          <text class="from"  wx:if="{{item.type=='快递代寄'}}">{{item.building}}号楼</text>
+          <text class="from" wx:else>{{item.from}}</text>
           <view class="jiantou"><image src="../../../img/direction.png" /></view>
-          <text class="to">{{item.company}}</text>
+          <text class="to"  wx:if="{{item.type=='快递代寄'}}">{{item.company}}</text>
+          <text class="to" wx:else>{{item.building}}号楼</text>
           <text class="price">￥{{item.price}}</text>
           </view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
           <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>
+          
         </view>
-
-
-        <view class="box" wx:else>
-          <view class="{{pg}}"></view>
-          <text class="type">{{item.type}}（{{item.size}}）</text>
-          <text class="time">{{item.createTime}}</text>
-          <text class="orderstate">待接单</text>
-          <view class="info">          
-          <text class="from">{{item.from}}</text>
-          <view class="jiantou"><image src="../../../img/direction.png" /></view>
-          <text class="to">{{item.building}}号楼</text>
-          <text class="price">￥{{item.price}}</text>
-          </view> 
-          <view class="divider"></view>
-          <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" bind:tap="recieve" data-id="{{item.id}}">接单</view>
+        <view class="{{tanchuan}}"  wx:if="{{item.flag==1}}" style="position: relative; left: 30rpx; top: 23rpx"> 
+          <view class="satisfaction">发起人信誉分:
+            <view class="stars">
+                <image class="star" src="../../../img/xingxing.png" />
+                <image class="star" src="../../../img/xingxing.png" />
+                <image class="star" src="../../../img/xingxing.png" />
+                <image class="star" src="../../../img/xingxing.png" />
+                <image class="star" src="../../../img/xingxing.png" />
+            </view>
+          </view>
+          <view class="message" >
+          <view class="judge">满意率： {{item.msglist.positiveReviews}}%</view>
+          <view class="other">他的其他类型订单： 1</view>
+          <view class="faqi">发起过多少订单： {{item.msglist.totalOrders}}</view>
+          <view class="tousu">订单被投诉次数： {{item.msglist.negativeReviews}}</view>
+          <view class="lianxi">
+            <text class="lian">联系对方</text>
+          </view>
+          </view>
         </view>
-        
       </block>
    </scroll-view>
    <view class="{{zhuti2}}" wx:if="{{open==-1}}">

@@ -1,7 +1,6 @@
 <view class="{{zhuti}}">
   <tabBar selected="0"></tabBar>
   <scroll-view class='out' scroll-y>
-    <view class="map"></view>
     <view class="state">
       <block wx:for="{{statu}}" wx:key="unique">
         <view class="box">

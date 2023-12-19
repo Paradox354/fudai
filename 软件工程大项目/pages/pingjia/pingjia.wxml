@@ -1,0 +1,18 @@
+<view class="{{zhuti}}">
+  <view class="satisfaction">
+    <view><text>满意度</text></view>
+    <view class="star">
+      <view wx:for="{{stars}}" wx:key="index" class="iconfont {{item ? 'icon-xingxing' : 'icon-pingjia'}}" data-index="{{index}}" bindtap="handleStarTap"></view>
+    </view>
+  </view>
+
+  <view class="evaluate">
+    <view><text>评价内容</text></view>
+    <textarea class="evaTest" placeholder="点击这里输入评价" bindinput="handleTextareaInput" value="{{reviewText}}"></textarea>
+    <button class="add">添加照片</button>
+  </view>
+
+  <view class="bottomBar">
+    <button class="publish" bindtap="submitReview">发布评价</button>
+  </view>
+</view>

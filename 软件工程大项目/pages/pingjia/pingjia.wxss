@@ -1,0 +1,163 @@
+
+.page {
+  background-image: url('https://picdl.sunbangyan.cn/2023/12/02/fcdb2d04ea3f8ae326aba7480e6cf124.jpeg');
+  background-size: cover; /* 覆盖整个页面 */
+  background-position: center; /* 居中显示 */
+  min-height: 100%; /* 确保至少覆盖整个屏幕 */
+  font-family: "华文仿宋";
+  box-sizing: border-box;
+}
+/* 顶部导航栏样式 */
+.topBar {
+  height: 40px;
+  border-bottom: 1px solid #656565;
+  line-height: 40px;
+}
+
+/* 顶部导航栏字体样式 */
+.topBar .font {
+  font-size: 18px;
+  padding-left: 10px;
+}
+.container1 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  font-family: STFangsong;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/cbb820543001497db8691152b063b5c5.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+.container2 {
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  font-family: STFangsong;
+  background-image: url('https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/870c6b9d51e14d92a5afe264de71ece1.png');
+  background-size: 100% 100%;
+  background-position: center;
+}
+/* 顶部导航栏图标样式 */
+.topBar .icon-zuojiantou {
+  color: #656565;
+  font-size: 20px;
+  padding-left: 8px;
+}
+
+/* 满意度部分样式 */
+.satisfaction {
+  height: 100px;
+  margin: 10px 0 20px;
+}
+
+/* 满意度标题样式 */
+.satisfaction text {
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 16px;
+}
+
+/* 满意度星级评价样式 */
+.satisfaction .star {
+  display: flex;
+  margin: 24px 64px;
+}
+/* 在微信小程序中使用外部字体 */
+@font-face {
+  font-family: "iconfont"; /* 自定义字体名称 */
+  src: url('./iconfont.ttf?t=1701400147582')
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xingxing:before {
+  content: "\e642";
+}
+
+.icon-pingjia:before {
+  content: "\e65e";
+}
+
+.icon-zuojiantou:before {
+  content: "\e625";
+}
+
+/* 星级评价图标样式 */
+.satisfaction .star .icon-pingjia {
+  font-size: 30px;
+  margin-right: 24px;
+}
+
+/* 星级评价高亮图标样式 */
+.satisfaction .star .icon-xingxing {
+  font-size: 30px;
+  margin-right: 24px;
+  color: orange;
+}
+
+/* 评价内容部分样式 */
+.evaluate {
+  height: 300px;
+}
+
+/* 评价内容标题样式 */
+.evaluate text {
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 16px;
+}
+
+/* 评价内容文本框样式 */
+.evaluate .evaTest {
+  resize: none;
+  outline: none;
+  border: 1px solid #fff;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 330px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 20px;
+  margin: 20px 22.5px;
+  font-size: 16px;
+}
+
+/* 添加照片按钮样式 */
+.evaluate .add {
+  margin-left: 35px;
+  font-size: 10px;
+  border: 1px dashed #000;
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  color: #646464;
+  font-size: 12px !important;
+}
+
+/* 底部栏样式 */
+.bottomBar {
+  border-top: 1px solid #656565;
+  height: 80px;
+  margin-top: 262px;
+}
+
+/* 发布评价按钮样式 */
+.bottomBar .publish {
+    margin-top: 12px;
+    margin-right: 15px;
+    border-radius: 5px;
+    background-color: rgba(58, 193, 235, 0.8);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #fff;
+    color: #fff;
+    position: absolute;
+    right: -14rpx;
+}

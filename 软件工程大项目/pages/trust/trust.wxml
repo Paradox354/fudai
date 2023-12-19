@@ -1,0 +1,5 @@
+<view class="{{zhuti}}">
+  <view class="score">{{score}}</view>
+<view class="evaluate">{{evaluate}}</view>
+</view>
+

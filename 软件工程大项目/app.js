@@ -6,7 +6,8 @@ App({
     zhuti3: 'addressinfo1',
     zhuti3: 'addinfo1',
     pg:'',
-    headurl:''
+    headurl:'',
+    tanchuan:''
   },
   onLaunch() {
     wx.loadFontFace({

@@ -15,7 +15,7 @@
 <text>认证</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/></view>
-<view class="moreitem">
+<view class="moreitem" bind:tap="jumptokefu">
   <view class="info">
 <image src="../../img/客服.png"/>
 <text>联系客服</text>
@@ -29,17 +29,18 @@
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
-<view class="moreitem">
+
+<view class="moreitem" bind:tap="jumptotrust">
   <view class="info">
-<image src="../../img/投诉.png"/>
-<text>投诉</text>
+<image src="../../img/privacy.png"/>
+<text>信誉系统</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
 <view class="moreitem" bind:tap="jumptosetting">
   <view class="info">
 <image src="../../img/setting.png"/>
-<text>设置</text>
+<text>默认地址</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>

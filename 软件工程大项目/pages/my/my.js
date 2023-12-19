@@ -8,7 +8,8 @@ Page({
     zhuti: '',
     isCertificate: true,
     open: 0,
-    imgpath: ''
+    imgpath: '',
+    id: 0
   },
   onLoad() {
     const app = getApp();
@@ -45,13 +46,16 @@ Page({
       {
         var name={
           nickName:res.data.data.username,
-          avatarUrl:res.data.data.avatar
+          avatarUrl:res.data.data.avatar,
+          id:parseFloat(res.data.data.id)
         }
         that.setData({
           nickname:name.nickName,
-          avatarUrl:name.avatarUrl
+          avatarUrl:name.avatarUrl,
+          id:name.id
         })
         console.log(name)
+        console.log(that.data.id)
         wx.setStorageSync('name', name)
       }
     })
@@ -252,7 +256,19 @@ Page({
   },
   jumptosetting: function () {
     wx.navigateTo({
-      url: '/pages/setting/setting',
+      url: '/pages/setting/self/self',
+      /*跳转到course页面*/
+    })
+  },
+  jumptokefu: function () {
+    wx.navigateTo({
+      url: '/pages/kefu/kefu',
+      /*跳转到course页面*/
+    })
+  },
+  jumptotrust: function () {
+    wx.navigateTo({
+      url: '/pages/trust/trust',
       /*跳转到course页面*/
     })
   },

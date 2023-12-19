@@ -1,6 +1,6 @@
 <!--pages/setting/self/self.wxml-->
 <view class="{{zhuti}}">
-  <view class="head">隐私设置</view>
+  <view class="head">默认地址设置</view>
   <view class="save">
   <block wx:for="{{msglist}}" wx:key="unique">
     <view class="msg">

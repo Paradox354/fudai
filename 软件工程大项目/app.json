@@ -18,7 +18,10 @@
     "pages/idconfig/idconfig",
     "pages/takeinfo/takeinfo",
     "pages/sendkuaidi/sendkuaidi",
-    "pages/takewaimai/takewaimai"
+    "pages/takewaimai/takewaimai",
+    "pages/pingjia/pingjia",
+    "pages/trust/trust",
+    "pages/kefu/kefu"
   ],
   "lazyCodeLoading": "requiredComponents",
   "window": {

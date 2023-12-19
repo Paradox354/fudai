@@ -148,9 +148,18 @@ Page({
   },
   jump:function(e){
     var index=e.currentTarget.dataset.index
+    console.log(index)
     wx.setStorageSync('orderlist',this.data.list[index])
     wx.navigateTo({
         url: '../../upinfo/state/state',  /*跳转到course页面*/
     })
+},
+jumptopingjia: function(e){
+  var id=e.currentTarget.dataset.id
+  console.log(id)
+  wx.setStorageSync('orderid',id)
+  wx.navigateTo({
+    url: '../../pingjia/pingjia',  /*跳转到course页面*/
+})
 }
 })

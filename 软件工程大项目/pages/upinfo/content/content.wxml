@@ -3,10 +3,10 @@
   <tabBar selected="1"></tabBar>
 <scroll-view class="out" scroll-y>
   <view class="box1">
-  <view class="arrtime">送达时间</view>
-  <view class="time">12:30</view>
+  <view class="arrtime">已耗时</view>
+  <view class="time">{{nhour}}小时{{nmin}}分钟</view>
   <view class="funclist">
-    <view class="funbox">
+    <view class="funbox" bind:tap="jumptokefu">
   <view class="head"><image src="../../../img/申请售后.png"/></view>
   <text>申请售后</text>
   </view>
@@ -14,7 +14,7 @@
   <view class="head" bind:tap="comfirm"><image src="../../../img/确认收货.png"/></view>
   <text>确认收货</text>
   </view>
-  <view class="funbox">
+  <view class="funbox" bind:tap="jumptokefu">
   <view class="head"><image src="../../../img/联系客服.png"/></view>
   <text>联系客服</text>
   </view>
@@ -22,7 +22,7 @@
   <view class="head"><image src="../../../img/联系骑手.png"/></view>
   <text>联系骑手</text>
   </view>
-  <view class="funbox">
+  <view class="funbox" bind:tap="tousu">
   <view class="head"><image src="../../../img/投诉.png"/></view>
   <text>投诉</text>
   </view>

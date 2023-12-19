@@ -8,7 +8,7 @@ Page({
     list: [],
     rooturl: 'https://rrewuq.com',
     flag: 0,
-    flag1:0,
+    flag1: 0,
     images: [],
     zhuti: '',
     t1: '',
@@ -17,8 +17,9 @@ Page({
     nhour: 0,
     nmin: 0,
     respo: '',
-    flag2:0,
-    havetap:1
+    flag2: 0,
+    havetap: 1,
+    respo2: ''
   },
 
   /**
@@ -122,8 +123,8 @@ Page({
                       title: '上传成功',
                     })
                     that.setData({
-                      flag1:1,
-                      havetap:-(that.data.havetap)
+                      flag1: 1,
+                      havetap: -(that.data.havetap)
                     })
                   }
                 })
@@ -177,7 +178,7 @@ Page({
               images: that.data.images.concat(msg[i].message.picture),
               flag1: 1,
               t2: msg[i].createTime,
-              havetap:-1
+              havetap: -1
             })
           } else if (msg[i].type == 1) {
             that.setData({
@@ -187,7 +188,7 @@ Page({
             that.setData({
               images: that.data.images.concat(msg[i].message.picture),
               t3: msg[i].createTime,
-              flag2:1,
+              flag2: 1,
             })
           }
         }
@@ -310,25 +311,80 @@ Page({
           return
         }
         if (res.confirm) {
-          if(res.content=='')
-          {
+          if (res.content == '') {
             wx.showToast({
               title: '理由不能为空',
-              icon:'error'
+              icon: 'error'
             })
-          }
-          else
-          {
+          } else {
             wx.showToast({
               title: '取消成功',
             })
             that.setData({
-              respo:res.content
+              respo: res.content
             })
             that.cancel1()
           }
         }
       }
+    })
+  },
+  tousu: function (e) {
+    var that = this
+    wx.showModal({
+      editable: true,
+      title: '请输入投诉原因',
+      complete: (res) => {
+        if (res.cancel) {
+          return
+        }
+        if (res.confirm) {
+          if (res.content == '') {
+            wx.showToast({
+              title: '理由不能为空',
+              icon: 'error'
+            })
+          } else {
+            that.setData({
+              respo2: res.content
+            })
+            wx.showLoading({
+              title: '上传中',
+            })
+            wx.request({
+              url: that.data.rooturl+'/complain/add',
+              method: 'POST',
+              data: {
+                'taskId': wx.getStorageSync('helplist').id,
+                'reason': that.data.respo2
+              },
+              header: {
+                'token': wx.getStorageSync('token')
+              },
+              success(res) {
+                console.log(res)
+                wx.hideLoading()
+                wx.showToast({
+                  title: '投诉成功',
+                  icon: 'success'
+                })
+              },
+              fail(res){
+                wx.hideLoading()
+                wx.showToast({
+                  title: '投诉失败',
+                  icon: 'error'
+                })
+              }
+            })
+          }
+        }
+      }
+    })
+  },
+  jumptokefu: function () {
+    wx.navigateTo({
+      url: '/pages/kefu/kefu',
     })
   }
 })

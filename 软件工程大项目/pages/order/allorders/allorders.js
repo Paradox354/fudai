@@ -5,6 +5,7 @@ Page({
    */
   data: {
     rooturl: 'https://rrewuq.com',
+    positiveReviews: '',
     token: '',
     page: 1,
     from: '',
@@ -21,7 +22,9 @@ Page({
     zhuti2: '',
     flag1: 0,
     flag2: 0,
+    dis: 1,
     open: 1,
+    index: 0,
     selectedBuilding: '1号楼',
     building: 0,
     buildingOptions: generateBuildingOptions(),
@@ -38,7 +41,8 @@ Page({
     selectedtype: 0, //0表示未选中任何服务类型，1表示选中代取快递
     selectedkuaidi: 0, //0表示未选中任何快递点，1表示选中快递中心，2表示选中邮政
     selectedsize: 0, //0表示未选中任何快递规模，1表示选中小件，2为中件，3为大件
-    pg:''
+    pg: '',
+    tanchuan:''
   },
 
   /**
@@ -47,37 +51,79 @@ Page({
   recieve(e) {
     var id = e.currentTarget.dataset.id;
     var that = this;
+    if (that.data.token == '') {
+      wx.showModal({
+        title: '请登录',
+        complete: (res) => {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/my/my',
+            })
+          }
+        }
+      })
+    } else {
+      wx.request({
+        url: that.data.rooturl + '/pt/acp',
+        method: 'POST',
+        data: {
+          'taskId': id
+        },
+        header: {
+          'token': that.data.token
+        },
+        success(res) {
+          if (res.data.status == 500) {
+            wx.showModal({
+              title: '您无法承接自己发布的订单',
+              content: '',
+              complete: (res) => {
+                if (res.cancel) {}
+                if (res.confirm) {}
+              }
+            })
+          } else {
+            wx.showModal({
+              title: '接单成功',
+              content: '',
+              complete: (res) => {
+                if (res.confirm) {
+                  that.onShow()
+                }
+              }
+            })
+          }
+        },
+      })
+    }
+  },
+  takeUserMsg(e) {
+    var userId = e.currentTarget.dataset.publisherid;
+    var that = this;
+    var index=e.currentTarget.dataset.index
     wx.request({
-      url: that.data.rooturl + '/pt/acp',
+      url: that.data.rooturl + '/statistics/get',
       method: 'POST',
       data: {
-        'taskId': id
+        'id': userId
       },
       header: {
         'token': that.data.token
       },
       success(res) {
-        if (res.data.status == 500) {
-          wx.showModal({
-            title: '您无法承接自己发布的订单',
-            content: '',
-            complete: (res) => {
-              if (res.cancel) {}
-              if (res.confirm) {}
-            }
-          })
-        } else {
-          wx.showModal({
-            title: '接单成功',
-            content: '',
-            complete: (res) => {
-              if (res.confirm) {
-                that.onShow()
-              }
-            }
-          })
-        }
+        var temp=that.data.list
+        temp[index]["msglist"]= res.data.data;
+        that.setData({
+          list: temp
+        })
+        console.log(that.data.list)
       },
+    })
+    var temp = that.data.list
+    temp[index].flag= -temp[index].flag
+    this.setData({
+      list:  temp,
+      //positiveReviews: (that.data.list.msglist.positiveReviews)/(that.data.list.msglist.totalOrders)*100,
     })
   },
   onLoad() {
@@ -105,7 +151,8 @@ Page({
     this.setData({
       zhuti: app.globalData.zhuti,
       zhuti2: app.globalData.zhuti2,
-      pg:app.globalData.pg
+      pg: app.globalData.pg,
+      tanchuan:app.globalData.tanchuan,
     })
     console.log(this.data.zhuti2)
     var that = this;
@@ -137,6 +184,15 @@ Page({
     if (this.data.from) {
       data.from = this.data.from
     }
+    if (this.data.userAvatar) {
+      data.userAvatar = this.data.userAvatar
+    }
+    if (this.data.publisherId) {
+      data.publisherId = this.data.publisherId
+    }
+    if (this.data.id) {
+      data.id = this.data.id
+    }
     console.log(data)
     wx.request({
       url: that.data.rooturl + '/pt/list',
@@ -146,8 +202,12 @@ Page({
         'token': that.data.token
       },
       success(res) {
+        var item=res.data.data
+        for(var i = 0;i<item.length;i++){
+          item[i]["flag"]=-1;
+        }
         that.setData({
-          list: that.data.list.concat(res.data.data)
+          list: that.data.list.concat(item)
         })
         console.log(that.data.list)
       }

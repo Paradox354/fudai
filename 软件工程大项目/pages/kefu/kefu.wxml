@@ -1,0 +1,10 @@
+<!--pages/selfprivacy/selfprivacy.wxml-->
+<view class="{{zhuti}}">
+<view class="head">联系客服</view>
+<view class="code">
+<image src="https://bucketofpicture.oss-cn-hangzhou.aliyuncs.com/c384d8950b944b579b8950386d80f8a7.png"/>
+<text>加入官方QQ群:755045796</text>
+<text>或者</text>
+<text>拨打联系电话：15006059779</text>
+</view>
+</view>

@@ -90,7 +90,7 @@
           </view>
           <text class="content">取消接单</text>
         </view>
-        <view class="function">
+        <view class="function" bind:tap="jumptokefu">
           <view class="funcimg">
             <image src="../../img/联系客服.png" />
           </view>
@@ -102,7 +102,7 @@
           </view>
           <text class="content">联系顾客</text>
         </view>
-        <view class="function">
+        <view class="function" bind:tap="tousu">
           <view class="funcimg">
             <image src="../../img/投诉.png" />
           </view>

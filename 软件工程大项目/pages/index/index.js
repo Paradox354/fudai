@@ -17,12 +17,13 @@ Page({
   },
   onLoad(){
     const app=getApp();
-    if(!app.globalData.zhuti||!app.globalData.zhuti2||!app.globalData.zhuti3||!app.globalData.zhuti4||!app.globalData.pg){
+    if(!app.globalData.zhuti||!app.globalData.zhuti2||!app.globalData.zhuti3||!app.globalData.zhuti4||!app.globalData.pg||!app.globalData.tanchuan){
       app.globalData.zhuti='container1',
       app.globalData.zhuti2='choose2',
       app.globalData.zhuti3='addressinfo1',
       app.globalData.zhuti4='addinfo1',
-      app.globalData.pg='head1'
+      app.globalData.pg='head1',
+      app.globalData.tanchuan='intruction2'
     }
     this.setData({
       zhuti:app.globalData.zhuti
@@ -114,7 +115,8 @@ jumptowaimai:function(){
       app.globalData.zhuti2='choose1';
       app.globalData.zhuti3='addressinfo2'
       app.globalData.zhuti4='addinfo2',
-      app.globalData.pg='head2'
+      app.globalData.pg='head2',
+      app.globalData.tanchuan='intruction'
       this.setData({
         i:2,
         zhuti:app.globalData.zhuti,
@@ -132,7 +134,8 @@ jumptowaimai:function(){
       app.globalData.zhuti2='choose2';
       app.globalData.zhuti3='addressinfo1'
       app.globalData.zhuti4='addinfo1',
-      app.globalData.pg='head1'
+      app.globalData.pg='head1',
+      app.globalData.tanchuan='intruction2'
       this.setData({
         zhuti: app.globalData.zhuti,
         i:1,

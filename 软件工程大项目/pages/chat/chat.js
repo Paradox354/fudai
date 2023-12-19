@@ -35,7 +35,9 @@ Page({
     const taskId = option.taskId;
     const role = option.role;
     const senderId = option.senderId
-    var name = ''
+    this.setData({
+      headurl:wx.getStorageSync('name').avatarUrl
+    })
     this.setData({
       userId: userId,
       taskId: taskId,
@@ -45,9 +47,7 @@ Page({
   },
   onShow: function (e) {
     const app=getApp()
-    this.setData({
-      headurl:app.globalData.headurl
-    })
+    
     console.log(this.data.headurl)
     if (!socketOpen) {
       this.webSocket();
