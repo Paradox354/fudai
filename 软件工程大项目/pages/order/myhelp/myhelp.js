@@ -259,15 +259,9 @@ Page({
         'token': that.data.token
       },
       success(res) {
-        console.log(res.data.data.path)
+        console.log(res)
         that.setData({
-          path: res.data.data.path
-        })
-        var path = res.data.data.path.slice(1, -1);
-        // 提取楼号
-        var itemList = path.split("->");
-        that.setData({
-          pathlist: itemList
+          pathlist: res.data.data
         })
         wx.hideLoading()
         that.setData({
