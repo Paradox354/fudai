@@ -68,6 +68,13 @@ Page({
   },
   comfirm() {
     var that=this
+    if(that.data.list.type!='已送达'){
+      wx.showToast({
+        title: '订单未送达',
+        icon:'error'
+      })
+      return;
+    }
     wx.showModal({
       title: '请确认送达',
       content: '',

@@ -2,5 +2,6 @@
   "usingComponents": {
     
     "tabBar": "../../../component/tabBar"
-  }
+  },
+  "navigationBarTitleText": "悬赏订单"
 }

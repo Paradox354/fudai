@@ -9,7 +9,6 @@
   <view class="evaluate">
     <view><text>评价内容</text></view>
     <textarea class="evaTest" placeholder="点击这里输入评价" bindinput="handleTextareaInput" value="{{reviewText}}"></textarea>
-    <button class="add">添加照片</button>
   </view>
 
   <view class="bottomBar">

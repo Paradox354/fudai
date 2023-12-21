@@ -2,5 +2,6 @@
   "usingComponents": {},
   "enablePullDownRefresh":true,
   "backgroundColor": "#FFFFFF",
-  "backgroundTextStyle": "dark"
+  "backgroundTextStyle": "dark",
+  "navigationBarTitleText": "聊天列表"
 }

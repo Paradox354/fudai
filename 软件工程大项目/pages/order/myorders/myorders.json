@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "tabBar": "../../../component/tabBar"
-  }
+  },
+  "navigationBarTitleText": "我帮助的"
 }

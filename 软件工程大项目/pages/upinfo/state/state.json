@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "tabBar": "../../../component2/tabBar"
-  }
+  },
+  "navigationBarTitleText": "订单状态"
 }

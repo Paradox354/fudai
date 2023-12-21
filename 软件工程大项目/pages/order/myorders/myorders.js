@@ -29,24 +29,48 @@ Page({
     {
       var id=event.currentTarget.dataset.id;
       var that=this;
-      wx.request({
-        url: that.data.rooturl+'/pt/delete',
-        method:'POST',
-        data:
-        { 
-          'taskId':id
-        },
-        header:{
-          'token':that.data.token
-        },
-        success(res){
-        that.onShow()
-      }
+      wx.showModal({
+        title: '再次确认',
+        content:'确定取消订单',
+        complete: (res) => {
+          if (res.cancel) {
+            return
+          }
+          if (res.confirm) {
+            wx.request({
+              url: that.data.rooturl+'/pt/delete',
+              method:'POST',
+              data:
+              { 
+                'taskId':id
+              },
+              header:{
+                'token':that.data.token
+              },
+              success(res){
+                wx.showToast({
+                  title: '取消成功',
+                  icon:'success'
+                })
+              that.onShow()
+            }
+            })
+          }
+        }
       })
     },
     confirm(event)
     {
       var id=event.currentTarget.dataset.id;
+      var status=event.currentTarget.dataset.status;
+      console.log(status)
+      if(status!='已送达'){
+        wx.showToast({
+          title: '订单未送达',
+          icon:'error'
+        })
+        return
+      }
       // var id=this.data.list[0].id;
       var that=this;
       wx.request({

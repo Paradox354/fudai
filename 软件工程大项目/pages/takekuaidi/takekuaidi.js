@@ -46,7 +46,8 @@ Page({
       selectedDormitory: '101',
       zhuti:'',
       addlist:'',
-      name:''
+      name:'',
+      showrule:-1
   },
   close()
   {
@@ -124,7 +125,13 @@ Page({
   onUnload() {
 
   },
-
+  ruleshow:function() {
+    console.log(11111)
+    var that=this
+    this.setData({
+      showrule: -(that.data.showrule)
+    })
+  },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
@@ -190,6 +197,7 @@ Page({
      }
   })
 },
+
 cancelimg(e)
 {
   var i=e.currentTarget.dataset.index;
@@ -259,6 +267,7 @@ bindPickerChange2: function (e) {
       })
   }
 },
+
 changecode(event) {
   var that=this
   let value = event.detail.value;
@@ -306,6 +315,9 @@ formsubmit()
     title: '确认提交',
     success: function(res) {
       if(res.confirm) {
+        wx.showLoading({
+          title: '提交订单中'
+         })
         that.setData({
           date:new Date()
         })
@@ -322,9 +334,7 @@ formsubmit()
 
 upload_info: function(i,pic) {
   
-wx.showLoading({
-  title: '提交订单中'
- })
+
   var that =this;
   var address =that.data.selectedDistrict+that.data.selectedBuilding+that.data.selectedDormitory;
   var incidentalMsg={
@@ -357,16 +367,15 @@ console.log(data)
    data: data,
    success(res) {
    console.log(res)
-
-   setTimeout(()=>{},2000);
+   wx.hideLoading()
+   wx.showToast({
+     title: '提交订单成功',
+     icon: 'success'
+   })
    wx.navigateBack({
     delta: 2,
     success: function(){
-      wx.hideLoading()
-      wx.showToast({
-        title: '提交订单成功',
-        icon: 'success'
-      })
+
     }
   })
    }

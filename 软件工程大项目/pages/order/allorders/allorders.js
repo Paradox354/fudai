@@ -63,37 +63,52 @@ Page({
         }
       })
     } else {
-      wx.request({
-        url: that.data.rooturl + '/pt/acp',
-        method: 'POST',
-        data: {
-          'taskId': id
-        },
-        header: {
-          'token': that.data.token
-        },
-        success(res) {
-          if (res.data.status == 500) {
-            wx.showModal({
-              title: '您无法承接自己发布的订单',
-              content: '',
-              complete: (res) => {
-                if (res.cancel) {}
-                if (res.confirm) {}
-              }
+      wx.showModal({
+        title: '再次确认',
+        content: '是否接单',
+        complete: (res) => {
+          if (res.cancel) {
+            return;
+          }
+          if (res.confirm) {
+            wx.showLoading({
+              title: '接单中',
             })
-          } else {
-            wx.showModal({
-              title: '接单成功',
-              content: '',
-              complete: (res) => {
-                if (res.confirm) {
-                  that.onShow()
+            wx.request({
+              url: that.data.rooturl + '/pt/acp',
+              method: 'POST',
+              data: {
+                'taskId': id
+              },
+              header: {
+                'token': that.data.token
+              },
+              success(res) {
+                if (res.data.status == 500) {
+                  wx.showModal({
+                    title: '您无法承接自己发布的订单',
+                    content: '',
+                    complete: (res) => {
+                      if (res.cancel) {}
+                      if (res.confirm) {}
+                    }
+                  })
+                } else {
+                  wx.hideLoading()
+                  wx.showModal({
+                    title: '接单成功',
+                    content: '',
+                    complete: (res) => {
+                      if (res.confirm) {
+                        that.onShow()
+                      }
+                    }
+                  })
                 }
-              }
+              },
             })
           }
-        },
+        }
       })
     }
   },
@@ -111,6 +126,7 @@ Page({
         'token': that.data.token
       },
       success(res) {
+        console.log(res)
         var temp=that.data.list
         temp[index]["msglist"]= res.data.data;
         that.setData({

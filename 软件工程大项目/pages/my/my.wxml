@@ -22,17 +22,10 @@
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>
 </view>
-<view class="moreitem">
-  <view class="info">
-<image src="../../img/关于我们.png"/>
-<text>关于我们</text>
-</view>
-<image class="jiantou" src="../../img/右箭头.png"/>
-</view>
 
 <view class="moreitem" bind:tap="jumptotrust">
   <view class="info">
-<image src="../../img/privacy.png"/>
+<image src="../../img/信用积分.png"/>
 <text>信誉系统</text>
 </view>
 <image class="jiantou" src="../../img/右箭头.png"/>

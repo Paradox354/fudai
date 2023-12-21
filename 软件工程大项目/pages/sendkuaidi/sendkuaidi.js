@@ -46,7 +46,15 @@ Page({
       dormitoryOptions: generateDormitoryOptions(),
       selectedDormitory: '101',
       zhuti:'',
-      addlist:''
+      addlist:'',
+      showrule:-1,
+  },
+  ruleshow:function() {
+    console.log(11111)
+    var that=this
+    this.setData({
+      showrule: -(that.data.showrule)
+    })
   },
   close()
   {

@@ -33,10 +33,12 @@ Page({
 
   // 提交评价
   submitReview: function() {
+    wx.showLoading({
+      title: '提交中',
+    })
     // 这里可以添加代码以处理评价数据
     var that=this
     const id = wx.getStorageSync('orderid')
-    console.log(id)
     wx.request({
       url: this.data.rooturl + '/pt/detail?taskId=' + id,
       method: 'GET',
@@ -47,6 +49,20 @@ Page({
         that.setData({
           receId: res.data.data.receiverId
         })
+        if(!that.data.sum){
+          wx.showToast({
+            title: '请输入满意度',
+            icon:'error'
+          })
+          return;
+        }
+        if(!that.data.reviewText){
+          wx.showToast({
+            title: '请输入内容',
+            icon:'error'
+          })
+          return;
+        }
         console.log(that.data.receId)
         wx.request({
           url: that.data.rooturl + '/pt/comment',
@@ -62,6 +78,14 @@ Page({
           },
           success(res) {
             console.log(res.data)
+            wx.showToast({
+              title: '评价成功',
+              icon:'success'
+            })
+            wx.hideLoading()
+            wx.reLaunch({ 
+              url: '/pages/order/myorders/myorders',
+            })
           }
         })
       }

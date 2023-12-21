@@ -21,8 +21,8 @@
 </view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" wx:if="{{item.status!='待评价'}}" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
-          <view class="finishorder" wx:if="{{item.status!='待评价'}}" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
+          <view class="getorder" wx:if="{{item.status!='待评价'&&item.status!='已完成'}}" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
+          <view class="finishorder" wx:if="{{item.status!='待评价'&&item.status!='已完成'}}" bind:tap="confirm" data-id="{{item.id}}" data-status="{{item.status}}">确认完成</view>
           <view class="finishorder" wx:if="{{item.status=='待评价'}}" bind:tap="jumptopingjia" data-id="{{item.id}}">前往评价</view>
         </view>
 
@@ -40,8 +40,8 @@
           </view></view>
           <view class="divider"></view>
           <text class="beizhu">备注:{{item.remark}}</text>
-          <view class="getorder" wx:if="{{item.status!='待评价'}}" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
-          <view class="finishorder" wx:if="{{item.status!='待评价'}}" bind:tap="confirm" data-id="{{item.id}}">确认完成</view>
+          <view class="getorder" wx:if="{{item.status!='待评价'&&item.status!='已完成'}}" bind:tap="cancel" data-id="{{item.id}}">取消订单</view>
+          <view class="finishorder" wx:if="{{item.status!='待评价'&&item.status!='已完成'}}" bind:tap="confirm" data-id="{{item.id}}" data-status="{{item.status}}">确认完成</view>
           <view class="finishorder" wx:if="{{item.status=='待评价'}}" bind:tap="jumptopingjia" data-id="{{item.id}}">前往评价</view>
         </view>
       </block>

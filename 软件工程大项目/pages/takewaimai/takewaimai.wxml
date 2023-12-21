@@ -79,8 +79,22 @@
 
 
 </scroll-view>
+<view class='ru' wx:if="{{showrule==1}}">
+<image src="../../img/删除.png" bind:tap="ruleshow"/>
+<text>- 小件参考大小:
+-- 正常一份饭+一份菜外卖
+
+  中件参考大小:
+-- 如水煮鱼，大蛋糕等较大包装
+
+大件参考大小:
+-- 如烤鱼带烤盘等较大较重外卖
+具体事宜可以在聊天室协商
+</text>
+</view>
 <view class="divider"></view>
 <view class="up">
+  <view class="rule" bind:tap="ruleshow">下单规则</view>
 <text class="needfont">需支付:</text><text class="price">￥{{price+money}}</text>
 <view class="pay" bind:tap="formsubmit" >提交订单
 </view>
